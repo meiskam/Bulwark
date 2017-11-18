@@ -44,7 +44,7 @@ public:
         DatabaseCache,       // int
         SpendZeroConfChange, // bool
         ObfuscationRounds,   // int
-        AnonymizePivxAmount, //int
+        AnonymizeBulwarkAmount, //int
         ShowMasternodesTab,  // bool
         Listen,              // bool
         OptionIDRowCount,
@@ -90,7 +90,7 @@ private:
 signals:
     void displayUnitChanged(int unit);
     void obfuscationRoundsChanged(int);
-    void anonymizePivxAmountChanged(int);
+    void anonymizeBulwarkAmountChanged(int);
     void coinControlFeaturesChanged(bool);
 };
 

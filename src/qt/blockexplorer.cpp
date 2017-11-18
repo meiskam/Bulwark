@@ -43,7 +43,7 @@ static std::string ValueToString(int64_t nValue, bool AllowNegative = false)
     if (nValue < 0 && !AllowNegative)
         return "<span>" + _("unknown") + "</span>";
 
-    QString Str = BitcoinUnits::formatWithUnit(BitcoinUnits::PIV, nValue);
+    QString Str = BitcoinUnits::formatWithUnit(BitcoinUnits::BWK, nValue);
     if (AllowNegative && nValue > 0)
         Str = '+' + Str;
     return std::string("<span>") + Str.toUtf8().data() + "</span>";
@@ -212,7 +212,7 @@ std::string BlockToString(CBlockIndex* pBlock)
         if (tx.IsCoinBase())
             Reward += Out;
         else if (In < 0)
-            Fees = -Params().MaxMoneyOut();
+            Fees = -MAX_MONEY;
         else {
             Fees += In - Out;
             OutVolume += Out;
@@ -307,7 +307,7 @@ std::string TxToString(uint256 BlockHash, const CTransaction& tx)
             COutPoint Out = tx.vin[i].prevout;
             CTxOut PrevOut = getPrevOut(tx.vin[i].prevout);
             if (PrevOut.nValue < 0)
-                Input = -Params().MaxMoneyOut();
+                Input = -MAX_MONEY;
             else
                 Input += PrevOut.nValue;
             std::string InputsContentCells[] =
@@ -470,8 +470,8 @@ void BlockExplorer::showEvent(QShowEvent*)
         updateNavButtons();
 
         if (!GetBoolArg("-txindex", false)) {
-            QString Warning = tr("Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (pivx.conf).");
-            QMessageBox::warning(this, "PIVX Core Blockchain Explorer", Warning, QMessageBox::Ok);
+            QString Warning = tr("Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (bulwark.conf).");
+            QMessageBox::warning(this, "Bulwark Core Blockchain Explorer", Warning, QMessageBox::Ok);
         }
     }
 }

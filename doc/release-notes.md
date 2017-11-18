@@ -1,18 +1,18 @@
-PIVX Core version 2.3.0 is now available from:
+Bulwark Core version 2.2.1 is now available from:
 
-  <https://github.com/pivx-project/pivx/releases>
+  <https://github.com/bulwark-project/bulwark/releases>
 
-This is a new major version release, including various bug fixes and
+This is a new minor version release, including various bug fixes and
 performance improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/pivx-project/pivx/issues>
+  <https://github.com/bulwark-project/bulwark/issues>
 
 Compatibility
 ==============
 
-PIVX Core is extensively tested on multiple operating systems using
+Bulwark Core is extensively tested on multiple operating systems using
 the Linux kernel, macOS 10.8+, and Windows Vista and later.
 
 Microsoft ended support for Windows XP on [April 8th, 2014](https://www.microsoft.com/en-us/WindowsForBusiness/end-of-xp-support),
@@ -20,116 +20,54 @@ No attempt is made to prevent installing or running the software on Windows XP, 
 can still do so at your own risk but be aware that there are known instabilities and issues.
 Please do not report issues about Windows XP to the issue tracker.
 
-PIVX Core should also work on most other Unix-like systems but is not
+Bulwark Core should also work on most other Unix-like systems but is not
 frequently tested on them.
 
 Notable Changes
 ===============
 
-RPC changes
---------------
+Block Data Corruption
+---------------------
 
-#### masternode command
-The `masternode` RPC command has been re-worked to ease
-it's usage and return valid JSON in it's results. The following is an overview of the changed command parameters:
+Additional startup procedures have been added to fix corrupted blockchain databases.
+The majority of users that are experiencing #106 (ConnectBlock() assertion on startup)
+that have tested the new wallet have reported that their corrupt blockchain has
+successfully been repaired. The new code will automatically detect and repair the
+blockchain if it is able to.
 
-| Command Parameter | Changes |
-| --- | --- |
-| `budget` | Removed (did nothing) |
-| `count` | The optional "mode" paramater has been removed. Command now always outputs full details in JSON format. |
-| `current` | Result fields changed: IP:Port removed, vin renamed to txhash |
-| `list-conf` | Result is now an array of objects, instead of an object of objects |
-| `outputs` | Result is now an array of objects instead of a list of *n* objects |
-| `status` | Added additional fields for txhash, outputidx, netaddr, and message |
-| `winners` | Result is now an array of objects instead of a list of *n* objects. See below |
-| `list` | Remove all optional "modes" and standardized the results. Note: `masternode list` is the same as `masternodelist`. See below |
+If users still experience corruptions with the new wallet and it is not fixed
+with the new startup procedures, it is suggested that they try using the
+`-forcestart` startup flag which will bypass the new procedures altogether, and
+in rare cases allow the wallet to run. If the database is not fixed by either
+the automatic procedures or the `-forcestart` flag, the user should resync the
+blockchain.
 
-For the `winners` parameter, the results are now in a standard JSON format as follows:
+Additional progress has been made to prevent the wallet crashes that are causing
+the corrupted databases, for example removing the Trading Window (explained below)
+and fixing several other minor memory leaks that were inherited from the version
+of Bitcoin that Bulwark was forked from.
 
-```
-[
-  {
-    nHeight: n,           (int) block height
-    winner: {
-        address: addr,    (string) PIVX MN Address,
-        nVotes: n,        (int) Number of votes for winner,
-    }
-  },
-  ...
-]
-```
+RPC Changes
+-----------
 
-In the case of multiple winners being associated with a single block, the results are in the following format (the `winner` object becomes an array of objects):
+- Exporting or dumping an addresses' private key while the wallet is unlocked for
+  anonymization and Staking only is no longer possible.
 
-```
-[
-  {
-    nHeight: n,           (int) block height,
-    winner: [
-      {
-        address: addr,    (string) PIVX MN Address,
-        nVotes: n,        (int) Number of votes for winner,
-      },
-      ...
-    ]
-  },
-  ...
-]
-```
+- A new command (`getstakingstatus`) has been added that returns the internal conditions
+  for staking to be activated and their status.
 
-For the `list` (aka `masternodelist`) parameter, the various "modes" have been removed in favor of a unified and standardized result format. The result is now an array of objects instead of an object of objects. Further, the individual objects now have a standard JSON format. The result format is as follows:
+- KeePass integration has been removed for the time being due to various inefficiencies
+  with it's code.
 
-```
-[
-  {
-    "rank": n,         (numeric) Masternode rank (or 0 if not enabled)
-    "txhash": hash,    (string) Collateral transaction hash
-    "outidx": n,       (numeric) Collateral transaction output index
-    "status": s,       (string) Status (ENABLED/EXPIRED/REMOVE/etc)
-    "addr": addr,      (string) Masternode PIVX address
-    "version": v,      (numeric) Masternode Protocol version
-    "lastseen": ttt,   (numeric) The time in seconds since epoch (Jan 1 1970 GMT) the masternode was last seen
-    "activetime": ttt, (numeric) The time in seconds since epoch (Jan 1 1970 GMT) masternode has been active
-    "lastpaid": ttt,   (numeric) The time in seconds since epoch (Jan 1 1970 GMT) masternode was last paid
-  },
-  ...
-]
-```
+Trading Window Removed
+----------------------
 
-#### mnbudget command
+The Bittrex trading window in the GUI wallet was problematic with it's memory
+handling, often leaking, and was overall an inefficient use of resources in it's
+current implementation. A revised multi-exchange trading window may be implemented
+at a later date.
 
-An additional parameter has been added to `mnbudget` to allow a controller wallet to issue per-MN votes. The new parameter is `vote-alias` and it's use format is as follows:
-
-`mnbudget vote-alias <proposal-hash> <yes|no> <alias>`
-
-All fields are required to successfully vote.
-
-#### walletpassphrase command
-
-CLI users that are staking their coins will now have the option of unlocking the wallet with no re-lock timeout. Similar to using `9999999` as the timeout, the `walletpassphrase` command now accepts `0` as a timeout to indicate that no re-locking should occur based on elapsed time.
-
-Usage: `walletpassphrase <passphrase> 0 <true|false>`
-
-The third parameter indicates if the wallet should be unlocked for staking and anonymization only (true), or to allow send operations (false, full unlock).
-
-ZeroMQ (ZMQ) Notifications
---------------
-
-pivxd can now (optionally) asynchronously notify clients through a ZMQ-based PUB socket of the arrival of new transactions and blocks. This feature requires installation of the ZMQ C API library 4.x and configuring its use through the command line or configuration file. Please see [docs/zmq.md](/doc/zmq.md) for details of operation.
-
-**All** Masternodes List GUI Removal
---------------
-
-With the standardization and reformatting of the `masternode list` (`masternodelist`) RPC command, there is no real use case to keep the full list of masternodes in the GUI. This GUI element causes a great deal of extra overhead, even when it is not being actively displayed. The removal of this list has also proven to resolve a number of linux-based errors
-
-Note that the GUI list of masternodes associated with a controller wallet remains intact.
-
-SPV Client Support
---------------
-
-PIVX Core now enables bloom filters by default to support SPV clients like mobile wallets. This feature can be disabled by using the `-peerbloomfilters` option on startup.
-
-2.3.0 Change log
+2.2.1 Change log
 =================
 
 Detailed release notes follow. This overview includes changes that affect
@@ -138,56 +76,46 @@ the code changes and accompanying discussion, both the pull request and
 git merge commit are mentioned.
 
 ### RPC and other APIs
-- #179 `a64fa3d` [RPC] Allow infinite unlock (Mrs-X)
-- #183 `dc77b86` [RPC] Add proposal name to removal log (Mrs-X)
-- #189 `6dd8146` [RPC] Add missing 'vote-alias' implementation (Mrs-X)
-- #195 `aee05fe` [ZMQ] ZMQ integration for PIVX (Mrs-X)
-- #211 `b8c110b` [RPC] Refactor & JSONify results from masternode command(s) (Fuzzbawls)
-- #201 `f0e87b1` [RPC] Add active/incative flag to getstakingstatus RPC call (Mrs-X)
+- #130 `ccb1526` [RPC] Add `getstakingstatus` method
+- #138 `4319af3` [RPC] Require password when using UnlockAnonymizeOnly
+- #142 `6b5cf7f` [RPC] Remove Keepass code due to Valgrind warnings
 
-### Configuration and command-line options
-- #180 `16b8601` [Wallet] Add parameter interaction between -disablewallet and -staking (Aaron Miller)
-- #208 `5f494c4` [Qt] Fix segfault when running with `-help` (Fuzzbawls)
-- #193 `ac7590b` [Output] Reformat help messages (Fuzzbawls)
-- #230 `aa47fa4` [Output] Update default value for -peerbloomfilters in help (Fuzzbawls)
-
-### Wallet
-- #192 `283cf3b` [Trivial] Pre-release warning message fixed. (Mrs-X)
-- #169 `05c9a75` Add IsNull and SetNull interfaces to uint256 (Jon Spock)
-- #198 `d45c869` Update EXT_COIN_TYPE according to BIP44 (Jon Spock)
+### Block and Transaction Handling
+- #146 `bce67cb` [Wallet] Look at last CoinsView block for corruption fix process
+- #154 `1b3c0d7` [Consensus] Don't pass the genesis block through CheckWork
 
 ### P2P Protocol and Network Code
-- #219 `d2c3fdf` [P2P] Enable Bloom filter and add new nService for light clients. (furszy)
-- #234 `ed99e7b` [Consensus/Net] Ignore newly activated MNs in ranking/seesaw (Mrs-X Fuzzbawls presstab)
+- #168 `ac912d9` [Wallet] Update checkpoints with v2.2 chain
+- #162 `0c0d080` Remove legacy Dash code IsReferenceNode
+- #163 `96b8b00` [P2P] Change alert key to effectively disable it
 
 ### GUI
-- #200 `bb1f255` [UI] Improved unlock usability (Mrs-X)
-- #207 `7a41f46` [Qt] Adjust size of splash screen image. (Fuzzbawls)
-- #206 `9c675ee` [Qt] Remove the All Masternodes UI tab/list (Fuzzbawls)
-- #220 `b80bc29` [Qt] Add "NODE_BLOOM" and "NODE_BLOOM_WITHOUT_MN" to guiutil (Fuzzbawls)
-- #225 `02209ec` [Qt] Add autocomplete to Qt client's debug console (Fuzzbawls)
-- #233 `2921a4d` [Qt] Enable support for Qt's HighDpiScaling (Fuzzbawls)
-
-### Tests and QA
-- #191 `3a778c3` [Tests] Fix the unit test suite for use with PIVX (Fuzzbawls)
-- #122 `7d135a1` [Utils] updated netmagic/port for linearize script (Satoshi Ninja)
+- #131 `238977b` [Qt] Adds base CSS styles for various elements
+- #134 `f7cabbe` [Qt] Edit masternode.conf in Qt-wallet
+- #135 `f8f1904` [Qt] Show path to wallet.dat in wallet-repair tab
+- #136 `53705f1` [Qt] Fix false flags for MultiSend notification when sending transactions
+- #137 `ad08051` [Qt] Fix Overview Page Balances when receiving
+- #141 `17a9e0f` [Qt] Squashed trading removal code
+- #151 `0409b12` [Qt] Avoid OpenSSL certstore-related memory leak
+- #165 `0dad320` [Qt] More place for long locales
 
 ### Miscellaneous
-- #231 `af0aa68` [Utils] Fix update-translations.py to allow % end of string (Fuzzbawls)
-- #175 `8727f1c` [Docs] Reformat main README.md (Fuzzbawls)
-- #213 `ddd8994` [Trivial] Reduce debug.log spam for masternode messages (Fuzzbawls)
+- #133 `fceb421` [Docs] Add GitHub Issue template and Contributor guidelines
+- #144 `e4e68bc` [Wallet] Reduce usage of atoi to comply with CWE-190
+- #152 `6a1de07` [Trivial] Use LogPrint for repetitive budget logs
+- #157 `41fdeaa` [Budget] Add log for removed budget proposals
+- #166 `d37b4aa` [Utils] Add ExecStop= to example systemd service
+- #167 `a6becee` [Utils] makeseeds script update
 
 Credits
 =======
 
 Thanks to everyone who directly contributed to this release:
+
 - Aaron Miller
 - Fuzzbawls
 - Mrs-X
-- PIVX
-- Satoshi Ninja
-- Jon Spock
-- furszy
+- Spock
 - presstab
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/pivx-project-translations/).
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/bulwark-project-translations/).
