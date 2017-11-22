@@ -1,5 +1,5 @@
 ---
-name: "bulwark-linux-2.2"
+name: "bulwark-linux-2.3"
 enable_cache: true
 suites:
 - "trusty"

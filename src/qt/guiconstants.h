@@ -49,7 +49,7 @@ static const int MAX_URI_LENGTH = 255;
 #define SPINNER_FRAMES 35
 
 #define QAPP_ORG_NAME "Bulwark"
-#define QAPP_ORG_DOMAIN "bulwark.com"
+#define QAPP_ORG_DOMAIN "bulwarkcrypto.com"
 #define QAPP_APP_NAME_DEFAULT "Bulwark-Qt"
 #define QAPP_APP_NAME_TESTNET "Bulwark-Qt-testnet"
 

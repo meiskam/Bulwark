@@ -1,13 +1,13 @@
-Bulwark Core version 2.2.1 is now available from:
+Bulwark Core version 1.1 is now available from:
 
-  <https://github.com/bulwark-project/bulwark/releases>
+  <https://github.com/FIXME_ADDRESS/bulwark/releases>
 
 This is a new minor version release, including various bug fixes and
 performance improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/bulwark-project/bulwark/issues>
+  <https://github.com/FIXME_ADDRES/bulwark/issues>
 
 Compatibility
 ==============

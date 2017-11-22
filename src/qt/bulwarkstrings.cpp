@@ -30,7 +30,7 @@ QT_TRANSLATE_NOOP("bulwark-core", ""
 "notation for IPv6. This option can be specified multiple times (default: "
 "bind to all interfaces)"),
 QT_TRANSLATE_NOOP("bulwark-core", ""
-"Cannot obtain a lock on data directory %s. Bulwark Core is probably already "
+"Cannot obtain a lock on data directory %s. bulwark Core is probably already "
 "running."),
 QT_TRANSLATE_NOOP("bulwark-core", ""
 "Change automatic finalized budget voting behavior. mode=auto: Vote for only "
@@ -45,11 +45,13 @@ QT_TRANSLATE_NOOP("bulwark-core", ""
 "Delete all wallet transactions and only recover those parts of the "
 "blockchain through -rescan on startup"),
 QT_TRANSLATE_NOOP("bulwark-core", ""
-"Disable all Bulwark specific functionality (Masternodes, Obfuscation, SwiftTX, "
+"Disable all bulwark specific functionality (Masternodes, Obfuscation, SwiftTX, "
 "Budgeting) (0-1, default: %u)"),
 QT_TRANSLATE_NOOP("bulwark-core", ""
 "Distributed under the MIT software license, see the accompanying file "
 "COPYING or <http://www.opensource.org/licenses/mit-license.php>."),
+QT_TRANSLATE_NOOP("bulwark-core", ""
+"Enable spork administration functionality with the appropriate private key."),
 QT_TRANSLATE_NOOP("bulwark-core", ""
 "Enable swifttx, show confirmations for locked transactions (bool, default: "
 "%s)"),
@@ -97,6 +99,8 @@ QT_TRANSLATE_NOOP("bulwark-core", ""
 "Invalid amount for -maxtxfee=<amount>: '%s' (must be at least the minrelay "
 "fee of %s to prevent stuck transactions)"),
 QT_TRANSLATE_NOOP("bulwark-core", ""
+"Keep the specified amount available for spending at all times (default: 0)"),
+QT_TRANSLATE_NOOP("bulwark-core", ""
 "Log transaction priority and fee per kB when mining blocks (default: %u)"),
 QT_TRANSLATE_NOOP("bulwark-core", ""
 "Maintain a full transaction index, used by the getrawtransaction rpc call "
@@ -137,11 +141,13 @@ QT_TRANSLATE_NOOP("bulwark-core", ""
 "Show N confirmations for a successfully locked transaction (0-9999, default: "
 "%u)"),
 QT_TRANSLATE_NOOP("bulwark-core", ""
+"Support filtering of blocks and transaction with bloom filters (default: %u)"),
+QT_TRANSLATE_NOOP("bulwark-core", ""
 "SwiftTX requires inputs with at least 6 confirmations, you might need to "
 "wait a few minutes and try again."),
 QT_TRANSLATE_NOOP("bulwark-core", ""
 "This is a pre-release test build - use at your own risk - do not use for "
-"mining or merchant applications"),
+"staking or merchant applications!"),
 QT_TRANSLATE_NOOP("bulwark-core", ""
 "This product includes software developed by the OpenSSL Project for use in "
 "the OpenSSL Toolkit <https://www.openssl.org/> and cryptographic software "
@@ -158,9 +164,9 @@ QT_TRANSLATE_NOOP("bulwark-core", ""
 "If the file does not exist, create it with owner-readable-only file "
 "permissions.\n"
 "It is also recommended to set alertnotify so you are notified of problems;\n"
-"for example: alertnotify=echo %%s | mail -s \"Bulwark Alert\" admin@foo.com\n"),
+"for example: alertnotify=echo %%s | mail -s \"bulwark Alert\" admin@foo.com\n"),
 QT_TRANSLATE_NOOP("bulwark-core", ""
-"Unable to bind to %s on this computer. Bulwark Core is probably already running."),
+"Unable to bind to %s on this computer. bulwark Core is probably already running."),
 QT_TRANSLATE_NOOP("bulwark-core", ""
 "Unable to locate enough Obfuscation denominated funds for this transaction."),
 QT_TRANSLATE_NOOP("bulwark-core", ""
@@ -180,7 +186,7 @@ QT_TRANSLATE_NOOP("bulwark-core", ""
 "pay if you send a transaction."),
 QT_TRANSLATE_NOOP("bulwark-core", ""
 "Warning: Please check that your computer's date and time are correct! If "
-"your clock is wrong Bulwark Core will not work properly."),
+"your clock is wrong bulwark Core will not work properly."),
 QT_TRANSLATE_NOOP("bulwark-core", ""
 "Warning: The network does not appear to fully agree! Some miners appear to "
 "be experiencing issues."),
@@ -207,7 +213,7 @@ QT_TRANSLATE_NOOP("bulwark-core", "(52543 could be used only on mainnet)"),
 QT_TRANSLATE_NOOP("bulwark-core", "(default: %s)"),
 QT_TRANSLATE_NOOP("bulwark-core", "(default: 1)"),
 QT_TRANSLATE_NOOP("bulwark-core", "(must be 52543 for mainnet)"),
-QT_TRANSLATE_NOOP("bulwark-core", "<category> can be:\n"),
+QT_TRANSLATE_NOOP("bulwark-core", "<category> can be:"),
 QT_TRANSLATE_NOOP("bulwark-core", "Accept command line and JSON-RPC commands"),
 QT_TRANSLATE_NOOP("bulwark-core", "Accept connections from outside (default: 1 if no -proxy or -connect)"),
 QT_TRANSLATE_NOOP("bulwark-core", "Accept public REST requests (default: %u)"),
@@ -216,6 +222,7 @@ QT_TRANSLATE_NOOP("bulwark-core", "Add a node to connect to and attempt to keep 
 QT_TRANSLATE_NOOP("bulwark-core", "Allow DNS lookups for -addnode, -seednode and -connect"),
 QT_TRANSLATE_NOOP("bulwark-core", "Already have that input."),
 QT_TRANSLATE_NOOP("bulwark-core", "Always query for peer addresses via DNS lookup (default: %u)"),
+QT_TRANSLATE_NOOP("bulwark-core", "Attempt to force blockchain corruption recovery"),
 QT_TRANSLATE_NOOP("bulwark-core", "Attempt to recover private keys from a corrupt wallet.dat"),
 QT_TRANSLATE_NOOP("bulwark-core", "Block creation options:"),
 QT_TRANSLATE_NOOP("bulwark-core", "Can't denominate: no compatible inputs left."),
@@ -233,16 +240,25 @@ QT_TRANSLATE_NOOP("bulwark-core", "Connect to a node to retrieve peer addresses,
 QT_TRANSLATE_NOOP("bulwark-core", "Connection options:"),
 QT_TRANSLATE_NOOP("bulwark-core", "Copyright (C) 2009-%i The Bitcoin Core Developers"),
 QT_TRANSLATE_NOOP("bulwark-core", "Copyright (C) 2014-%i The Dash Core Developers"),
-QT_TRANSLATE_NOOP("bulwark-core", "Copyright (C) 2015-%i The Bulwark Core Developers"),
+QT_TRANSLATE_NOOP("bulwark-core", "Copyright (C) 2015-%i The bulwark Core Developers"),
 QT_TRANSLATE_NOOP("bulwark-core", "Corrupted block database detected"),
 QT_TRANSLATE_NOOP("bulwark-core", "Could not parse -rpcbind value %s as network address"),
 QT_TRANSLATE_NOOP("bulwark-core", "Could not parse masternode.conf"),
 QT_TRANSLATE_NOOP("bulwark-core", "Debugging/Testing options:"),
 QT_TRANSLATE_NOOP("bulwark-core", "Disable safemode, override a real safe mode event (default: %u)"),
 QT_TRANSLATE_NOOP("bulwark-core", "Discover own IP address (default: 1 when listening and no -externalip)"),
+QT_TRANSLATE_NOOP("bulwark-core", "Display the stake modifier calculations in the debug.log file."),
+QT_TRANSLATE_NOOP("bulwark-core", "Display verbose coin stake messages in the debug.log file."),
 QT_TRANSLATE_NOOP("bulwark-core", "Do not load the wallet and disable wallet RPC calls"),
 QT_TRANSLATE_NOOP("bulwark-core", "Do you want to rebuild the block database now?"),
 QT_TRANSLATE_NOOP("bulwark-core", "Done loading"),
+QT_TRANSLATE_NOOP("bulwark-core", "Enable publish hash block in <address>"),
+QT_TRANSLATE_NOOP("bulwark-core", "Enable publish hash transaction (locked via SwiftTX) in <address>"),
+QT_TRANSLATE_NOOP("bulwark-core", "Enable publish hash transaction in <address>"),
+QT_TRANSLATE_NOOP("bulwark-core", "Enable publish raw block in <address>"),
+QT_TRANSLATE_NOOP("bulwark-core", "Enable publish raw transaction (locked via SwiftTX) in <address>"),
+QT_TRANSLATE_NOOP("bulwark-core", "Enable publish raw transaction in <address>"),
+QT_TRANSLATE_NOOP("bulwark-core", "Enable staking functionality (0-1, default: %u)"),
 QT_TRANSLATE_NOOP("bulwark-core", "Enable the client to act as a masternode (0-1, default: %u)"),
 QT_TRANSLATE_NOOP("bulwark-core", "Entries are full."),
 QT_TRANSLATE_NOOP("bulwark-core", "Error connecting to Masternode."),
@@ -251,7 +267,7 @@ QT_TRANSLATE_NOOP("bulwark-core", "Error initializing wallet database environmen
 QT_TRANSLATE_NOOP("bulwark-core", "Error loading block database"),
 QT_TRANSLATE_NOOP("bulwark-core", "Error loading wallet.dat"),
 QT_TRANSLATE_NOOP("bulwark-core", "Error loading wallet.dat: Wallet corrupted"),
-QT_TRANSLATE_NOOP("bulwark-core", "Error loading wallet.dat: Wallet requires newer version of Bulwark Core"),
+QT_TRANSLATE_NOOP("bulwark-core", "Error loading wallet.dat: Wallet requires newer version of bulwark Core"),
 QT_TRANSLATE_NOOP("bulwark-core", "Error opening block database"),
 QT_TRANSLATE_NOOP("bulwark-core", "Error reading from database, shutting down."),
 QT_TRANSLATE_NOOP("bulwark-core", "Error recovering public key."),
@@ -279,7 +295,7 @@ QT_TRANSLATE_NOOP("bulwark-core", "Incompatible mode."),
 QT_TRANSLATE_NOOP("bulwark-core", "Incompatible version."),
 QT_TRANSLATE_NOOP("bulwark-core", "Incorrect or no genesis block found. Wrong datadir for network?"),
 QT_TRANSLATE_NOOP("bulwark-core", "Information"),
-QT_TRANSLATE_NOOP("bulwark-core", "Initialization sanity check failed. Bulwark Core is shutting down."),
+QT_TRANSLATE_NOOP("bulwark-core", "Initialization sanity check failed. bulwark Core is shutting down."),
 QT_TRANSLATE_NOOP("bulwark-core", "Input is not valid."),
 QT_TRANSLATE_NOOP("bulwark-core", "Insufficient funds."),
 QT_TRANSLATE_NOOP("bulwark-core", "Invalid -onion address: '%s'"),
@@ -340,6 +356,7 @@ QT_TRANSLATE_NOOP("bulwark-core", "Only connect to nodes in network <net> (ipv4,
 QT_TRANSLATE_NOOP("bulwark-core", "Options:"),
 QT_TRANSLATE_NOOP("bulwark-core", "Password for JSON-RPC connections"),
 QT_TRANSLATE_NOOP("bulwark-core", "Prepend debug output with timestamp (default: %u)"),
+QT_TRANSLATE_NOOP("bulwark-core", "Print version and exit"),
 QT_TRANSLATE_NOOP("bulwark-core", "RPC SSL options: (see the Bitcoin Wiki for SSL setup instructions)"),
 QT_TRANSLATE_NOOP("bulwark-core", "RPC server options:"),
 QT_TRANSLATE_NOOP("bulwark-core", "RPC support for HTTP persistent connections (default: %d)"),
@@ -379,6 +396,7 @@ QT_TRANSLATE_NOOP("bulwark-core", "Specify pid file (default: %s)"),
 QT_TRANSLATE_NOOP("bulwark-core", "Specify wallet file (within data directory)"),
 QT_TRANSLATE_NOOP("bulwark-core", "Specify your own public address"),
 QT_TRANSLATE_NOOP("bulwark-core", "Spend unconfirmed change when sending transactions (default: %u)"),
+QT_TRANSLATE_NOOP("bulwark-core", "Staking options:"),
 QT_TRANSLATE_NOOP("bulwark-core", "Stop running after importing blocks from disk (default: %u)"),
 QT_TRANSLATE_NOOP("bulwark-core", "Submitted following entries to masternode: %u / %d"),
 QT_TRANSLATE_NOOP("bulwark-core", "Submitted to masternode, waiting for more entries ( %u / %d ) %s"),
@@ -420,7 +438,7 @@ QT_TRANSLATE_NOOP("bulwark-core", "Verifying blocks..."),
 QT_TRANSLATE_NOOP("bulwark-core", "Verifying wallet..."),
 QT_TRANSLATE_NOOP("bulwark-core", "Wallet %s resides outside data directory %s"),
 QT_TRANSLATE_NOOP("bulwark-core", "Wallet is locked."),
-QT_TRANSLATE_NOOP("bulwark-core", "Wallet needed to be rewritten: restart Bulwark Core to complete"),
+QT_TRANSLATE_NOOP("bulwark-core", "Wallet needed to be rewritten: restart bulwark Core to complete"),
 QT_TRANSLATE_NOOP("bulwark-core", "Wallet options:"),
 QT_TRANSLATE_NOOP("bulwark-core", "Wallet window title"),
 QT_TRANSLATE_NOOP("bulwark-core", "Warning"),
@@ -432,6 +450,7 @@ QT_TRANSLATE_NOOP("bulwark-core", "You need to rebuild the database using -reind
 QT_TRANSLATE_NOOP("bulwark-core", "Your entries added successfully."),
 QT_TRANSLATE_NOOP("bulwark-core", "Your transaction was accepted into the pool!"),
 QT_TRANSLATE_NOOP("bulwark-core", "Zapping all transactions from wallet..."),
+QT_TRANSLATE_NOOP("bulwark-core", "ZeroMQ notification options:"),
 QT_TRANSLATE_NOOP("bulwark-core", "on startup"),
 QT_TRANSLATE_NOOP("bulwark-core", "wallet.dat corrupt, salvage failed"),
 };

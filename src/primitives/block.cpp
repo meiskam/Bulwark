@@ -7,11 +7,10 @@
 #include "primitives/block.h"
 
 #include "hash.h"
-#include "tinyformat.h"
 #include "script/standard.h"
 #include "script/sign.h"
+#include "tinyformat.h"
 #include "utilstrencodings.h"
-#include "crypto/common.h"
 #include "util.h"
 
 uint256 CBlockHeader::GetHash() const
@@ -79,7 +78,7 @@ uint256 CBlock::BuildMerkleTree(bool* fMutated) const
     if (fMutated) {
         *fMutated = mutated;
     }
-    return (vMerkleTree.empty() ? 0 : vMerkleTree.back());
+    return (vMerkleTree.empty() ? uint256() : vMerkleTree.back());
 }
 
 std::vector<uint256> CBlock::GetMerkleBranch(int nIndex) const
@@ -101,7 +100,7 @@ std::vector<uint256> CBlock::GetMerkleBranch(int nIndex) const
 uint256 CBlock::CheckMerkleBranch(uint256 hash, const std::vector<uint256>& vMerkleBranch, int nIndex)
 {
     if (nIndex == -1)
-        return 0;
+	return uint256();
     for (std::vector<uint256>::const_iterator it(vMerkleBranch.begin()); it != vMerkleBranch.end(); ++it)
     {
         if (nIndex & 1)

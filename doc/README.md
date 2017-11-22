@@ -26,10 +26,10 @@ Drag Bulwark-Qt to your applications folder, and then run Bulwark-Qt.
 
 ### Need Help?
 
-* See the documentation at the [Bulwark Wiki](https://en.bitcoin.it/wiki/Main_Page) ***TODO***
+* See the documentation at the [Bitcoin Wiki](https://en.bitcoin.it/wiki/Main_Page) ***TODO***
 for help and more information.
-* Ask for help on [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or on the [Bulwark Forum](http://forum.bulwark.com/).
-* Join one of our Slack groups [Bulwark Slack Groups](https://bulwark.com/slack-logins/).
+* Ask for help on [BitcoinTalk](https://FIXME_ADDRESS) or on the [Bulwark Forum](http://FIXME_ADDRESS).
+* Join one of our Slack groups [Bulwark Slack Groups](https://FIXME_ADDRESS).
 
 Building
 ---------------------
@@ -55,7 +55,7 @@ The Bulwark repo's [root README](https://github.com/Bulwark-Project/Bulwark/blob
 
 ### Resources
 
-* Discuss on the [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or the [Bulwark](http://forum.bulwark.com/) forum.
+* Discuss on the [BitcoinTalk](https://FIXME_ADDRESS) or the [Bulwark](http://FIXME_ADDRESS) forum.
 * Join the [Bulwark-Dev](https://bulwark-dev.slack.com/) Slack group ([Sign-Up](https://bulwark-dev.herokuapp.com/)).
 
 ### Miscellaneous

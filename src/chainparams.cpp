@@ -107,19 +107,34 @@ public:
         pchMessageStart[1] = 0x02;
         pchMessageStart[2] = 0x01;
         pchMessageStart[3] = 0x17;
-
 	vAlertPubKey = ParseHex("04579f18934b3ef39094a9999e45506a1935662d0cd4e504d07beb53b8a1bfd78d81bee47e65119318397809420d5320e3c7b2aaae58580db48c38a4e6d4f0f919");
         nDefaultPort = 52543;
         bnProofOfWorkLimit = ~uint256(0) >> 20; // Bulwark starting difficulty is 1 / 2^12
         nSubsidyHalvingInterval = 210000;
         nMaxReorganizationDepth = 100;
+	nEnforceBlockUpgradeMajority = 750;
+	nRejectBlockOutdatedMajority = 950;
+	nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 0;
         nTargetTimespan = 1 * 90; // Bulwark: 1.5 minutes
         nTargetSpacing = 1 * 90;  // Bulwark: 1 Hour
         nLastPOWBlock = 345600;
 	nRampToBlock = 960;
         nMaturity = 100;
-        nModifierUpdateBlock = 1;
+	nMasternodeCountDrift = 20;
+	nModifierUpdateBlock = 615800;
+	nMaxMoneyOut = 21000000 * COIN;
+
+
+
+
+
+
+
+
+
+
+
         const char* pszTimestamp = "Robert Mugabe resigns after 37 years as Zimbabwe's leader 6:16 PM ET, Tue November 21, 2017";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
@@ -136,17 +151,13 @@ public:
         genesis.nNonce = 2137262; 
 //FIXME	MineGenesis(genesis);
 	hashGenesisBlock = genesis.GetHash();
-
         assert(hashGenesisBlock == uint256("0x0000072468ac84211e0aa5f7f4e7e495d870b9c6c0865d8564a076eeaef483ea"));
         assert(genesis.hashMerkleRoot == uint256("0x9873d80537d7bf6fcf097a6f9cd6d6a74d6a26ceda5b775a576665ffde76dd11"));
 
-
-	vSeeds.clear();
-	vFixedSeeds.clear();
         vSeeds.push_back(CDNSSeedData("bulwarkcrypto.com", "seed-04-atl-ga.bulwarkcrypto.com"));
-		vSeeds.push_back(CDNSSeedData("bulwarkcrypto.com", "seed-05-fremont-ca.bulwarkcrypto.com"));
-		vSeeds.push_back(CDNSSeedData("bulwarkcrypto.com", "seed-06-newark-nj.bulwarkcrypto.com"));
-		vSeeds.push_back(CDNSSeedData("bulwarkcrypto.com", "seed04.bulwarkcrypto.com"));
+	vSeeds.push_back(CDNSSeedData("bulwarkcrypto.com", "seed-05-fremont-ca.bulwarkcrypto.com"));
+	vSeeds.push_back(CDNSSeedData("bulwarkcrypto.com", "seed-06-newark-nj.bulwarkcrypto.com"));
+	vSeeds.push_back(CDNSSeedData("bulwarkcrypto.com", "seed04.bulwarkcrypto.com"));
 		
 		
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 85); // b
@@ -154,9 +165,11 @@ public:
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 212);
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x02)(0x2D)(0x25)(0x33).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x02)(0x21)(0x31)(0x2B).convert_to_container<std::vector<unsigned char> >();
-        //  BIP44 coin type is 'TBD'
-        base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x13)(0x00)(0x00)(0x80).convert_to_container<std::vector<unsigned char> >();
+        //     BIP44 coin type is from https://github.com/satoshilabs/slips/blob/master/slip-0044.md
+        base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0x77).convert_to_container<std::vector<unsigned char> >();
+
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
+
         fRequireRPCPassword = true;
         fMiningRequiresPeers = true;
         fAllowMinDifficultyBlocks = false;
@@ -166,18 +179,21 @@ public:
         fSkipProofOfWorkCheck = false;
         fTestnetToBeDeprecatedFieldRPC = false;
         fHeadersFirstSyncingActive = false;
+
         nPoolMaxTransactions = 3;
         strSporkKey = "0453748e298a34e32d760a3d64b7b517c952c10024a4160a3a746d9bce572f85e13ac6d4f518ac110ba807ce19fb657bc2696ca02013290e3fbe517adf09c95787";
         //FIXME
         strObfuscationPoolDummyAddress = "bDiJwVuKv9dcKBN4KCfX6UmXbkpqLfzGyf";
         nStartMasternodePayments = 1511092620; //Wed, 25 Jun 2014 20:36:16 GMT
     }
+
     const Checkpoints::CCheckpointData& Checkpoints() const
     {
         return data;
     }
 };
 static CMainParams mainParams;
+
 /**
  * Testnet (v3)
  */
@@ -192,22 +208,27 @@ public:
         pchMessageStart[1] = 0xd9;
         pchMessageStart[2] = 0xf4;
         pchMessageStart[3] = 0xa0;
-
 	vAlertPubKey = ParseHex("04795fde7bfc6347248a901aca81dd6a9f3acdeb5272f1c831f5147b139a4e1bacaa253541d9ebdfba982fb5cc45df3e34a8e98cdce9329037f009af217bc64ed9");
         nDefaultPort = 42133;
+        nEnforceBlockUpgradeMajority = 51;
+        nRejectBlockOutdatedMajority = 75;
+        nToCheckBlockUpgradeMajority = 100;
         nMinerThreads = 0;
         nTargetTimespan = 1 * 90; // 90 Seconds
         nTargetSpacing = 1 * 90;  // 360 Seconds
-        nLastPOWBlock = 1000;
+        nLastPOWBlock = 200;
         nMaturity = 15;
+	nMasternodeCountDrift = 4;
+	nModifierUpdateBlock = 51197; //approx Mon, 17 Apr 2017 04:00:00 GMT
+	nMaxMoneyOut = 43199500 * COIN;
+	//FIXME
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
         genesis.nTime = 1511311453;
         genesis.nNonce = 746269;
-	genesis.nBits = bnProofOfWorkLimit.GetCompact();
 
-	hashGenesisBlock == uint256("0x00000666199f20498537e1e01069fa054243cec2edc59f229f3046d352ff32f5");
-	genesis.hashMerkleRoot == uint256("0x9873d80537d7bf6fcf097a6f9cd6d6a74d6a26ceda5b775a576665ffde76dd11");
-//FIXME	MineGenesis(genesis);
+	hashGenesisBlock = genesis.GetHash();
+	assert(genesis.hashMerkleRoot == uint256("0x9873d80537d7bf6fcf097a6f9cd6d6a74d6a26ceda5b775a576665ffde76dd11");
+
         vFixedSeeds.clear();
         vSeeds.clear();
         vSeeds.push_back(CDNSSeedData("bulwarkcrypto.com", "test01.bulwarkcrypto.com"));
@@ -222,15 +243,18 @@ public:
         // Testnet bulwark BIP32 prvkeys start with 'DRKP'
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x3a)(0x80)(0x58)(0x37).convert_to_container<std::vector<unsigned char> >();
         // Testnet bulwark BIP44 coin type is '1' (All coin's testnet default)
-        base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x01)(0x00)(0x00)(0x80).convert_to_container<std::vector<unsigned char> >();
+	base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0x01).convert_to_container<std::vector<unsigned char> >();
+
         convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
+
         fRequireRPCPassword = true;
-        fMiningRequiresPeers = false;
+	fMiningRequiresPeers = true;
         fAllowMinDifficultyBlocks = true;
         fDefaultConsistencyChecks = false;
         fRequireStandard = false;
         fMineBlocksOnDemand = false;
         fTestnetToBeDeprecatedFieldRPC = true;
+
         nPoolMaxTransactions = 2;
         strSporkKey = "04cd98bc62b2fa05711675243b1d86c181ea4c83e337f30ddcd8fbc1c937f550b4f539d53ee57789ebc8f6548fe3da21800eeea120d9ef8979452b8629526532c4";
         strObfuscationPoolDummyAddress = "TUQ57Fbh1crybrDhV6X9SDH95H4oSq4v6p";
@@ -258,6 +282,9 @@ public:
         pchMessageStart[2] = 0x7e;
         pchMessageStart[3] = 0xac;
         nSubsidyHalvingInterval = 150;
+	nEnforceBlockUpgradeMajority = 750;
+        nRejectBlockOutdatedMajority = 950;
+        nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 1;
         nTargetTimespan = 24 * 60 * 60; // Bulwark: 1 day
         nTargetSpacing = 1 * 60;        // Bulwark: 1 minutes
@@ -313,6 +340,9 @@ public:
     virtual void setDefaultConsistencyChecks(bool afDefaultConsistencyChecks) { fDefaultConsistencyChecks = afDefaultConsistencyChecks; }
     virtual void setAllowMinDifficultyBlocks(bool afAllowMinDifficultyBlocks) { fAllowMinDifficultyBlocks = afAllowMinDifficultyBlocks; }
     virtual void setSkipProofOfWorkCheck(bool afSkipProofOfWorkCheck) { fSkipProofOfWorkCheck = afSkipProofOfWorkCheck; }
+    virtual void setEnforceBlockUpgradeMajority(int anEnforceBlockUpgradeMajority) { nEnforceBlockUpgradeMajority = anEnforceBlockUpgradeMajority; }
+    virtual void setRejectBlockOutdatedMajority(int anRejectBlockOutdatedMajority) { nRejectBlockOutdatedMajority = anRejectBlockOutdatedMajority; }
+    virtual void setToCheckBlockUpgradeMajority(int anToCheckBlockUpgradeMajority) { nToCheckBlockUpgradeMajority = anToCheckBlockUpgradeMajority; }
 };
 static CUnitTestParams unitTestParams;
 static CChainParams* pCurrentParams = 0;
