@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_UINT256_H
-#define BITCOIN_UINT256_H
+#ifndef BITCOIN_ARITH_UINT256_H
+#define BITCOIN_ARITH_UINT256_H
 
 #include <assert.h>
 #include <cstring>
@@ -16,7 +16,7 @@
 class uint512;
 class uint256;
 
-class uint_error : public std::runtime_error 
+class uint_error : public std::runtime_error
 {
 public:
     explicit uint_error(const std::string& str) : std::runtime_error(str) {}
@@ -33,7 +33,7 @@ protected:
 public:
     base_uint()
     {
-        for (int i = 0; i < WIDTH; i++)
+     for (int i = 0; i < WIDTH; i++)
             pn[i] = 0;
     }
 
@@ -332,4 +332,4 @@ arith_uint256 UintToArith256(const uint256&);
 uint512 ArithToUint512(const arith_uint512&);
 arith_uint512 UintToArith512(const uint512&);
 
-#endif // BITCOIN_UINT256_H
+#endif // BITCOIN_ARITH_UINT256_H

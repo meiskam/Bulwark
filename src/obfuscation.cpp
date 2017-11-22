@@ -1759,7 +1759,7 @@ bool CObfuscationPool::MakeCollateralAmounts()
 bool CObfuscationPool::CreateDenominated(CAmount nTotalValue)
 {
     CWalletTx wtx;
-    int64_t nFeeRet = 0;
+    CAmount nFeeRet = 0;
     std::string strFail = "";
     vector<pair<CScript, CAmount> > vecSend;
     CAmount nValueLeft = nTotalValue;

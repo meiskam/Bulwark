@@ -318,7 +318,6 @@ void ParseParameters(int argc, const char* const argv[])
         if (is_index != std::string::npos) {
             strValue = str.substr(is_index + 1);
             str = str.substr(0, is_index);
-        InterpretNegativeSetting(str, strValue);
 
         }
 #ifdef WIN32
@@ -334,6 +333,7 @@ void ParseParameters(int argc, const char* const argv[])
         // If both --foo and -foo are set, the last takes effect.
         if (str.length() > 1 && str[1] == '-')
             str = str.substr(1);
+        InterpretNegativeSetting(str, strValue);
 
         mapArgs[str] = strValue;
         mapMultiArgs[str].push_back(strValue);
