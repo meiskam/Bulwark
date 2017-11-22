@@ -1563,7 +1563,7 @@ bool CWallet::SelectStakeCoins(std::set<std::pair<const CWalletTx*, unsigned int
 {
     vector<COutput> vCoins;
     AvailableCoins(vCoins, true);
-    int64_t nAmountSelected = 0;
+    CAmount nAmountSelected = 0;
 
     BOOST_FOREACH (const COutput& out, vCoins) {
         //make sure not to outrun target amount
@@ -1770,7 +1770,7 @@ struct CompareByPriority {
     }
 };
 
-bool CWallet::SelectCoinsByDenominations(int nDenom, CAmount nValueMin, int64_t nValueMax, std::vector<CTxIn>& vCoinsRet, std::vector<COutput>& vCoinsRet2, int64_t& nValueRet, int nObfuscationRoundsMin, int nObfuscationRoundsMax)
+bool CWallet::SelectCoinsByDenominations(int nDenom, CAmount nValueMin, int64_t nValueMax, std::vector<CTxIn>& vCoinsRet, std::vector<COutput>& vCoinsRet2, CAmount& nValueRet, int nObfuscationRoundsMin, int nObfuscationRoundsMax)
 {
     vCoinsRet.clear();
     nValueRet = 0;
@@ -2619,7 +2619,7 @@ string CWallet::PrepareObfuscationDenominate(int minRounds, int maxRounds)
             LockCoin(v.prevout);
     }
 
-    int64_t nValueLeft = nValueIn;
+    CAmount nValueLeft = nValueIn;
     std::vector<CTxOut> vOut;
 
     /*
@@ -2942,7 +2942,7 @@ bool CWallet::GetKeyFromPool(CPubKey& result)
     return true;
 }
 
-int64_t CWallet::GetOldestKeyPoolTime()
+CAmount CWallet::GetOldestKeyPoolTime()
 {
     int64_t nIndex = 0;
     CKeyPool keypool;
