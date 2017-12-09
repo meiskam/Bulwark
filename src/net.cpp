@@ -220,7 +220,7 @@ bool IsPeerAddrLocalGood(CNode* pnode)
 }
 
 // pushes our own address to a peer
-void AdvertizeLocal(CNode* pnode)
+void AdvertiseLocal(CNode* pnode)
 {
     if (fListen && pnode->fSuccessfullyConnected) {
         CAddress addrLocal = GetLocalAddress(&pnode->addr);
@@ -233,6 +233,7 @@ void AdvertizeLocal(CNode* pnode)
         }
         if (addrLocal.IsRoutable()) {
             pnode->PushAddress(addrLocal);
+            LogPrintf("AdvertiseLocal: advertising address %s\n", addrLocal.ToString());
         }
     }
 }
@@ -276,6 +277,14 @@ bool AddLocal(const CService& addr, int nScore)
 bool AddLocal(const CNetAddr& addr, int nScore)
 {
     return AddLocal(CService(addr, GetListenPort()), nScore);
+}
+
+bool RemoveLocal(const CService& addr)
+{
+    LOCK(cs_mapLocalHost);
+    LogPrintf("RemoveLocal(%s)\n", addr.ToString());
+    mapLocalHost.erase(addr);
+    return true;
 }
 
 /** Make a particular network entirely off-limits (no automatic connects to it) */
@@ -756,10 +765,13 @@ void ThreadSocketHandler()
                 }
             }
         }
-        if (vNodes.size() != nPrevNodeCount) {
-            nPrevNodeCount = vNodes.size();
-            uiInterface.NotifyNumConnectionsChanged(nPrevNodeCount);
+        size_t vNodesSize;
+        {
+            LOCK(cs_vNodes);
+            vNodesSize = vNodes.size();
         }
+        if(vNodesSize != nPrevNodeCount) {
+            nPrevNodeCount = vNodesSize;
 
         //
         // Find which sockets have data to receive
