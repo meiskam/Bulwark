@@ -1,5 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
+// Copyright (c) 2015-2017 The PIVX developers
+// Copyright (c) 2018 The Bulwark developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -14,7 +16,8 @@
 
 #include <math.h>
 
-unsigned int static DarkGravityWave(const CBlockIndex* pindexLast) 
+
+unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader* pblock)
 {
     /* current difficulty formula, bulwark - DarkGravity v3, written by Evan Duffield - evan@dashpay.io */
     const CBlockIndex* BlockLastSolved = pindexLast;
@@ -34,7 +37,7 @@ unsigned int static DarkGravityWave(const CBlockIndex* pindexLast)
     if (pindexLast->nHeight > Params().LAST_POW_BLOCK()) {
         uint256 bnTargetLimit = (~uint256(0) >> 24);
         int64_t nTargetSpacing = 90;
-        int64_t nTargetTimespan = 60 * 30; //1800
+        int64_t nTargetTimespan = 90 * 25; //2250
 
         int64_t nActualSpacing = 0;
         if (pindexLast->nHeight != 0)
@@ -105,12 +108,7 @@ unsigned int static DarkGravityWave(const CBlockIndex* pindexLast)
         bnNew = Params().ProofOfWorkLimit();
     }
 
-    return bnNew.GetCompact();	
-}
-	
-unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader* pblock)
-{
-	return DarkGravityWave(pindexLast);
+    return bnNew.GetCompact();
 }
 
 bool CheckProofOfWork(uint256 hash, unsigned int nBits)

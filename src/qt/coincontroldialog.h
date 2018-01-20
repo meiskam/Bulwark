@@ -38,7 +38,6 @@ public:
     void setModel(WalletModel* model);
     void updateDialogLabels();
 
-
     // static because also called from sendcoinsdialog
     static void updateLabels(WalletModel*, QDialog*);
     static QString getPriorityLabel(double dPriority, double mempoolEstimatePriority);
@@ -69,8 +68,7 @@ private:
         COLUMN_AMOUNT,
         COLUMN_LABEL,
         COLUMN_ADDRESS,
-		COLUMN_TYPE,
-        COLUMN_OBFUSCATION_ROUNDS,
+        COLUMN_TYPE,
         COLUMN_DATE,
         COLUMN_CONFIRMATIONS,
         COLUMN_PRIORITY,

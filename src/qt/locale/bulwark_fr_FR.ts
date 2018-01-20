@@ -152,16 +152,16 @@
         <translation>Confirmer le cryptage du portefeuille</translation>
     </message>
     <message>
-        <source>Bulwark will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your BWKs from being stolen by malware infecting your computer.</source>
-        <translation>Bulwark va maintenant se fermer pour finir le processus cryptage. Notez que le cryptage de votre portefeuille ne peut pas complètement protéger vos BWKs d'un vol par un malware ayant infecté votre ordinateur. </translation>
+        <source>PIVX will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your PIVs from being stolen by malware infecting your computer.</source>
+        <translation>PIVX va maintenant se fermer pour finir le processus cryptage. Notez que le cryptage de votre portefeuille ne peut pas complètement protéger vos PIVs d'un vol par un malware ayant infecté votre ordinateur. </translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Êtes-vous sûr de vouloir crypter votre portefeuille?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BWK&lt;/b&gt;!</source>
-        <translation>Attention : si vous cryptez votre portefeuille et perdez votre phrase secrète, vous &lt;b&gt;PERDREZ TOUS VOS BWK&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR PIV&lt;/b&gt;!</source>
+        <translation>Attention : si vous cryptez votre portefeuille et perdez votre phrase secrète, vous &lt;b&gt;PERDREZ TOUS VOS PIV&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -219,8 +219,8 @@
         <translation>Adresse :</translation>
     </message>
     <message>
-        <source>The Bulwark address to sign the message with</source>
-        <translation>L'adresse Bulwark avec laquelle signer le message</translation>
+        <source>The PIVX address to sign the message with</source>
+        <translation>L'adresse PIVX avec laquelle signer le message</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -251,8 +251,8 @@
         <translation>Copier la signature actuelle dans le presse-papier</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Bulwark address</source>
-        <translation>Signer le message pour prouver que vous possédez cette adresse Bulwark</translation>
+        <source>Sign the message to prove you own this PIVX address</source>
+        <translation>Signer le message pour prouver que vous possédez cette adresse PIVX</translation>
     </message>
     <message>
         <source>Encrypt &amp;Key</source>
@@ -271,12 +271,12 @@
         <translation>BIP 38 Décrypter</translation>
     </message>
     <message>
-        <source>The Bulwark address the message was signed with</source>
-        <translation>L'adresse Bulwark avec laquelle le message a été signé</translation>
+        <source>The PIVX address the message was signed with</source>
+        <translation>L'adresse PIVX avec laquelle le message a été signé</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Bulwark address</source>
-        <translation>Vérifiez le message afin de vous assurer qu'il a été signé avec l'adresse Bulwark renseignée</translation>
+        <source>Verify the message to ensure it was signed with the specified PIVX address</source>
+        <translation>Vérifiez le message afin de vous assurer qu'il a été signé avec l'adresse PIVX renseignée</translation>
     </message>
     <message>
         <source>Decrypt &amp;Key</source>
@@ -534,8 +534,8 @@
         <translation>&amp;Aide</translation>
     </message>
     <message>
-        <source>Send coins to a Bulwark address</source>
-        <translation>Envoyer des pièces à une adresse Bulwark</translation>
+        <source>Send coins to a PIVX address</source>
+        <translation>Envoyer des pièces à une adresse PIVX</translation>
     </message>
     <message>
         <source>&amp;Masternodes</source>
@@ -546,16 +546,16 @@
         <translation>Afficher les masternodes</translation>
     </message>
     <message>
-        <source>Modify configuration options for Bulwark</source>
-        <translation>Modifier les options de configuration pour Bulwark</translation>
+        <source>Modify configuration options for PIVX</source>
+        <translation>Modifier les options de configuration pour PIVX</translation>
     </message>
     <message>
-        <source>Sign messages with your Bulwark addresses to prove you own them</source>
-        <translation>Signer les messages avec votre adresse Bulwark pour prouver qu'elles sont bien à vous.</translation>
+        <source>Sign messages with your PIVX addresses to prove you own them</source>
+        <translation>Signer les messages avec votre adresse PIVX pour prouver qu'elles sont bien à vous.</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Bulwark addresses</source>
-        <translation>Vérifier les messages afin de s'assurer qu'ils sont signés avec l'adresse Bulwark spécifié</translation>
+        <source>Verify messages to ensure they were signed with specified PIVX addresses</source>
+        <translation>Vérifier les messages afin de s'assurer qu'ils sont signés avec l'adresse PIVX spécifié</translation>
     </message>
     <message>
         <source>&amp;BIP38 tool</source>
@@ -854,8 +854,8 @@ Adresse : %4
         <translation>Modifier l'adresse d'envoi</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bulwark address.</source>
-        <translation>L'adresse entrée "%1" n'est pas une adresse Bulwark valide</translation>
+        <source>The entered address "%1" is not a valid PIVX address.</source>
+        <translation>L'adresse entrée "%1" n'est pas une adresse PIVX valide</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -1038,32 +1038,32 @@ Veuillez vérifier l'adresse et réessayer.</translation>
         <translation>Veuillez sélectionner un niveau de confidentialité.</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 5000 BWK</source>
-        <translation>Utiliser 2 masternodes différentes pour mélanger les fonds jusqu'a 5000 BWK</translation>
+        <source>Use 2 separate masternodes to mix funds up to 10000 PIV</source>
+        <translation>Utiliser 2 masternodes différentes pour mélanger les fonds jusqu'a 10000 PIV</translation>
     </message>
     <message>
-        <source>Use 8 separate masternodes to mix funds up to 5000 BWK</source>
-        <translation>Utiliser 8 masternodes différentes pour mélanger les fonds jusqu'a 5000 BWK</translation>
+        <source>Use 8 separate masternodes to mix funds up to 10000 PIV</source>
+        <translation>Utiliser 8 masternodes différentes pour mélanger les fonds jusqu'a 10000 PIV</translation>
     </message>
     <message>
         <source>Use 16 separate masternodes</source>
         <translation>Utiliser 16 masternodes différentes</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 BWK to anonymize 5000 BWK</source>
-        <translation>Cette option est la plus rapide, et coutera ~0.025 BWK pour anonymiser 5000 BWK</translation>
+        <source>This option is the quickest and will cost about ~0.025 PIV to anonymize 10000 PIV</source>
+        <translation>Cette option est la plus rapide, et coutera ~0.025 PIV pour anonymiser 10000 PIV</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 BWK to anonymize 5000 BWK</source>
-        <translation>Cette option est moyennement rapide, et coutera 0.05 BWK pour anonymiser 5000 BWK</translation>
+        <source>This option is moderately fast and will cost about 0.05 PIV to anonymize 10000 PIV</source>
+        <translation>Cette option est moyennement rapide, et coutera 0.05 PIV pour anonymiser 10000 PIV</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
         <translation>Il s'agit de l'option la plus lente est la plus sécurisé. Utiliser l'anonymat maximum coutera</translation>
     </message>
     <message>
-        <source>0.1 BWK per 5000 BWK you anonymize.</source>
-        <translation>0.1 BWK par 5000 BWK vous anonymisez.</translation>
+        <source>0.1 PIV per 10000 PIV you anonymize.</source>
+        <translation>0.1 PIV par 10000 PIV vous anonymisez.</translation>
     </message>
     </context>
 <context>
@@ -1103,6 +1103,73 @@ Veuillez vérifier l'adresse et réessayer.</translation>
     <message>
         <source>Version</source>
         <translation>Version</translation>
+    </message>
+    </context>
+<context>
+    <name>PrivacyDialog</name>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Quantity:</source>
+        <translation>Quantité :</translation>
+    </message>
+    <message>
+        <source>Amount:</source>
+        <translation>Montant :</translation>
+    </message>
+    <message>
+        <source>Pay &amp;To:</source>
+        <translation>Payer à :</translation>
+    </message>
+    <message>
+        <source>Choose previously used address</source>
+        <translation>Choisir l'adresse précédemment utilisée</translation>
+    </message>
+    <message>
+        <source>Alt+A</source>
+        <translation>Alt+A</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Copier l'adresse depuis le presse-papier</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
+    </message>
+    <message>
+        <source>Priority:</source>
+        <translation>Priorité :</translation>
+    </message>
+    <message>
+        <source>Fee:</source>
+        <translation>Commission :</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>non</translation>
+    </message>
+    <message>
+        <source>Insufficient funds!</source>
+        <translation>Fonds insuffisants!</translation>
+    </message>
+    <message>
+        <source>medium</source>
+        <translation>moyen</translation>
+    </message>
+    <message>
+        <source>Copy quantity</source>
+        <translation>Copier la quantité</translation>
+    </message>
+    <message>
+        <source>Copy amount</source>
+        <translation>Copier le montant</translation>
+    </message>
+    <message>
+        <source>Confirm send coins</source>
+        <translation>Confirmer l'envoi des pièces</translation>
     </message>
     </context>
 <context>
@@ -1334,10 +1401,6 @@ Veuillez vérifier l'adresse et réessayer.</translation>
         <translation>Envoyer des pièces</translation>
     </message>
     <message>
-        <source>Inputs...</source>
-        <translation>Entrés...</translation>
-    </message>
-    <message>
         <source>Insufficient funds!</source>
         <translation>Fonds insuffisants!</translation>
     </message>
@@ -1370,8 +1433,8 @@ Veuillez vérifier l'adresse et réessayer.</translation>
         <translation>Après commission</translation>
     </message>
     <message>
-        <source>0 BWK</source>
-        <translation>0 BWK</translation>
+        <source>0 PIV</source>
+        <translation>0 PIV</translation>
     </message>
     <message>
         <source>Transaction Fee:</source>
@@ -1461,8 +1524,8 @@ Veuillez vérifier l'adresse et réessayer.</translation>
         <translation>Payer à :</translation>
     </message>
     <message>
-        <source>The Bulwark address to send the payment to</source>
-        <translation>L'adresse Bulwark à laquelle envoyer le paiement</translation>
+        <source>The PIVX address to send the payment to</source>
+        <translation>L'adresse PIVX à laquelle envoyer le paiement</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -1507,8 +1570,8 @@ Veuillez vérifier l'adresse et réessayer.</translation>
         <translation>Signer le message</translation>
     </message>
     <message>
-        <source>The Bulwark address to sign the message with</source>
-        <translation>L'adresse Bulwark avec laquelle signer le message</translation>
+        <source>The PIVX address to sign the message with</source>
+        <translation>L'adresse PIVX avec laquelle signer le message</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -1535,16 +1598,16 @@ Veuillez vérifier l'adresse et réessayer.</translation>
         <translation>Copier la signature actuelle dans le presse-papier</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Bulwark address</source>
-        <translation>Signer le message pour prouver que vous possédez cette adresse Bulwark</translation>
+        <source>Sign the message to prove you own this PIVX address</source>
+        <translation>Signer le message pour prouver que vous possédez cette adresse PIVX</translation>
     </message>
     <message>
-        <source>The Bulwark address the message was signed with</source>
-        <translation>L'adresse Bulwark avec laquelle le message a été signé</translation>
+        <source>The PIVX address the message was signed with</source>
+        <translation>L'adresse PIVX avec laquelle le message a été signé</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Bulwark address</source>
-        <translation>Vérifiez le message afin de vous assurer qu'il a été signé avec l'adresse Bulwark renseignée</translation>
+        <source>Verify the message to ensure it was signed with the specified PIVX address</source>
+        <translation>Vérifiez le message afin de vous assurer qu'il a été signé avec l'adresse PIVX renseignée</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -1735,6 +1798,13 @@ Veuillez vérifier l'adresse et réessayer.</translation>
     <message>
         <source>Export the data in the current tab to a file</source>
         <translation>Exporter l</translation>
+    </message>
+    </context>
+<context>
+    <name>ZPivControlDialog</name>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
     </message>
     </context>
 <context>

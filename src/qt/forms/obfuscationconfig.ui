@@ -75,7 +75,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Use 2 separate masternodes to mix funds up to 10000 BWK</string>
+    <string>Use 2 separate masternodes to mix funds up to 5000 BWK</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">

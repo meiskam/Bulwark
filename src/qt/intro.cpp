@@ -168,7 +168,7 @@ bool Intro::pickDataDirectory()
         while (true) {
             if (!intro.exec()) {
                 /* Cancel clicked */
-		return false;
+                return false;
             }
             dataDir = intro.getDataDirectory();
             try {

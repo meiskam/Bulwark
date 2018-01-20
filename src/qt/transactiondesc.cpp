@@ -43,11 +43,11 @@ QString TransactionDesc::FormatTxStatus(const CWalletTx& wtx)
                 if (nDepth < 0)
                     return tr("conflicted");
                 else if (GetAdjustedTime() - wtx.nTimeReceived > 2 * 60 && wtx.GetRequestCount() == 0)
-                    return tr("%1/offline (verified via swifttx)").arg(nDepth);
+                    return tr("%1/offline (verified via SwiftTX)").arg(nDepth);
                 else if (nDepth < 6)
-                    return tr("%1/confirmed (verified via swifttx)").arg(nDepth);
+                    return tr("%1/confirmed (verified via SwiftTX)").arg(nDepth);
                 else
-                    return tr("%1 confirmations (verified via swifttx)").arg(nDepth);
+                    return tr("%1 confirmations (verified via SwiftTX)").arg(nDepth);
             } else {
                 if (!wtx.IsTransactionLockTimedOut()) {
                     int nDepth = wtx.GetDepthInMainChain();

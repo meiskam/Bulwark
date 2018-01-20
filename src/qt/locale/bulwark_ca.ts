@@ -164,8 +164,8 @@
         <translation>Estàs segur que vols encriptar el moneder?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BWK&lt;/b&gt;!</source>
-        <translation>Avís: Si encripteu el vostre moneder i perdeu la contrasenya, &lt;b&gt;PERDREU TOTS ELS VOSTRES BWKS&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR PIV&lt;/b&gt;!</source>
+        <translation>Avís: Si encripteu el vostre moneder i perdeu la contrasenya, &lt;b&gt;PERDREU TOTS ELS VOSTRES PIVS&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -354,12 +354,12 @@
         <translation>A&amp;juda</translation>
     </message>
     <message>
-        <source>Bulwark Core</source>
-        <translation>Bulwark Core</translation>
+        <source>PIVX Core</source>
+        <translation>PIVX Core</translation>
     </message>
     <message>
-        <source>&amp;About Bulwark Core</source>
-        <translation>&amp;Sobre Bulwark Core</translation>
+        <source>&amp;About PIVX Core</source>
+        <translation>&amp;Sobre PIVX Core</translation>
     </message>
     <message>
         <source>&amp;BIP38 tool</source>
@@ -552,12 +552,12 @@
         <translation>versió</translation>
     </message>
     <message>
-        <source>Bulwark Core</source>
-        <translation>Bulwark Core</translation>
+        <source>PIVX Core</source>
+        <translation>PIVX Core</translation>
     </message>
     <message>
-        <source>About Bulwark Core</source>
-        <translation>Sobre Bulwark Core</translation>
+        <source>About PIVX Core</source>
+        <translation>Sobre PIVX Core</translation>
     </message>
     <message>
         <source>Usage:</source>
@@ -575,12 +575,12 @@
         <translation>Benvingut</translation>
     </message>
     <message>
-        <source>Welcome to Bulwark Core.</source>
-        <translation>Benvingut a Bulwark Core.</translation>
+        <source>Welcome to PIVX Core.</source>
+        <translation>Benvingut a PIVX Core.</translation>
     </message>
     <message>
-        <source>Bulwark Core</source>
-        <translation>Bulwark Core</translation>
+        <source>PIVX Core</source>
+        <translation>PIVX Core</translation>
     </message>
     <message>
         <source>Error</source>
@@ -729,36 +729,8 @@
         <translation>Total:</translation>
     </message>
     <message>
-        <source>Status:</source>
-        <translation>Estat:</translation>
-    </message>
-    <message>
-        <source>Obfuscation</source>
-        <translation>Ofuscació</translation>
-    </message>
-    <message>
         <source>Recent transactions</source>
         <translation>Transaccions recents</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation>Restableix</translation>
-    </message>
-    <message>
-        <source>Disabled</source>
-        <translation>Desactivat</translation>
-    </message>
-    <message>
-        <source>Start Obfuscation</source>
-        <translation>Inicia ofuscació</translation>
-    </message>
-    <message>
-        <source>Stop Obfuscation</source>
-        <translation>Atura ofuscació</translation>
-    </message>
-    <message>
-        <source>Enabled</source>
-        <translation>Activat</translation>
     </message>
     </context>
 <context>
@@ -775,6 +747,53 @@
         <translation>Temps de Ping</translation>
     </message>
 </context>
+<context>
+    <name>PrivacyDialog</name>
+    <message>
+        <source>Reset</source>
+        <translation>Restableix</translation>
+    </message>
+    <message>
+        <source>Quantity:</source>
+        <translation>Quantitat:</translation>
+    </message>
+    <message>
+        <source>Amount:</source>
+        <translation>Import:</translation>
+    </message>
+    <message>
+        <source>Alt+A</source>
+        <translation>Alt+A</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
+    </message>
+    <message>
+        <source>Priority:</source>
+        <translation>Prioritat:</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>no</translation>
+    </message>
+    <message>
+        <source>Bytes:</source>
+        <translation>Bytes:</translation>
+    </message>
+    <message>
+        <source>Change:</source>
+        <translation>Canvi:</translation>
+    </message>
+    <message>
+        <source>Copy quantity</source>
+        <translation>Copia la quantitat</translation>
+    </message>
+    <message>
+        <source>Copy amount</source>
+        <translation>Copia l'import</translation>
+    </message>
+    </context>
 <context>
     <name>QObject</name>
     <message>
@@ -1020,10 +1039,6 @@
         <translation>Minimitzar</translation>
     </message>
     <message>
-        <source>Obfuscation</source>
-        <translation>Ofuscació</translation>
-    </message>
-    <message>
         <source>Confirmation time:</source>
         <translation>Temps de Confirmació:</translation>
     </message>
@@ -1132,8 +1147,8 @@
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Bulwark Core</source>
-        <translation>Bulwark Core</translation>
+        <source>PIVX Core</source>
+        <translation>PIVX Core</translation>
     </message>
     <message>
         <source>Version %1</source>
@@ -1292,6 +1307,9 @@
     </message>
     </context>
 <context>
+    <name>ZPivControlDialog</name>
+    </context>
+<context>
     <name>pivx-core</name>
     <message>
         <source>Error</source>
@@ -1300,10 +1318,6 @@
     <message>
         <source>Information</source>
         <translation>Informació</translation>
-    </message>
-    <message>
-        <source>Obfuscation options:</source>
-        <translation>Opcions d'ofuscació:</translation>
     </message>
     <message>
         <source>Options:</source>

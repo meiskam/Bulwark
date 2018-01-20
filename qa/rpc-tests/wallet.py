@@ -3,7 +3,7 @@
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#
+# FIXME
 # Exercise the wallet.  Ported from wallet.sh.  
 # Does the following:
 #   a) creates 3 nodes, with an empty chain (no blocks).

@@ -62,12 +62,12 @@
         <translation>Ontvangstadressen</translation>
     </message>
     <message>
-        <source>These are your Bulwark addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Dit zijn uw Bulwarkadressen om betalingen mee te verzenden. Controleer altijd zowel het bedrag als het ontvangstadres voor het verzenden.</translation>
+        <source>These are your PIVX addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Dit zijn uw PIVXadressen om betalingen mee te verzenden. Controleer altijd zowel het bedrag als het ontvangstadres voor het verzenden.</translation>
     </message>
     <message>
-        <source>These are your Bulwark addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Dit zijn uw Bulwarkadressen waarop betalingen kunnen worden ontvangen. Het wordt aangeraden om een nieuw ontvangstadres voor elke transactie te gebruiken.</translation>
+        <source>These are your PIVX addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Dit zijn uw PIVXadressen waarop betalingen kunnen worden ontvangen. Het wordt aangeraden om een nieuw ontvangstadres voor elke transactie te gebruiken.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -172,16 +172,16 @@
         <translation>Bevestig versleuteling van de portemonnee</translation>
     </message>
     <message>
-        <source>Bulwark will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your BWKs from being stolen by malware infecting your computer.</source>
-        <translation>Bulwark zal nu afsluiten om het versleutelingsproces te voltooien. Onthoud dat het versleutelen van uw portemonnee u niet volledig kan beschermen: Malware kan uw computer infecteren en uw BWKs stelen.</translation>
+        <source>PIVX will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your PIVs from being stolen by malware infecting your computer.</source>
+        <translation>PIVX zal nu afsluiten om het versleutelingsproces te voltooien. Onthoud dat het versleutelen van uw portemonnee u niet volledig kan beschermen: Malware kan uw computer infecteren en uw PIVs stelen.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Weet u zeker dat u uw portemonnee wilt versleutelen?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BWK&lt;/b&gt;!</source>
-        <translation>Waarschuwing: Als u uw portemonnee versleutelt en uw wachtwoord vergeet, zult u &lt;b&gt;AL UW BWK VERLIEZEN&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR PIV&lt;/b&gt;!</source>
+        <translation>Waarschuwing: Als u uw portemonnee versleutelt en uw wachtwoord vergeet, zult u &lt;b&gt;AL UW PIV VERLIEZEN&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -236,15 +236,15 @@
     </message>
     <message>
         <source>Enter a Pivx Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
-        <translation>Voer een Bulwark adres in dat u wilt versleutelen met BIP 38. Voer een wachtwoord in, in het middelste veld. Druk op versleutelen om de versleutelde geheime sleutel te berekenen.</translation>
+        <translation>Voer een PIVX adres in dat u wilt versleutelen met BIP 38. Voer een wachtwoord in, in het middelste veld. Druk op versleutelen om de versleutelde geheime sleutel te berekenen.</translation>
     </message>
     <message>
         <source>Address:</source>
         <translation>Adres:</translation>
     </message>
     <message>
-        <source>The Bulwark address to sign the message with</source>
-        <translation>Het Bulwark adres om het bericht met te ondertekenen</translation>
+        <source>The PIVX address to sign the message with</source>
+        <translation>Het PIVX adres om het bericht met te ondertekenen</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -275,8 +275,8 @@
         <translation>Kopieer de huidige handtekening naar het systeemklembord</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Bulwark address</source>
-        <translation>Onderteken het bericht om te bewijzen dat u het Bulwark adres bezit</translation>
+        <source>Sign the message to prove you own this PIVX address</source>
+        <translation>Onderteken het bericht om te bewijzen dat u het PIVX adres bezit</translation>
     </message>
     <message>
         <source>Encrypt &amp;Key</source>
@@ -299,12 +299,12 @@
         <translation>Voer de BIP 38 versleutelde geheime sleutel in. Voer het wachtwoord in, in het middelste veld. Druk op Ontsleutelen Sleutel om de geheime sleutel te berekenen.  Nadat de geheime sleutel is ontsleuteld, zal het klikken op 'Adres Importeren' de geheime sleutel toevoegen aan de portemonnee.</translation>
     </message>
     <message>
-        <source>The Bulwark address the message was signed with</source>
-        <translation>Het Bulwark adres waarmee het bericht was ondertekend</translation>
+        <source>The PIVX address the message was signed with</source>
+        <translation>Het PIVX adres waarmee het bericht was ondertekend</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Bulwark address</source>
-        <translation>Controleer een bericht om te verifiëren dat het ondertekend is door het gespecificeerde Bulwark adres</translation>
+        <source>Verify the message to ensure it was signed with the specified PIVX address</source>
+        <translation>Controleer een bericht om te verifiëren dat het ondertekend is door het gespecificeerde PIVX adres</translation>
     </message>
     <message>
         <source>Decrypt &amp;Key</source>
@@ -569,10 +569,6 @@
         <source>&amp;Command-line options</source>
         <translation>&amp;Opdrachtregelopties</translation>
     </message>
-    <message numerus="yes">
-        <source>Processed %n blocks of transaction history.</source>
-        <translation><numerusform>%n blokk verwerkt van de transactiegeschiedenis</numerusform><numerusform>%n blokken verwerkt van de transactiegeschiedenis</numerusform></translation>
-    </message>
     <message>
         <source>Synchronizing additional data: %p%</source>
         <translation>Synchroniseren aanvullende gegevens: %p%</translation>
@@ -598,16 +594,16 @@
         <translation>Tabblad werkbalk</translation>
     </message>
     <message>
-        <source>Bulwark Core</source>
-        <translation>Bulwark Kern</translation>
+        <source>PIVX Core</source>
+        <translation>PIVX Kern</translation>
     </message>
     <message>
-        <source>Send coins to a Bulwark address</source>
-        <translation>Verstuur munten naar een Bulwark adres</translation>
+        <source>Send coins to a PIVX address</source>
+        <translation>Verstuur munten naar een PIVX adres</translation>
     </message>
     <message>
         <source>Request payments (generates QR codes and pivx: URIs)</source>
-        <translation>Vraag betaling aan (genereert QR-codes en Bulwark: URI's)</translation>
+        <translation>Vraag betaling aan (genereert QR-codes en PIVX: URI's)</translation>
     </message>
     <message>
         <source>&amp;Masternodes</source>
@@ -618,24 +614,24 @@
         <translation>Bekijk masternodes</translation>
     </message>
     <message>
-        <source>&amp;About Bulwark Core</source>
-        <translation>&amp;Over Bulwark Kern</translation>
+        <source>&amp;About PIVX Core</source>
+        <translation>&amp;Over PIVX Kern</translation>
     </message>
     <message>
-        <source>Show information about Bulwark Core</source>
-        <translation>Toon informatie over Bulwark Kern</translation>
+        <source>Show information about PIVX Core</source>
+        <translation>Toon informatie over PIVX Kern</translation>
     </message>
     <message>
-        <source>Modify configuration options for Bulwark</source>
-        <translation>Wijzig Bulwark configuratie opties</translation>
+        <source>Modify configuration options for PIVX</source>
+        <translation>Wijzig PIVX configuratie opties</translation>
     </message>
     <message>
-        <source>Sign messages with your Bulwark addresses to prove you own them</source>
-        <translation>Onderteken berichten met uw Bulwark adressen om te bewijzen dat u deze adressen bezit</translation>
+        <source>Sign messages with your PIVX addresses to prove you own them</source>
+        <translation>Onderteken berichten met uw PIVX adressen om te bewijzen dat u deze adressen bezit</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Bulwark addresses</source>
-        <translation>Controleer berichten om te verifiëren dat deze ondertekend zijn met de gespecificeerde Bulwark adressen</translation>
+        <source>Verify messages to ensure they were signed with specified PIVX addresses</source>
+        <translation>Controleer berichten om te verifiëren dat deze ondertekend zijn met de gespecificeerde PIVX adressen</translation>
     </message>
     <message>
         <source>&amp;BIP38 tool</source>
@@ -666,8 +662,8 @@
         <translation>Open Masternode configuratiebestand</translation>
     </message>
     <message>
-        <source>Open a Bulwark: URI or payment request</source>
-        <translation>Open een Bulwark: URI of betaalverzoek</translation>
+        <source>Open a PIVX: URI or payment request</source>
+        <translation>Open een PIVX: URI of betaalverzoek</translation>
     </message>
     <message>
         <source>&amp;Blockchain explorer</source>
@@ -678,12 +674,12 @@
         <translation>Block verkenner venster</translation>
     </message>
     <message>
-        <source>Bulwark Core client</source>
-        <translation>Bulwark Core client</translation>
+        <source>PIVX Core client</source>
+        <translation>PIVX Core client</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Bulwark network</source>
-        <translation><numerusform>%n actieve connectie(s) naar Bulwark netwerk</numerusform><numerusform>%n actieve connectie(s) naar Bulwark netwerk</numerusform></translation>
+        <source>%n active connection(s) to PIVX network</source>
+        <translation><numerusform>%n actieve verbinding(en) naar het PIVX netwerk</numerusform><numerusform>%n actieve verbinding(en) naar het PIVX netwerk</numerusform></translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -754,6 +750,22 @@
         <translation>Inkomende transactie</translation>
     </message>
     <message>
+        <source>Sent MultiSend transaction</source>
+        <translation>Verzend MultiSend transactie</translation>
+    </message>
+    <message>
+        <source>Date: %1
+Amount: %2
+Type: %3
+Address: %4
+</source>
+        <translation>Datum: %1
+Hoeveelheid: %2
+Type: %3
+Adres: %4
+</translation>
+    </message>
+    <message>
         <source>Staking is active
  MultiSend: %1</source>
         <translation>Staking is actief
@@ -791,6 +803,14 @@ MultiSend: %1</translation>
     <message>
         <source>Blockchain Explorer</source>
         <translation>Blockchain Verkenner</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>Terug</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>Volgende</translation>
     </message>
     <message>
         <source>Address / Block / Transaction</source>
@@ -863,8 +883,20 @@ MultiSend: %1</translation>
         <translation>(on)selecteer alles</translation>
     </message>
     <message>
+        <source>List mode</source>
+        <translation>Lijstmodus</translation>
+    </message>
+    <message>
         <source>Amount</source>
         <translation>Hoeveelheid</translation>
+    </message>
+    <message>
+        <source>Received with label</source>
+        <translation>Ontvangen met label</translation>
+    </message>
+    <message>
+        <source>Received with address</source>
+        <translation>Ontvangen met adres</translation>
     </message>
     <message>
         <source>Date</source>
@@ -919,6 +951,10 @@ MultiSend: %1</translation>
         <translation>Kopieer prioriteit</translation>
     </message>
     <message>
+        <source>Copy change</source>
+        <translation>Kopieer wisselgeld</translation>
+    </message>
+    <message>
         <source>highest</source>
         <translation>hoogste</translation>
     </message>
@@ -933,10 +969,6 @@ MultiSend: %1</translation>
     <message>
         <source>medium-high</source>
         <translation>medium-hoog</translation>
-    </message>
-    <message>
-        <source>n/a</source>
-        <translation>N/B</translation>
     </message>
     <message>
         <source>medium</source>
@@ -1010,8 +1042,8 @@ MultiSend: %1</translation>
         <translation>Wijzig verzendadres</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bulwark address.</source>
-        <translation>Het ingevoerde adres: "%1" is geen geldig Bulwark adres.</translation>
+        <source>The entered address "%1" is not a valid PIVX address.</source>
+        <translation>Het ingevoerde adres: "%1" is geen geldig PIVX adres.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -1040,16 +1072,16 @@ MultiSend: %1</translation>
         <translation>versie</translation>
     </message>
     <message>
-        <source>Bulwark Core</source>
-        <translation>Bulwark Kern</translation>
+        <source>PIVX Core</source>
+        <translation>PIVX Kern</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
         <translation>(%1-bit)</translation>
     </message>
     <message>
-        <source>About Bulwark Core</source>
-        <translation>Over Bulwark Core</translation>
+        <source>About PIVX Core</source>
+        <translation>Over PIVX Core</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -1079,16 +1111,16 @@ MultiSend: %1</translation>
         <translation>Welkom</translation>
     </message>
     <message>
-        <source>Welcome to Bulwark Core.</source>
-        <translation>Welkom bij Bulwark Core</translation>
+        <source>Welcome to PIVX Core.</source>
+        <translation>Welkom bij PIVX Core</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
         <translation>Gebruik de standaard datafolder </translation>
     </message>
     <message>
-        <source>Bulwark Core</source>
-        <translation>Bulwark Kern</translation>
+        <source>PIVX Core</source>
+        <translation>PIVX Kern</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1148,6 +1180,10 @@ MultiSend: %1</translation>
     <message>
         <source>Start &amp;MISSING</source>
         <translation>Start &amp;ontbrekende</translation>
+    </message>
+    <message>
+        <source>&amp;Update status</source>
+        <translation>&amp;Status bijwerken</translation>
     </message>
     <message>
         <source>0</source>
@@ -1300,24 +1336,20 @@ MultiSend: %1</translation>
         <translation>Expert</translation>
     </message>
     <message>
-        <source>Automatically start Bulwark after logging in to the system.</source>
-        <translation>Bulwark automatisch opstarten na inloggen op het systeem.</translation>
+        <source>Automatically start PIVX after logging in to the system.</source>
+        <translation>PIVX automatisch opstarten na inloggen op het systeem.</translation>
     </message>
     <message>
-        <source>&amp;Start Bulwark on system login</source>
-        <translation>&amp;Bulwark starten bij systeemlogin</translation>
-    </message>
-    <message>
-        <source>Amount of Bulwark to keep anonymized</source>
-        <translation>Hoeveelheid Bulwark anoniem te houden</translation>
+        <source>&amp;Start PIVX on system login</source>
+        <translation>&amp;PIVX starten bij systeemlogin</translation>
     </message>
     <message>
         <source>&amp;Network</source>
         <translation>&amp;Netwerk</translation>
     </message>
     <message>
-        <source>The user interface language can be set here. This setting will take effect after restarting Bulwark.</source>
-        <translation>De gebruikersinterface taal kan hier ingesteld worden. Deze instelling zal uitgevoerd na herstart van Bulwark.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting PIVX.</source>
+        <translation>De gebruikersinterface taal kan hier ingesteld worden. Deze instelling zal uitgevoerd na herstart van PIVX.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -1345,7 +1377,7 @@ MultiSend: %1</translation>
     </message>
     <message>
         <source>&amp;Display</source>
-        <translation>&amp;Vertoon</translation>
+        <translation>&amp;Weergave</translation>
     </message>
     <message>
         <source>User Interface &amp;language:</source>
@@ -1407,10 +1439,6 @@ MultiSend: %1</translation>
         <translation>Immatuur:</translation>
     </message>
     <message>
-        <source>Balances</source>
-        <translation>Balansen</translation>
-    </message>
-    <message>
         <source>Total:</source>
         <translation>Totaal:</translation>
     </message>
@@ -1423,48 +1451,12 @@ MultiSend: %1</translation>
         <translation>Uitgeefbaar:</translation>
     </message>
     <message>
-        <source>Status:</source>
-        <translation>Status:</translation>
-    </message>
-    <message>
-        <source>0 BWK / 0 Rounds</source>
-        <translation>0 BWK / 0 Rondes</translation>
-    </message>
-    <message>
-        <source>Enabled/Disabled</source>
-        <translation>Ingeschakeld/Uitgeschakeld</translation>
-    </message>
-    <message>
-        <source>Obfuscation</source>
-        <translation>Verduistering</translation>
-    </message>
-    <message>
-        <source>n/a</source>
-        <translation>N/B</translation>
-    </message>
-    <message>
         <source>Recent transactions</source>
         <translation>Recente transacties</translation>
     </message>
     <message>
         <source>out of sync</source>
-        <translation>geen synchronisatie</translation>
-    </message>
-    <message>
-        <source>Disabled</source>
-        <translation>Uitgeschakeld</translation>
-    </message>
-    <message>
-        <source>Mixed</source>
-        <translation>Gemengd</translation>
-    </message>
-    <message>
-        <source>Enabled</source>
-        <translation>Ingeschakeld</translation>
-    </message>
-    <message>
-        <source>N/A</source>
-        <translation>NB</translation>
+        <translation>niet gesynchroniseerd</translation>
     </message>
 </context>
 <context>
@@ -1506,14 +1498,129 @@ MultiSend: %1</translation>
     </message>
 </context>
 <context>
+    <name>PrivacyDialog</name>
+    <message>
+        <source>Enter an amount of Piv to convert to zPiv</source>
+        <translation>Vul de hoeveleheid in om Piv te converteren naar zPiv</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>zPIV</source>
+        <translation>zPIV</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation>Resetten</translation>
+    </message>
+    <message>
+        <source>Quantity:</source>
+        <translation>Kwantiteit:</translation>
+    </message>
+    <message>
+        <source>Amount:</source>
+        <translation>Hoeveelheid:</translation>
+    </message>
+    <message>
+        <source>Pay &amp;To:</source>
+        <translation>Betaal &amp;Naar:</translation>
+    </message>
+    <message>
+        <source>Choose previously used address</source>
+        <translation>Kies een eerder gebruikt adres</translation>
+    </message>
+    <message>
+        <source>Alt+A</source>
+        <translation>Alt+A</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Plak adres vanaf klembord</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
+    </message>
+    <message>
+        <source>&amp;Label:</source>
+        <translation>&amp;Label:</translation>
+    </message>
+    <message>
+        <source>A&amp;mount:</source>
+        <translation>&amp;Hoeveelheid:</translation>
+    </message>
+    <message>
+        <source>Available Funds</source>
+        <translation>Beschikbare Fondsen</translation>
+    </message>
+    <message>
+        <source>0 x</source>
+        <translation> 0 x</translation>
+    </message>
+    <message>
+        <source>Priority:</source>
+        <translation>Prioriteit:</translation>
+    </message>
+    <message>
+        <source>Fee:</source>
+        <translation>Kost:</translation>
+    </message>
+    <message>
+        <source>Dust:</source>
+        <translation>Stof:</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>nee</translation>
+    </message>
+    <message>
+        <source>Bytes:</source>
+        <translation>Bytes:</translation>
+    </message>
+    <message>
+        <source>medium</source>
+        <translation>medium</translation>
+    </message>
+    <message>
+        <source>Change:</source>
+        <translation>Wijzig:</translation>
+    </message>
+    <message>
+        <source>out of sync</source>
+        <translation>niet gesynchroniseerd</translation>
+    </message>
+    <message>
+        <source>Copy quantity</source>
+        <translation>Kopieer kwanititeit</translation>
+    </message>
+    <message>
+        <source>Copy amount</source>
+        <translation>Kopieer hoeveelheid</translation>
+    </message>
+    <message>
+        <source>Confirm Rescan</source>
+        <translation>Bevestig Rescan</translation>
+    </message>
+    <message>
+        <source>Duration: </source>
+        <translation>Duur:</translation>
+    </message>
+    <message>
+        <source>Confirm send coins</source>
+        <translation>Bevestig verzending coins</translation>
+    </message>
+    </context>
+<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
         <translation>Hoeveelheid</translation>
     </message>
     <message>
-        <source>Enter a Bulwark address (e.g. %1)</source>
-        <translation>Voer een Bulwark adres in (b.v. %1)</translation>
+        <source>Enter a PIVX address (e.g. %1)</source>
+        <translation>Voer een PIVX adres in (b.v. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1610,6 +1717,10 @@ MultiSend: %1</translation>
         <translation>Laatste blocktijd</translation>
     </message>
     <message>
+        <source>Debug log file</source>
+        <translation>Debug logbestand</translation>
+    </message>
+    <message>
         <source>Using OpenSSL version</source>
         <translation>Gebruikt OpenSSL versie</translation>
     </message>
@@ -1640,6 +1751,14 @@ MultiSend: %1</translation>
     <message>
         <source>&amp;Console</source>
         <translation>&amp;Console</translation>
+    </message>
+    <message>
+        <source>Clear console</source>
+        <translation>Console leegmaken</translation>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation>&amp;Leegmaken</translation>
     </message>
     <message>
         <source>Received</source>
@@ -1702,8 +1821,8 @@ MultiSend: %1</translation>
         <translation>Uit:</translation>
     </message>
     <message>
-        <source>Welcome to the Bulwark RPC console.</source>
-        <translation>Welkom bij de Bulwark RPC console.</translation>
+        <source>Welcome to the PIVX RPC console.</source>
+        <translation>Welkom bij de PIVX RPC console.</translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1749,8 +1868,24 @@ MultiSend: %1</translation>
         <translation>&amp;Bericht:</translation>
     </message>
     <message>
+        <source>&amp;Label:</source>
+        <translation>&amp;Label:</translation>
+    </message>
+    <message>
+        <source>&amp;Amount:</source>
+        <translation>&amp;Hoeveelheid:</translation>
+    </message>
+    <message>
+        <source>&amp;Request payment</source>
+        <translation>&amp;Verzoek betaling</translation>
+    </message>
+    <message>
         <source>Clear</source>
         <translation>Leegmaken</translation>
+    </message>
+    <message>
+        <source>Requested payments history</source>
+        <translation>Betalingsverzoeken geschiedenis</translation>
     </message>
     <message>
         <source>Show</source>
@@ -1778,6 +1913,10 @@ MultiSend: %1</translation>
     <message>
         <source>QR Code</source>
         <translation>QR Code</translation>
+    </message>
+    <message>
+        <source>Copy &amp;URI</source>
+        <translation>Kopieer &amp;URI</translation>
     </message>
     <message>
         <source>Copy &amp;Address</source>
@@ -1850,10 +1989,6 @@ MultiSend: %1</translation>
         <translation>Verzend Munten</translation>
     </message>
     <message>
-        <source>automatically selected</source>
-        <translation>automatisch geselecteerd</translation>
-    </message>
-    <message>
         <source>Quantity:</source>
         <translation>Kwantiteit:</translation>
     </message>
@@ -1894,8 +2029,8 @@ MultiSend: %1</translation>
         <translation>Wijzig:</translation>
     </message>
     <message>
-        <source>0 BWK</source>
-        <translation>0 BWK</translation>
+        <source>0 PIV</source>
+        <translation>0 PIV</translation>
     </message>
     <message>
         <source>Transaction Fee:</source>
@@ -1910,12 +2045,12 @@ MultiSend: %1</translation>
         <translation>Minimaliseer</translation>
     </message>
     <message>
-        <source>Obfuscation</source>
-        <translation>Verduistering</translation>
-    </message>
-    <message>
         <source>per kilobyte</source>
         <translation>per kilobyte</translation>
+    </message>
+    <message>
+        <source>Custom:</source>
+        <translation>Aangepast:</translation>
     </message>
     <message>
         <source>Confirmation time:</source>
@@ -1974,12 +2109,56 @@ MultiSend: %1</translation>
         <translation>Kopieer prioriteit</translation>
     </message>
     <message>
+        <source>Copy change</source>
+        <translation>Kopieer wisselgeld</translation>
+    </message>
+    <message>
         <source>using</source>
         <translation>gebruikt</translation>
     </message>
     <message>
+        <source>anonymous funds</source>
+        <translation>anonieme financiën</translation>
+    </message>
+    <message>
+        <source>Warning: Invalid PIVX address</source>
+        <translation>Waarschuwing: Ongeldig PIVX adres</translation>
+    </message>
+    <message>
+        <source>any available funds (not recommended)</source>
+        <translation>elke beschikbare fonds (niet aanbevolen)</translation>
+    </message>
+    <message>
+        <source>and SwiftTX</source>
+        <translation>en SwiftTX</translation>
+    </message>
+    <message>
+        <source>%1 to %2</source>
+        <translation>%1 naar %2</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to send?</source>
+        <translation>Ben je zeker dat je wilt verzenden?</translation>
+    </message>
+    <message>
+        <source>Total Amount = &lt;b&gt;%1&lt;/b&gt;&lt;br /&gt;= %2</source>
+        <translation>Totale hoeveelheid = &lt;b&gt;%1 &lt;/b&gt;&lt;br /&gt;= %2</translation>
+    </message>
+    <message>
         <source>Confirm send coins</source>
         <translation>Bevestig verzending coins</translation>
+    </message>
+    <message>
+        <source>The recipient address is not valid, please recheck.</source>
+        <translation>Het ontvangstadres is niet geldig, controleer deze.</translation>
+    </message>
+    <message>
+        <source>Pay only the minimum fee of %1</source>
+        <translation>Betaal alleen de minimumkost van %1</translation>
+    </message>
+    <message>
+        <source>Warning: Unknown change address</source>
+        <translation>Waarschuwing: Ongekend wisselgeld adres</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -1989,8 +2168,16 @@ MultiSend: %1</translation>
 <context>
     <name>SendCoinsEntry</name>
     <message>
+        <source>This is a normal payment.</source>
+        <translation>Dit is een normale betaling.</translation>
+    </message>
+    <message>
         <source>Pay &amp;To:</source>
         <translation>Betaal &amp;Naar:</translation>
+    </message>
+    <message>
+        <source>The PIVX address to send the payment to</source>
+        <translation>Het PIVX adres om de betaling naar te verzenden</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2009,8 +2196,20 @@ MultiSend: %1</translation>
         <translation>Alt+P</translation>
     </message>
     <message>
+        <source>&amp;Label:</source>
+        <translation>&amp;Label:</translation>
+    </message>
+    <message>
+        <source>A&amp;mount:</source>
+        <translation>&amp;Hoeveelheid:</translation>
+    </message>
+    <message>
         <source>Message:</source>
         <translation>Bericht:</translation>
+    </message>
+    <message>
+        <source>This is an unverified payment request.</source>
+        <translation>Dit is een ongeverifieerde betalingsverzoek.</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -2020,23 +2219,39 @@ MultiSend: %1</translation>
         <source>Memo:</source>
         <translation>Memo:</translation>
     </message>
-    </context>
+    <message>
+        <source>This is a verified payment request.</source>
+        <translation>Dit is een geverifieerd betalingsverzoek.</translation>
+    </message>
+    <message>
+        <source>Enter a label for this address to add it to your address book</source>
+        <translation>Voer een label in voor dit adres om het toe te voegen aan jouw adresboek</translation>
+    </message>
+</context>
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>Bulwark Core is shutting down...</source>
-        <translation>Bulwark Core is aan het afsluiten...</translation>
+        <source>PIVX Core is shutting down...</source>
+        <translation>PIVX Core is aan het afsluiten...</translation>
     </message>
-    </context>
+    <message>
+        <source>Do not shut down the computer until this window disappears.</source>
+        <translation>Sluit de computer niet af voordat dit venster verdwenen is.</translation>
+    </message>
+</context>
 <context>
     <name>SignVerifyMessageDialog</name>
+    <message>
+        <source>Signatures - Sign / Verify a Message</source>
+        <translation>Handtekeningen - Onderteken / Verifieer een Bericht</translation>
+    </message>
     <message>
         <source>&amp;Sign Message</source>
         <translation>&amp;Onderteken Bericht</translation>
     </message>
     <message>
-        <source>The Bulwark address to sign the message with</source>
-        <translation>Het Bulwark adres om het bericht met te ondertekenen</translation>
+        <source>The PIVX address to sign the message with</source>
+        <translation>Het PIVX adres om het bericht met te ondertekenen</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2067,16 +2282,20 @@ MultiSend: %1</translation>
         <translation>Kopieer de huidige handtekening naar het systeemklembord</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Bulwark address</source>
-        <translation>Onderteken het bericht om te bewijzen dat u het Bulwark adres bezit</translation>
+        <source>Sign the message to prove you own this PIVX address</source>
+        <translation>Onderteken het bericht om te bewijzen dat u het PIVX adres bezit</translation>
     </message>
     <message>
-        <source>The Bulwark address the message was signed with</source>
-        <translation>Het Bulwark adres waarmee het bericht was ondertekend</translation>
+        <source>The PIVX address the message was signed with</source>
+        <translation>Het PIVX adres waarmee het bericht was ondertekend</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Bulwark address</source>
-        <translation>Controleer een bericht om te verifiëren dat het ondertekend is door het gespecificeerde Bulwark adres</translation>
+        <source>Verify the message to ensure it was signed with the specified PIVX address</source>
+        <translation>Controleer een bericht om te verifiëren dat het ondertekend is door het gespecificeerde PIVX adres</translation>
+    </message>
+    <message>
+        <source>Sign &amp;Message</source>
+        <translation>Onderteken &amp;Bericht</translation>
     </message>
     <message>
         <source>Reset all sign message fields</source>
@@ -2087,12 +2306,20 @@ MultiSend: %1</translation>
         <translation>Verwijder &amp;Alles</translation>
     </message>
     <message>
+        <source>&amp;Verify Message</source>
+        <translation>&amp;Verifieer Bericht</translation>
+    </message>
+    <message>
         <source>Verify &amp;Message</source>
         <translation>Verifeer &amp;Message</translation>
     </message>
     <message>
         <source>Reset all verify message fields</source>
         <translation>Maak alle verifiëren van het bericht velden leeg</translation>
+    </message>
+    <message>
+        <source>Click "Sign Message" to generate signature</source>
+        <translation>Klik op "Onderteken Bericht" om een handtekening te genereren</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -2134,8 +2361,8 @@ MultiSend: %1</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Bulwark Core</source>
-        <translation>Bulwark Kern</translation>
+        <source>PIVX Core</source>
+        <translation>PIVX Kern</translation>
     </message>
     <message>
         <source>Version %1</source>
@@ -2150,8 +2377,8 @@ MultiSend: %1</translation>
         <translation>De Dash Core ontwikkelaars</translation>
     </message>
     <message>
-        <source>The Bulwark Core developers</source>
-        <translation>De Bulwark Core ontwikkelaars</translation>
+        <source>The PIVX Core developers</source>
+        <translation>De PIVX Core ontwikkelaars</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -2318,6 +2545,10 @@ MultiSend: %1</translation>
         <translation>Verzenden naar</translation>
     </message>
     <message>
+        <source>Payment to yourself</source>
+        <translation>Betaling naar jezelf</translation>
+    </message>
+    <message>
         <source>Obfuscated</source>
         <translation>Verduisterd</translation>
     </message>
@@ -2373,6 +2604,10 @@ MultiSend: %1</translation>
         <translation>Andere</translation>
     </message>
     <message>
+        <source>Enter address or label to search</source>
+        <translation>Adres of label invullen om te zoeken</translation>
+    </message>
+    <message>
         <source>Min amount</source>
         <translation>Minimale hoeveelheid</translation>
     </message>
@@ -2395,6 +2630,14 @@ MultiSend: %1</translation>
     <message>
         <source>Edit label</source>
         <translation>Label wijzigen</translation>
+    </message>
+    <message>
+        <source>Show transaction details</source>
+        <translation>Bekijk transactiedetails</translation>
+    </message>
+    <message>
+        <source>Export Transaction History</source>
+        <translation>Exporteer Transactiegeschiedenis</translation>
     </message>
     <message>
         <source>Comma separated file (*.csv)</source>
@@ -2431,6 +2674,10 @@ MultiSend: %1</translation>
     <message>
         <source>Exporting Successful</source>
         <translation>Exporteren succesvol</translation>
+    </message>
+    <message>
+        <source>Range:</source>
+        <translation>Bereik:</translation>
     </message>
     <message>
         <source>to</source>
@@ -2473,6 +2720,10 @@ MultiSend: %1</translation>
         <translation>Backup portemonnee</translation>
     </message>
     <message>
+        <source>Wallet Data (*.dat)</source>
+        <translation>Portemonneegegevens (*.dat)</translation>
+    </message>
+    <message>
         <source>Backup Failed</source>
         <translation>Backup mislukt</translation>
     </message>
@@ -2480,7 +2731,38 @@ MultiSend: %1</translation>
         <source>Backup Successful</source>
         <translation>Backup Succesvol</translation>
     </message>
-    </context>
+    <message>
+        <source>The wallet data was successfully saved to %1.</source>
+        <translation>De portemonneegegevens zijn succesvol opgeslagen op %1.</translation>
+    </message>
+</context>
+<context>
+    <name>ZPivControlDialog</name>
+    <message>
+        <source>Select zPiv to Spend</source>
+        <translation>Selecteer zPiv om te spenderen</translation>
+    </message>
+    <message>
+        <source>Quantity</source>
+        <translation>Hoeveelheid</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>zPiv</source>
+        <translation>zPiv</translation>
+    </message>
+    <message>
+        <source>Select/Deselect All</source>
+        <translation>Selecteer/Deselecteer Alles</translation>
+    </message>
+    <message>
+        <source>Is Spendable</source>
+        <translation>Is Uitgeefbaar</translation>
+    </message>
+</context>
 <context>
     <name>pivx-core</name>
     <message>
@@ -2490,6 +2772,22 @@ MultiSend: %1</translation>
     <message>
         <source>(default: 1)</source>
         <translation>(standaard: 1)</translation>
+    </message>
+    <message>
+        <source>Block creation options:</source>
+        <translation>Block creatie opties:</translation>
+    </message>
+    <message>
+        <source>Can't find random Masternode.</source>
+        <translation>Kan geen willekeurige Masternode vinden.</translation>
+    </message>
+    <message>
+        <source>Cannot downgrade wallet</source>
+        <translation>Kan de portemonnee niet downgraden</translation>
+    </message>
+    <message>
+        <source>Collateral not valid.</source>
+        <translation>Terugbetaling niet geldig.</translation>
     </message>
     <message>
         <source>Connection options:</source>
@@ -2504,24 +2802,224 @@ MultiSend: %1</translation>
         <translation>Copyright (C) 2014-%i The Dash Core Ontwikkelaars</translation>
     </message>
     <message>
-        <source>Copyright (C) 2015-%i The Bulwark Core Developers</source>
-        <translation>Copyright (C) 2015-%i The Bulwark Core Ontwikkelaars</translation>
+        <source>Copyright (C) 2015-%i The PIVX Core Developers</source>
+        <translation>Copyright (C) 2015-%i The PIVX Core Ontwikkelaars</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The Bulwark Core Developers</source>
-        <translation>Copyright (C) 2017-%i The Bulwark Core Ontwikkelaars</translation>
+        <source>Debugging/Testing options:</source>
+        <translation>Debugging/Test opties:</translation>
+    </message>
+    <message>
+        <source>Done loading</source>
+        <translation>Klaar met laden</translation>
+    </message>
+    <message>
+        <source>Error loading block database</source>
+        <translation>Error tijdens het laden van de block database</translation>
+    </message>
+    <message>
+        <source>Error loading wallet.dat</source>
+        <translation>Error tijdens het laden van wallet.dat</translation>
+    </message>
+    <message>
+        <source>Error loading wallet.dat: Wallet corrupted</source>
+        <translation>Error tijdens het laden van wallet.dat: Portemonnee corrupt</translation>
+    </message>
+    <message>
+        <source>Error opening block database</source>
+        <translation>Error tijdens het openen van de block database</translation>
+    </message>
+    <message>
+        <source>Error reading from database, shutting down.</source>
+        <translation>Error tijdens het lezen van de database, aan het afsluiten.</translation>
     </message>
     <message>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
+        <source>Error: Disk space is low!</source>
+        <translation>Error: Schijfruimte is laag!</translation>
+    </message>
+    <message>
+        <source>Failed to read block</source>
+        <translation>Mislukt om block te lezen</translation>
+    </message>
+    <message>
+        <source>Finalizing transaction.</source>
+        <translation>Transactie aan het voltooien.</translation>
+    </message>
+    <message>
+        <source>Found enough users, signing ( waiting %s )</source>
+        <translation>Genoeg gebruikers gevonden, aan het ondertekenen (%s aan het wachten)</translation>
+    </message>
+    <message>
+        <source>Found enough users, signing ...</source>
+        <translation>Genoeg gebruikers gevonden, aan het ondertekenen ...</translation>
+    </message>
+    <message>
+        <source>Importing...</source>
+        <translation>Importeren...</translation>
+    </message>
+    <message>
+        <source>Incompatible mode.</source>
+        <translation>Modus is niet compatibel.</translation>
+    </message>
+    <message>
+        <source>Incompatible version.</source>
+        <translation>Versie is niet compatibel.</translation>
+    </message>
+    <message>
+        <source>Incorrect or no genesis block found. Wrong datadir for network?</source>
+        <translation>Het genesis block kan niet worden gevonden of is incorrect. Klopt datadir voor het netwerk?</translation>
+    </message>
+    <message>
         <source>Information</source>
         <translation>Informatie</translation>
     </message>
     <message>
+        <source>Input is not valid.</source>
+        <translation>Ongeldige invoer.</translation>
+    </message>
+    <message>
+        <source>Insufficient funds.</source>
+        <translation>Onvoldoende saldo.</translation>
+    </message>
+    <message>
+        <source>Invalid amount</source>
+        <translation>Ongeldige hoeveelheid</translation>
+    </message>
+    <message>
+        <source>Invalid private key.</source>
+        <translation>Ongeldige privésleutel.</translation>
+    </message>
+    <message>
+        <source>Invalid script detected.</source>
+        <translation>Ongeldige script gedetecteerd.</translation>
+    </message>
+    <message>
+        <source>&lt;category&gt; can be:</source>
+        <translation>&lt;category&gt;kan zijn: </translation>
+    </message>
+    <message>
+        <source>Loading wallet...</source>
+        <translation>Portemonnee aan het laden...</translation>
+    </message>
+    <message>
+        <source>Masternode options:</source>
+        <translation>Masternode opties:</translation>
+    </message>
+    <message>
+        <source>Masternode queue is full.</source>
+        <translation>Masternode wachtrij zit vol.</translation>
+    </message>
+    <message>
+        <source>Masternode:</source>
+        <translation>Masternode:</translation>
+    </message>
+    <message>
+        <source>Mixing in progress...</source>
+        <translation>Bezig met mixen...</translation>
+    </message>
+    <message>
+        <source>No Masternodes detected.</source>
+        <translation>Geen Masternodes gedetecteerd.</translation>
+    </message>
+    <message>
+        <source>Node relay options:</source>
+        <translation>Node relay opties:</translation>
+    </message>
+    <message>
+        <source>Not in the Masternode list.</source>
+        <translation>Niet in de Masternode lijst.</translation>
+    </message>
+    <message>
+        <source>Options:</source>
+        <translation>Opties:</translation>
+    </message>
+    <message>
+        <source>Password for JSON-RPC connections</source>
+        <translation>Wachtwoord voor JSON-RPC connecties</translation>
+    </message>
+    <message>
+        <source>RPC server options:</source>
+        <translation>RPC server opties:</translation>
+    </message>
+    <message>
+        <source>Session not complete!</source>
+        <translation>Sessie niet voltooid!</translation>
+    </message>
+    <message>
+        <source>Signing failed.</source>
+        <translation>Ondertekenen mislukt.</translation>
+    </message>
+    <message>
+        <source>Staking options:</source>
+        <translation>Staking opties:</translation>
+    </message>
+    <message>
+        <source>SwiftTX options:</source>
+        <translation>SwiftTX opties:</translation>
+    </message>
+    <message>
+        <source>This is experimental software.</source>
+        <translation>Dit is experimentele software.</translation>
+    </message>
+    <message>
+        <source>This is not a Masternode.</source>
+        <translation>Dit is geen Masternode.</translation>
+    </message>
+    <message>
+        <source>Transaction fees are too high.</source>
+        <translation>Transactiekosten zijn te hoog.</translation>
+    </message>
+    <message>
+        <source>Transaction not valid.</source>
+        <translation>Transactie is niet geldig.</translation>
+    </message>
+    <message>
+        <source>Transaction too large</source>
+        <translation>Transactie te groot</translation>
+    </message>
+    <message>
+        <source>Use the test network</source>
+        <translation>Gebruik het test netwerk</translation>
+    </message>
+    <message>
+        <source>Wallet is locked.</source>
+        <translation>Portemonnee is vergrendeld.</translation>
+    </message>
+    <message>
+        <source>Wallet options:</source>
+        <translation>Portemonnee opties:</translation>
+    </message>
+    <message>
+        <source>Wallet window title</source>
+        <translation>Portemonnee venster titel</translation>
+    </message>
+    <message>
         <source>Warning</source>
         <translation>Waarschuwing</translation>
+    </message>
+    <message>
+        <source>Warning: This version is obsolete, upgrade required!</source>
+        <translation>Waarschuwing: Deze versie is verouderd, upgrade vereist!</translation>
+    </message>
+    <message>
+        <source>ZeroMQ notification options:</source>
+        <translation>ZeroMQ notificatie opties:</translation>
+    </message>
+    <message>
+        <source>Zerocoin options:</source>
+        <translation>Zerocoin opties:</translation>
+    </message>
+    <message>
+        <source>failed to validate zerocoin</source>
+        <translation>mislukt om zerocoin te valideren</translation>
+    </message>
+    <message>
+        <source>on startup</source>
+        <translation>tijdens het opstarten</translation>
     </message>
     </context>
 </TS>

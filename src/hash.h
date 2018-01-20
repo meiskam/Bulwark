@@ -9,7 +9,6 @@
 #ifndef BITCOIN_HASH_H
 #define BITCOIN_HASH_H
 
-
 #include "crypto/ripemd160.h"
 #include "crypto/sha256.h"
 #include "serialize.h"
@@ -22,38 +21,12 @@
 #include "crypto/sph_keccak.h"
 #include "crypto/sph_skein.h"
 
-#include <vector>
 #include <iomanip>
 #include <openssl/sha.h>
 #include <sstream>
+#include <vector>
 
 using namespace std;
-
-#ifdef GLOBALDEFINED
-#define GLOBAL
-#else
-#define GLOBAL extern
-#endif
-
-GLOBAL sph_blake512_context     z_blake;
-GLOBAL sph_groestl512_context   z_groestl;
-GLOBAL sph_jh512_context        z_jh;
-GLOBAL sph_keccak512_context    z_keccak;
-GLOBAL sph_skein512_context     z_skein;
-
-#define fillz() do { \
-            sph_blake512_init(&z_blake); \
-            sph_groestl512_init(&z_groestl); \
-            sph_jh512_init(&z_jh); \
-            sph_keccak512_init(&z_keccak); \
-            sph_skein512_init(&z_skein); \
-} while (0)
-
-#define ZBLAKE (memcpy(&ctx_blake, &z_blake, sizeof(z_blake)))
-#define ZGROESTL (memcpy(&ctx_groestl, &z_groestl, sizeof(z_groestl)))
-#define ZJH (memcpy(&ctx_jh, &z_jh, sizeof(z_jh)))
-#define ZKECCAK (memcpy(&ctx_keccak, &z_keccak, sizeof(z_keccak)))
-#define ZSKEIN (memcpy(&ctx_skein, &z_skein, sizeof(z_skein)))
 
 /** A hasher class for Bitcoin's 256-bit hash (double SHA-256). */
 class CHash256
@@ -84,6 +57,34 @@ public:
     }
 };
 
+#ifdef GLOBALDEFINED
+#define GLOBAL
+#else
+#define GLOBAL extern
+#endif
+
+GLOBAL sph_blake512_context	z_blake;
+GLOBAL sph_groestl512_context	z_groestl;
+GLOBAL sph_jh512_context	z_jh;
+GLOBAL sph_keccak512_context	z_keccak;
+GLOBAL sph_skein512_context	z_skein;
+
+#define fillz()
+	do {
+	    sph_blake512_init	(&z_blake);	\
+	    sph_groestl512_init	(&z_groestl);	\
+	    sph_jh512_init	(&z_jh);	\
+	    sph_keccak512_init	(&z_keccak);	\
+	    sph_skein512_init	(&z_skein);	\
+	} while (0)
+
+#define ZBLAKE (memcpy(&ctx_blake, &z_blake, sizeof(z_blake)))
+#define ZGROESTL (memcpy(&ctx_groestl, &z_groestl, sizeof(z_groestl)))
+#define ZJH (memcpy(&ctx_jh, &z_jh, sizeof(z_jh)))
+#define ZKECCAK (memcpy(&ctx_keccak, &z_keccak, sizeof(z_keccak)))
+#define ZSKEIN (memcpy(&ctx_skein, &z_skein, sizeof(z_skein)))
+
+/* ----------- Bitcoin Hash ------------------------------------------------- */
 /** A hasher class for Bitcoin's 160-bit hash (SHA-256 + RIPEMD-160). */
 class CHash160
 {
@@ -269,33 +270,35 @@ inline uint256 Nist5(const T1 pbegin, const T1 pend)
     sph_jh512_context        ctx_jh;
     sph_keccak512_context    ctx_keccak;
     sph_skein512_context     ctx_skein;
-
     static unsigned char pblank[1];
-    uint512 hash[17];
 
-    // Blake512
+    uint512 hash[5];
+
+    // Blake
     sph_blake512_init(&ctx_blake);
     sph_blake512(&ctx_blake, (pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]));
     sph_blake512_close(&ctx_blake, static_cast<void*>(&hash[0]));
-    // Groestl512
+
+    // Groestl
     sph_groestl512_init(&ctx_groestl);
     sph_groestl512(&ctx_groestl, static_cast<const void*>(&hash[0]), 64);
     sph_groestl512_close(&ctx_groestl, static_cast<void*>(&hash[1]));
-    // Jh512
+
+    // JH
     sph_jh512_init(&ctx_jh);
     sph_jh512(&ctx_jh, static_cast<const void*>(&hash[1]), 64);
     sph_jh512_close(&ctx_jh, static_cast<void*>(&hash[2]));
-    // Keccak512
+
+    // Keccak
     sph_keccak512_init(&ctx_keccak);
     sph_keccak512(&ctx_keccak, static_cast<const void*>(&hash[2]), 64);
     sph_keccak512_close(&ctx_keccak, static_cast<void*>(&hash[3]));
-    // Skein512
+
+    // Skein
     sph_skein512_init(&ctx_skein);
     sph_skein512(&ctx_skein, static_cast<const void*>(&hash[3]), 64);
     sph_skein512_close(&ctx_skein, static_cast<void*>(&hash[4]));
 
-
-    //printf("\nhash: %s\n", hash.ToString().c_str());
 
     return hash[4].trim256();
 }
