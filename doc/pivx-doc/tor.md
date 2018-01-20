@@ -75,7 +75,7 @@ your pivxd's P2P listen port (51472 by default).
                 this option, and this can be a .onion address. Given the above
                 configuration, you can find your onion address in
                 /var/lib/tor/pivx-service/hostname. Onion addresses are given
-                preference for your node to advertize itself with, for connections
+                preference for your node to advertise itself with, for connections
                 coming from unroutable addresses (such as 127.0.0.1, where the
                 Tor proxy typically runs).
 

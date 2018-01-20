@@ -130,13 +130,14 @@ public:
 	nLastPOWBlock = 345600; // 1 Year
 	nModifierUpdateBlock = 1;
 	nZerocoinStartHeight = 863787;
-	nZerocoinStartTime = 1508214600; // October 17, 2017 4:30:00 AM
+/* Not Applicable (Bulwark)
+	nZerocoinStartTime = 1521086400; // Thursday, March 15, 2018 4:00:00 AM (GMT)
 	nBlockEnforceSerialRange = 895400; //Enforce serial range starting this block
 	nBlockRecalculateAccumulators = 908000; //Trigger a recalculation of accumulators
 	nBlockFirstFraudulent = 891737; //First block that bad serials emerged
 	nBlockLastGoodCheckpoint = 891730; //Last valid accumulator checkpoint
 	nBlockEnforceInvalidUTXO = 902850; //Start enforcing the invalid UTXO's
-
+*/
 	/**
 	 * Build the genesis block. Note that the output of the genesis coinbase cannot
 	 * be spent as it did not originally exist in the database.
@@ -266,7 +267,7 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x3a)(0x80)(0x61)(0xa0).convert_to_container<std::vector<unsigned char> >();
         // Testnet bulwark BIP32 prvkeys start with 'DRKP'
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x3a)(0x80)(0x58)(0x37).convert_to_container<std::vector<unsigned char> >();
-        // Testnet pivx BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet bulwark BIP44 coin type is '1' (All coin's testnet default)
         base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0x01).convert_to_container<std::vector<unsigned char> >();
 
         convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));

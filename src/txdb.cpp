@@ -275,7 +275,7 @@ bool CBlockTreeDB::LoadBlockIndexGuts()
                     //Don't load any invalid checkpoints (Not Applicable: Bulwark)
                     //if (!InvalidCheckpointRange(pindexNew->nHeight))
                     //    LoadAccumulatorValuesFromDB(pindexNew->nAccumulatorCheckpoint);
-                    CAccumulators::getInstance().LoadAccumulatorValuesFromDB(pindexNew->nAccumulatorCheckpoint);
+
                     nPreviousCheckpoint = pindexNew->nAccumulatorCheckpoint;
                 }
 

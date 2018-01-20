@@ -162,7 +162,7 @@ CAmount CTransaction::GetZerocoinMinted() const
 
     return  CAmount(0);
 }
-
+/* Not Applicable: Bulwark
 bool CTransaction::UsesUTXO(const COutPoint out)
 {
     for (const CTxIn in : vin) {
@@ -172,7 +172,7 @@ bool CTransaction::UsesUTXO(const COutPoint out)
 
     return false;
 }
-
+*/
 std::list<COutPoint> CTransaction::GetOutPoints() const
 {
     std::list<COutPoint> listOutPoints;

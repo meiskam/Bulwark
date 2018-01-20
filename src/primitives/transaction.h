@@ -281,7 +281,7 @@ public:
     CAmount GetZerocoinSpent() const;
     int GetZerocoinMintCount() const;
 
-    bool UsesUTXO(const COutPoint out);
+    /* bool UsesUTXO(const COutPoint out); Not Applicable: Bulwark */
     std::list<COutPoint> GetOutPoints() const;
 
     bool IsCoinBase() const

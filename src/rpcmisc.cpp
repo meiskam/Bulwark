@@ -113,7 +113,7 @@ UniValue getinfo(const UniValue& params, bool fHelp)
         bwkzObj.push_back(Pair(to_string(denom), ValueFromAmount(chainActive.Tip()->mapZerocoinSupply.at(denom) * (denom*COIN))));
     }
     bwkzObj.push_back(Pair("total", ValueFromAmount(chainActive.Tip()->GetZerocoinSupply())));
-    obj.push_back(Pair("zPIVsupply", zpivObj));
+    obj.push_back(Pair("BWKzsupply", bwkzObj));
 
 #ifdef ENABLE_WALLET
     if (pwalletMain) {

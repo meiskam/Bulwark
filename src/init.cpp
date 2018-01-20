@@ -334,8 +334,8 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-pid=<file>", strprintf(_("Specify pid file (default: %s)"), "bulwarkd.pid"));
 #endif
     strUsage += HelpMessageOpt("-reindex", _("Rebuild block chain index from current blk000??.dat files") + " " + _("on startup"));
-    strUsage += HelpMessageOpt("-reindexaccumulators", _("Reindex the accumulator database") + " " + _("on startup"));
-    strUsage += HelpMessageOpt("-reindexmoneysupply", _("Reindex the BWK and BWKz money supply statistics") + " " + _("on startup"));
+//    strUsage += HelpMessageOpt("-reindexaccumulators", _("Reindex the accumulator database") + " " + _("on startup"));
+//    strUsage += HelpMessageOpt("-reindexmoneysupply", _("Reindex the BWK and BWKz money supply statistics") + " " + _("on startup"));
     strUsage += HelpMessageOpt("-resync", _("Delete blockchain directories and resync from scratch") + " " + _("on startup"));
 #if !defined(WIN32)
     strUsage += HelpMessageOpt("-sysperms", _("Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)"));
@@ -1362,13 +1362,14 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
                 // PopulateInvalidOutPointMap();
 
                 // Recalculate money supply for blocks that are impacted by accounting issue after zerocoin activation
-                if (GetBoolArg("-reindexmoneysupply", false)) {
-                    if (chainActive.Height() > Params().Zerocoin_StartHeight()) {
-                        RecalculateBWKZMinted();
-                        RecalculateBWKZSpent();
-                    }
-                    RecalculateBWKSupply(1);
-                }
+                // Not Applicable: Bulwark
+		//if (GetBoolArg("-reindexmoneysupply", false)) {
+                //    if (chainActive.Height() > Params().Zerocoin_StartHeight()) {
+                //        RecalculateBWKZMinted();
+                //        RecalculateBWKZSpent();
+                //    }
+                //    RecalculateBWKSupply(1);
+                //}
 
                 // Force recalculation of accumulators.
                 if (GetBoolArg("-reindexaccumulators", false)) {
@@ -1386,8 +1387,9 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
                     LogPrintf("%s : finding missing checkpoints\n", __func__);
 
                     string strError;
-                    if (!ReindexAccumulators(listAccCheckpointsNoDB, strError))
-                        return InitError(strError);
+                    // Not Applicable: Bulwark
+		    //if (!ReindexAccumulators(listAccCheckpointsNoDB, strError))
+                    //    return InitError(strError);
                 }
 
                 uiInterface.InitMessage(_("Verifying blocks..."));
@@ -1569,8 +1571,8 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
         }
         fVerifyingBlocks = false;
 
-        bool fEnableBwkZBackups = GetBoolArg("-backupbwkz", true);
-        pwalletMain->setBwkZAutoBackups(fEnableBwkZBackups);
+        bool fEnableBWKZBackups = GetBoolArg("-backupbwkz", true);
+        pwalletMain->setBWKZAutoBackups(fEnableBWKZBackups);
     }  // (!fDisableWallet)
 #else  // ENABLE_WALLET
     LogPrintf("No wallet compiled in!\n");

@@ -811,7 +811,7 @@ UniValue reconsiderblock(const UniValue& params, bool fHelp)
 
     return NullUniValue;
 }
-
+/*
 UniValue getinvalid (const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() > 1)
@@ -965,3 +965,4 @@ UniValue findserial(const UniValue& params, bool fHelp)
 
     return ret;
 }
+*/

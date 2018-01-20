@@ -857,7 +857,7 @@
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLabel" name="labelzPIVPercent">
+                        <widget class="QLabel" name="labelBWKZPercent">
                          <property name="text">
                           <string notr="true">0 %</string>
                          </property>

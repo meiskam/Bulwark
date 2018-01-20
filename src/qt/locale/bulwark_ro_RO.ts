@@ -183,9 +183,9 @@
     </message>
     </context>
 <context>
-    <name>ZPivControlDialog</name>
+    <name>BWKZControlDialog</name>
     </context>
 <context>
-    <name>pivx-core</name>
+    <name>bulwark-core</name>
     </context>
 </TS>

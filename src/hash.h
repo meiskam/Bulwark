@@ -69,8 +69,8 @@ GLOBAL sph_jh512_context	z_jh;
 GLOBAL sph_keccak512_context	z_keccak;
 GLOBAL sph_skein512_context	z_skein;
 
-#define fillz()
-	do {
+#define fillz()					\
+	do {					\
 	    sph_blake512_init	(&z_blake);	\
 	    sph_groestl512_init	(&z_groestl);	\
 	    sph_jh512_init	(&z_jh);	\

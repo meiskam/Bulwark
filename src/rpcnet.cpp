@@ -180,7 +180,7 @@ UniValue addnode(const UniValue& params, bool fHelp)
     if (strCommand == "onetry") {
         CAddress addr;
         OpenNetworkConnection(addr, NULL, strNode.c_str());
-        return Value::null;
+        return NullUniValue;
     }
 
     LOCK(cs_vAddedNodes);

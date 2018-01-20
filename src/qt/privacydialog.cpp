@@ -105,7 +105,7 @@ PrivacyDialog::PrivacyDialog(QWidget* parent) : QDialog(parent),
     ui->dummyHideWidget->hide(); // Dummy widget with elements to hide
 
     //temporary disable for maintenance
-    if(GetAdjustedTime() > GetSporkValue(SPORK_16_ZEROCOIN_MAINTENANCE_MODE)) {
+    if(GetAdjustedTime() > GetSporkValue(SPORK_18_ZEROCOIN_MAINTENANCE_MODE)) {
         ui->pushButtonMintBWKZ->setEnabled(false);
         ui->pushButtonMintBWKZ->setToolTip(tr("BWKz is currently disabled due to maintenance."));
 
@@ -158,7 +158,7 @@ void PrivacyDialog::on_pushButtonMintBWKZ_clicked()
     if (!walletModel || !walletModel->getOptionsModel())
         return;
 
-    if(GetAdjustedTime() > GetSporkValue(SPORK_16_ZEROCOIN_MAINTENANCE_MODE)) {
+    if(GetAdjustedTime() > GetSporkValue(SPORK_18_ZEROCOIN_MAINTENANCE_MODE)) {
         QMessageBox::information(this, tr("Mint Zerocoin"),
                                  tr("BWKz is currently undergoing maintenance."), QMessageBox::Ok,
                                  QMessageBox::Ok);
@@ -271,7 +271,7 @@ void PrivacyDialog::on_pushButtonSpendBWKZ_clicked()
     if (!walletModel || !walletModel->getOptionsModel() || !pwalletMain)
         return;
 
-    if(GetAdjustedTime() > GetSporkValue(SPORK_16_ZEROCOIN_MAINTENANCE_MODE)) {
+    if(GetAdjustedTime() > GetSporkValue(SPORK_18_ZEROCOIN_MAINTENANCE_MODE)) {
         QMessageBox::information(this, tr("Mint Zerocoin"),
                                  tr("BWKz is currently undergoing maintenance."), QMessageBox::Ok, QMessageBox::Ok);
         return;

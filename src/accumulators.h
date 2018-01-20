@@ -20,6 +20,6 @@ bool LoadAccumulatorValuesFromDB(const uint256 nCheckpoint);
 bool EraseAccumulatorValues(const uint256& nCheckpointErase, const uint256& nCheckpointPrevious);
 uint32_t ParseChecksum(uint256 nChecksum, libzerocoin::CoinDenomination denomination);
 uint32_t GetChecksum(const CBigNum &bnValue);
-bool InvalidCheckpointRange(int nHeight);
+//Not Applicable: bool InvalidCheckpointRange(int nHeight);
 
 #endif //BULWARK_ACCUMULATORS_H
