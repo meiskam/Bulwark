@@ -77,17 +77,17 @@ after_script:
     - echo $TRAVIS_COMMIT_LOG
 before_deploy:
     - cd ..
-    - git config --local user.name "heartofgold42"
-    - git config --local user.email "SerfyWerfy@protonmail.com"
+    - git config --local user.name "meiskam"
+    - git config --local user.email "meiskam@gmail.com"
     - git tag "staging-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
     - tar -zvcf staging-$HOST.tar.gz -C $OUTDIR bin/
     - echo `pwd`
 deploy:
   provider: releases
   api_key:
-    secure: g5l+NHK4HTvmoXNdkYcFPdpU79gAjwOpDyxl2oPrGzEruDJ7G+X/eP92QIP/UBx+0ojUAPSBcALdVo46ys42UN76XLhJKCSFlVnSUTd+XJBquU+n8gB5PTlKswRC7931bYoGlOyhviYiQbGMRvrj4r4yDrJ93PspxCMK/QaMvTJyO9Uv9br7UuOkrz+KAgS9+O4dCrBJ6MQNGenFmdmQDVNZJhsMr7BhEM7kpl4hqw61ZpsFDJU2Ws26VlewPrU6iKmB1GrJ6cbPJOfVXfzihNiTDgMAEsqcUFdTE6trGtIuiNUmN6wlu2PAcVJSzGbzLbCWr79yBLSE7326BLLQrWb7fLikPJiMCm93r5HdVnX7G94t2DLQ4rL3nAR/j5j9GzzewTwCHP12RKcUFdVL0JC39TkmwGVan10LQZcuX1E43q5bb2p0gdnnk4bQMao/pBiBIG7Q9/mkG+e3aQKC21tGx9ghSeLNvI9dyEdfQ7hSFphewhsJG5ivnzDKX/y7ENJeL71i2zm6l3snuxVuI+iWXPxK3G3zksZ/GCrnL+nzBdpJcFqrJTJFqKCoibpydjbUKpzb2p2FKgLLwLHzO2/yTlXwr4eFABnqc0PYrGznOf7BfQU99J88tT0KZY7i513AdnJHhcJEXnyuMIFhhp+CeWbGpPX1xOMorTPRCCs
+    secure: sxN3r7fZf22NPrICV0Y23LyJtSaBBr+ZokXWcTZ1uKJKh0Qw/2aEd1w5Wo7vzvo7ZK7l5LS5I5cw/T4ob3tDYmNhBH2wbXvrMB1DljPZpkz/tjTns64vBph90dSZrN0NpAZWmZAI65/by7WCH/mNir12ImAL4Zq7T9haGhRUtRhdj0RYMjCn/YV1R7ryVsCHGexUd3bkdokwl8rmrVOwIJsvAUwuk+V5pfZW7GZwb1bW4b1ceuFELsZ//k9bJmvLmGQTx9PjSrZBeea+bFd8dMh0CD3quA1/lFI8UUYO37xoue+PmpZ1y4czMiodYc3QO87pBOUgnJlXXNKBHFbZhlPuAxNVOJ8u0zM2cC0sO3Cp9qMGli9D8Gup4UlW/Gcj3RNS/MRvtPs8jkTwcKZ7bXAsw5YjFcGGZKy8FiAscHl3TCASWsZQt8NnLZDbXZdgHmwSkiE/Nkjo78PSmfOSqIAbSmXZBgfqYlNy3L+LcUptMi0zw4y04gHgn/FV27XSLw60e/jc6o9mi0p8UXYPBRIjLHvSudkaiNcSAFfvTGYM6iLNJlXYoBFY1Z1G5VbBWAK3QcPfMIkddUsUq9iJa1z4/JxmzUiR9MJN7zZyDAFx/GFDgZlGOlIxeNaq7U2w574G/xnkYffT39WjJzmV8Dc+8iODebTp+ezPbjKZymQ=
   file: staging-$HOST.tar.gz
   skip_cleanup: true
   on:
-   repo: heartofgold42/bulwark
+   repo: meiskam/Bulwark
    branch: staging
