@@ -3367,7 +3367,7 @@ bool CWallet::GetDestData(const CTxDestination& dest, const std::string& key, st
 void CWallet::AutoCombineDust()
 {
     if (chainActive.Tip()->nTime < (GetAdjustedTime() - 300) || IsLocked()) {
-        return false;
+        return;
     }
 
     map<CBitcoinAddress, vector<COutput> > mapCoinsByAddress = AvailableCoinsByAddress(true, 0);
