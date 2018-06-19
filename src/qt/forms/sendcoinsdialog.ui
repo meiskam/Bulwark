@@ -117,7 +117,7 @@
           <item>
            <widget class="QLabel" name="labelCoinControlAutomaticallySelected">
             <property name="text">
-             <string>automatically selected</string>
+             <string>Coins automatically selected</string>
             </property>
             <property name="margin">
              <number>5</number>
@@ -1385,18 +1385,12 @@
         <number>3</number>
        </property>
        <item>
-        <widget class="QCheckBox" name="checkUseObfuscation">
-         <property name="minimumSize">
-          <size>
-           <width>95</width>
-           <height>0</height>
-          </size>
+        <widget class="QCheckBox" name="checkzBWK">
+         <property name="enabled">
+          <bool>false</bool>
          </property>
          <property name="text">
-          <string>Obfuscation</string>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
+          <string>Anonymized BWK</string>
          </property>
         </widget>
        </item>

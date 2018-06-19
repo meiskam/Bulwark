@@ -28,6 +28,7 @@
 #include "rpcserver.h"
 #include "script/standard.h"
 #include "spork.h"
+#include "sporkdb.h"
 #include "txdb.h"
 #include "ui_interface.h"
 #include "util.h"
@@ -37,6 +38,8 @@
 #include "db.h"
 #include "wallet.h"
 #include "walletdb.h"
+#include "accumulators.h"
+
 #endif
 
 #include <fstream>
@@ -213,6 +216,8 @@ void PrepareShutdown()
         pcoinsdbview = NULL;
         delete pblocktree;
         pblocktree = NULL;
+        delete zerocoinDB;
+        zerocoinDB = NULL;
     }
 #ifdef ENABLE_WALLET
     if (pwalletMain)
@@ -297,6 +302,7 @@ bool static Bind(const CService& addr, unsigned int flags)
 
 std::string HelpMessage(HelpMessageMode mode)
 {
+
     // When adding new options to the categories, please keep and ensure alphabetical ordering.
     string strUsage = HelpMessageGroup(_("Options:"));
     strUsage += HelpMessageOpt("-?", _("This help message"));
@@ -375,6 +381,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-salvagewallet", _("Attempt to recover private keys from a corrupt wallet.dat") + " " + _("on startup"));
     strUsage += HelpMessageOpt("-sendfreetransactions", strprintf(_("Send transactions as zero-fee transactions if possible (default: %u)"), 0));
     strUsage += HelpMessageOpt("-spendzeroconfchange", strprintf(_("Spend unconfirmed change when sending transactions (default: %u)"), 1));
+    strUsage += HelpMessageOpt("-disablesystemnotifications", strprintf(_("Disable OS notifications for incoming transactions (default: %u)"), 0));
     strUsage += HelpMessageOpt("-txconfirmtarget=<n>", strprintf(_("If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)"), 1));
     strUsage += HelpMessageOpt("-maxtxfee=<amt>", strprintf(_("Maximum total fees to use in a single wallet transaction, setting too low may abort large transactions (default: %s)"),
         FormatMoney(maxTxFee)));
@@ -411,11 +418,13 @@ std::string HelpMessage(HelpMessageMode mode)
         strUsage += HelpMessageOpt("-stopafterblockimport", strprintf(_("Stop running after importing blocks from disk (default: %u)"), 0));
         strUsage += HelpMessageOpt("-sporkkey=<privkey>", _("Enable spork administration functionality with the appropriate private key."));
     }
-    string debugCategories = "addrman, alert, bench, coindb, db, lock, rand, rpc, selectcoins, mempool, net, bulwark, (obfuscation, swifttx, masternode, mnpayments, mnbudget)"; // Don't translate these and qt below
+    string debugCategories = "addrman, alert, bench, coindb, db, lock, rand, rpc, selectcoins, mempool, net, bulwark, (obfuscation, swifttx, masternode, mnpayments, mnbudget, zero)"; // Don't translate these and qt below
     if (mode == HMM_BITCOIN_QT)
         debugCategories += ", qt";
-        strUsage += HelpMessageOpt("-debug=<category>", strprintf(_("Output debugging information (default: %u, supplying <category> is optional)"), 0) + ". " +
-            _("If <category> is not supplied, output all debugging information.") + _("<category> can be:") + " " + debugCategories + ".");
+    strUsage += HelpMessageOpt("-debug=<category>", strprintf(_("Output debugging information (default: %u, supplying <category> is optional)"), 0) + ". " +
+        _("If <category> is not supplied, output all debugging information.") + _("<category> can be:") + " " + debugCategories + ".");
+    if (GetBoolArg("-help-debug", false))
+        strUsage += HelpMessageOpt("-nodebug", "Turn off debugging messages, same as -debug=0");
 #ifdef ENABLE_WALLET
     strUsage += HelpMessageOpt("-gen", strprintf(_("Generate coins (default: %u)"), 0));
     strUsage += HelpMessageOpt("-genproclimit=<n>", strprintf(_("Set the number of threads for coin generation if enabled (-1 = all cores, default: %d)"), 1));
@@ -459,11 +468,13 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-masternodeaddr=<n>", strprintf(_("Set external address:port to get to this masternode (example: %s)"), "128.127.106.235:51472"));
     strUsage += HelpMessageOpt("-budgetvotemode=<mode>", _("Change automatic finalized budget voting behavior. mode=auto: Vote for only exact finalized budget match to my generated budget. (string, default: auto)"));
 
-    strUsage += HelpMessageGroup(_("Obfuscation options:"));
-    strUsage += HelpMessageOpt("-enableobfuscation=<n>", strprintf(_("Enable use of automated obfuscation for funds stored in this wallet (0-1, default: %u)"), 0));
-    strUsage += HelpMessageOpt("-obfuscationrounds=<n>", strprintf(_("Use N separate masternodes to anonymize funds  (2-8, default: %u)"), 2));
-    strUsage += HelpMessageOpt("-anonymizebulwarkamount=<n>", strprintf(_("Keep N BWK anonymized (default: %u)"), 0));
-    strUsage += HelpMessageOpt("-liquidityprovider=<n>", strprintf(_("Provide liquidity to Obfuscation by infrequently mixing coins on a continual basis (0-100, default: %u, 1=very frequent, high fees, 100=very infrequent, low fees)"), 0));
+    strUsage += HelpMessageGroup(_("Zerocoin options:"));
+    strUsage += HelpMessageOpt("-enablezeromint=<n>", strprintf(_("Enable automatic Zerocoin minting (0-1, default: %u)"), 1));
+    strUsage += HelpMessageOpt("-zeromintpercentage=<n>", strprintf(_("Percentage of automatically minted Zerocoin  (10-100, default: %u)"), 10));
+    strUsage += HelpMessageOpt("-preferredDenom=<n>", strprintf(_("Preferred Denomination for automatically minted Zerocoin  (1/5/10/50/100/500/1000/5000), 0 for no preference. default: %u)"), 0));
+
+//    strUsage += "  -anonymizebulwarkamount=<n>     " + strprintf(_("Keep N BWK anonymized (default: %u)"), 0) + "\n";
+//    strUsage += "  -liquidityprovider=<n>       " + strprintf(_("Provide liquidity to Obfuscation by infrequently mixing coins on a continual basis (0-100, default: %u, 1=very frequent, high fees, 100=very infrequent, low fees)"), 0) + "\n";
 
     strUsage += HelpMessageGroup(_("SwiftTX options:"));
     strUsage += HelpMessageOpt("-enableswifttx=<n>", strprintf(_("Enable swifttx, show confirmations for locked transactions (bool, default: %s)"), "true"));
@@ -785,6 +796,9 @@ bool AppInit2(boost::thread_group& threadGroup)
     // Check for -tor - as this is a privacy risk to continue, exit here
     if (GetBoolArg("-tor", false))
         return InitError(_("Error: Unsupported argument -tor found, use -onion."));
+    // Check level must be 4 for zerocoin checks
+    if (mapArgs.count("-checklevel"))
+        return InitError(_("Error: Unsupported argument -checklevel found. Checklevel must be level 4."));
 
     if (GetBoolArg("-benchmark", false))
         InitWarning(_("Warning: Unsupported argument -benchmark ignored, use -debug=bench."));
@@ -868,13 +882,14 @@ bool AppInit2(boost::thread_group& threadGroup)
         }
     }
     nTxConfirmTarget = GetArg("-txconfirmtarget", 1);
-    bSpendZeroConfChange = GetArg("-spendzeroconfchange", true);
-    fSendFreeTransactions = GetArg("-sendfreetransactions", false);
+    bSpendZeroConfChange = GetBoolArg("-spendzeroconfchange", true);
+    bdisableSystemnotifications = GetBoolArg("-disablesystemnotifications", false);
+    fSendFreeTransactions = GetBoolArg("-sendfreetransactions", false);
 
     std::string strWalletFile = GetArg("-wallet", "wallet.dat");
 #endif // ENABLE_WALLET
 
-    fIsBareMultisigStd = GetArg("-permitbaremultisig", true) != 0;
+    fIsBareMultisigStd = GetBoolArg("-permitbaremultisig", true) != 0;
     nMaxDatacarrierBytes = GetArg("-datacarriersize", nMaxDatacarrierBytes);
 
     fAlerts = GetBoolArg("-alerts", DEFAULT_ALERTS);
@@ -1229,7 +1244,10 @@ bool AppInit2(boost::thread_group& threadGroup)
                 delete pcoinsdbview;
                 delete pcoinscatcher;
                 delete pblocktree;
+                delete zerocoinDB;
 
+                zerocoinDB = new CZerocoinDB(0, false, false);
+                pSporkDB.reset(new CSporkDB(0, false, false));
                 pblocktree = new CBlockTreeDB(nBlockTreeDBCache, false, fReindex);
                 pcoinsdbview = new CCoinsViewDB(nCoinDBCache, false, fReindex);
                 pcoinscatcher = new CCoinsViewErrorCatcher(pcoinsdbview);
@@ -1238,6 +1256,11 @@ bool AppInit2(boost::thread_group& threadGroup)
                 if (fReindex)
                     pblocktree->WriteReindexing(true);
 
+                // Bulwark: load previous sessions sporks if we have them.
+                uiInterface.InitMessage(_("Loading sporks..."));
+                LoadSporksFromDB();
+
+                uiInterface.InitMessage(_("Loading block index..."));
                 if (!LoadBlockIndex()) {
                     strLoadError = _("Error loading block database");
                     break;
@@ -1260,18 +1283,78 @@ bool AppInit2(boost::thread_group& threadGroup)
                     break;
                 }
 
+                list<uint256> listAccCheckpointsNoDB = CAccumulators::getInstance().GetAccCheckpointsNoDB();
+                // Bulwark: recalculate Accumulator Checkpoints that failed to database properly
+                if (!listAccCheckpointsNoDB.empty() && chainActive.Tip()->GetBlockHeader().nVersion >= Params().Zerocoin_HeaderVersion()) {
+                    uiInterface.InitMessage(_("Calculating missing accumulators..."));
+                    LogPrintf("%s : finding missing checkpoints\n", __func__);
+
+                    //search the chain to see when zerocoin started
+                    int nZerocoinStart = 0;
+                    CBlockIndex* pindex = chainActive.Tip();
+                    while (pindex->pprev) {
+                        if (pindex->GetBlockHeader().nVersion >= Params().Zerocoin_HeaderVersion())
+                            nZerocoinStart = pindex->nHeight;
+                        else if (nZerocoinStart)
+                            break;
+
+                        pindex = pindex->pprev;
+                    }
+
+                    // find each checkpoint that is missing
+                    pindex = chainActive[nZerocoinStart];
+                    while (!listAccCheckpointsNoDB.empty()) {
+                        if (ShutdownRequested())
+                            break;
+
+                        // find checkpoints by iterating through the blockchain beginning with the first zerocoin block
+                        if (pindex->nAccumulatorCheckpoint != pindex->pprev->nAccumulatorCheckpoint) {
+
+                            double dPercent = (pindex->nHeight - nZerocoinStart) / (double)(chainActive.Height() - nZerocoinStart);
+                            uiInterface.ShowProgress(_("Calculating missing accumulators..."), (int)(dPercent * 100));
+                            if(find(listAccCheckpointsNoDB.begin(), listAccCheckpointsNoDB.end(), pindex->nAccumulatorCheckpoint) != listAccCheckpointsNoDB.end()) {
+                                uint256 nCheckpointCalculated = 0;
+                                CAccumulators::getInstance().GetCheckpoint(pindex->nHeight, nCheckpointCalculated);
+
+                                //check that the calculated checkpoint is what is in the index.
+                                if(nCheckpointCalculated != pindex->nAccumulatorCheckpoint) {
+                                    LogPrintf("%s : height=%d calculated_checkpoint=%s actual=%s\n", __func__, pindex->nHeight, nCheckpointCalculated.GetHex(), pindex->nAccumulatorCheckpoint.GetHex());
+                                    return InitError(_("Calculated accumulator checkpoint is not what is recorded by block index"));
+                                }
+
+                                auto it = find(listAccCheckpointsNoDB.begin(), listAccCheckpointsNoDB.end(), pindex->nAccumulatorCheckpoint);
+                                listAccCheckpointsNoDB.erase(it);
+                            }
+                        }
+
+                        // if we have iterated to the end of the blockchain, then checkpoints should be in sync
+                        if (pindex->nHeight + 1 <= chainActive.Height())
+                            pindex = chainActive[pindex->nHeight + 1];
+                        else
+                            break;
+                    }
+                }
+                CAccumulators::getInstance().ClearAccCheckpointsNoDB();
+
                 uiInterface.InitMessage(_("Verifying blocks..."));
-                if (!CVerifyDB().VerifyDB(pcoinsdbview, GetArg("-checklevel", 4),
-                        GetArg("-checkblocks", 500))) {
+
+                // Flag sent to validation code to let it know it can skip certain checks
+                fVerifyingBlocks = true;
+
+                // Zerocoin must check at level 4
+                if (!CVerifyDB().VerifyDB(pcoinsdbview, 4, GetArg("-checkblocks", 100))) {
                     strLoadError = _("Corrupted block database detected");
+                    fVerifyingBlocks = false;
                     break;
                 }
             } catch (std::exception& e) {
                 if (fDebug) LogPrintf("%s\n", e.what());
                 strLoadError = _("Error opening block database");
+                fVerifyingBlocks = false;
                 break;
             }
 
+            fVerifyingBlocks = false;
             fLoaded = true;
         } while (false);
 
@@ -1514,7 +1597,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     }
 
     if (fMasterNode) {
-        LogPrintf("IS OBFUSCATION MASTER NODE\n");
+        LogPrintf("IS MASTER NODE\n");
         strMasterNodeAddr = GetArg("-masternodeaddr", "");
 
         LogPrintf(" addr %s\n", strMasterNodeAddr.c_str());
@@ -1559,22 +1642,32 @@ bool AppInit2(boost::thread_group& threadGroup)
         }
     }
 
-    fEnableObfuscation = GetBoolArg("-enableobfuscation", false);
+    fEnableZeromint = GetBoolArg("-enablezeromint", true);
 
-    nObfuscationRounds = GetArg("-obfuscationrounds", 2);
-    if (nObfuscationRounds > 16) nObfuscationRounds = 16;
-    if (nObfuscationRounds < 1) nObfuscationRounds = 1;
+    nZeromintPercentage = GetArg("-zeromintpercentage", 10);
+    if (nZeromintPercentage > 100) nZeromintPercentage = 100;
+    if (nZeromintPercentage < 10) nZeromintPercentage = 10;
 
-    nLiquidityProvider = GetArg("-liquidityprovider", 0); //0-100
-    if (nLiquidityProvider != 0) {
-        obfuScationPool.SetMinBlockSpacing(std::min(nLiquidityProvider, 100) * 15);
-        fEnableObfuscation = true;
-        nObfuscationRounds = 99999;
+    nPreferredDenom  = GetArg("-preferredDenom", 0);
+    if (nPreferredDenom != 0 && nPreferredDenom != 1 && nPreferredDenom != 5 && nPreferredDenom != 10 && nPreferredDenom != 50 &&
+        nPreferredDenom != 100 && nPreferredDenom != 500 && nPreferredDenom != 1000 && nPreferredDenom != 5000){
+        LogPrintf("-preferredDenom: invalid denomination parameter %d. Default value used\n", nPreferredDenom);
+        nPreferredDenom = 0;
     }
 
-    nAnonymizeBulwarkAmount = GetArg("-anonymizebulwarkamount", 0);
-    if (nAnonymizeBulwarkAmount > 999999) nAnonymizeBulwarkAmount = 999999;
-    if (nAnonymizeBulwarkAmount < 2) nAnonymizeBulwarkAmount = 2;
+// XX42 Remove/refactor code below. Until then provide safe defaults
+    nAnonymizeBulwarkAmount = 2;
+
+//    nLiquidityProvider = GetArg("-liquidityprovider", 0); //0-100
+//    if (nLiquidityProvider != 0) {
+//        obfuScationPool.SetMinBlockSpacing(std::min(nLiquidityProvider, 100) * 15);
+//        fEnableZeromint = true;
+//        nZeromintPercentage = 99999;
+//    }
+//
+//    nAnonymizeBulwarkAmount = GetArg("-anonymizebulwarkamount", 0);
+//    if (nAnonymizeBulwarkAmount > 999999) nAnonymizeBulwarkAmount = 999999;
+//    if (nAnonymizeBulwarkAmount < 2) nAnonymizeBulwarkAmount = 2;
 
     fEnableSwiftTX = GetBoolArg("-enableswifttx", fEnableSwiftTX);
     nSwiftTXDepth = GetArg("-swifttxdepth", nSwiftTXDepth);
@@ -1588,7 +1681,6 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     LogPrintf("fLiteMode %d\n", fLiteMode);
     LogPrintf("nSwiftTXDepth %d\n", nSwiftTXDepth);
-    LogPrintf("Obfuscation rounds %d\n", nObfuscationRounds);
     LogPrintf("Anonymize Bulwark Amount %d\n", nAnonymizeBulwarkAmount);
     LogPrintf("Budget Mode %s\n", strBudgetMode.c_str());
 
@@ -1644,6 +1736,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 #endif
 
     // ********************************************************* Step 12: finished
+
     SetRPCWarmupFinished();
     uiInterface.InitMessage(_("Done loading"));
 
