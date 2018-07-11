@@ -366,8 +366,8 @@ bool CAccumulators::IntializeWitnessAndAccumulator(const PublicCoin &coin, Accum
         pindex = chainActive[pindex->nHeight + 1];
     }
 
-    if (nMintsAdded < 3) {
-        strError = _("Less than 3 mints added, unable to create spend");
+    if (nMintsAdded < 1) {
+        strError = _("No mints added, unable to create spend");
         LogPrintf("%s : %s\n", __func__, strError);
         return false;
     }

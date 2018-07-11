@@ -237,7 +237,7 @@ public:
         nTargetSpacing = 1 * 30;  // 30 Seconds
 	    nTargetSpacingSlowLaunch = 1 * 30; // Kludgy but don't want to check for testnet each time in GetNextWorkRequired
 
-        nLastPOWBlock = 250;
+        nLastPOWBlock = 100;
         nLastPOWBlockOld = 1100;
         nMaturity = 15;
         nMaxMoneyOut = 33284220 * COIN; // 2032 Maximum
@@ -248,7 +248,7 @@ public:
         nToCheckBlockUpgradeMajority = 100;
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1531294943;
+        genesis.nTime = 1531272600;
         genesis.nNonce = 13379;
         genesis.nBits = bnProofOfWorkLimit.GetCompact();
 
