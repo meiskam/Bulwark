@@ -141,7 +141,7 @@ public:
         assert(hashGenesisBlock == uint256("0x0000041e482b9b9691d98eefb48473405c0b8ec31b76df3797c74a78680ef818"));
         assert(genesis.hashMerkleRoot == uint256("0x1b2ef6e2f28be914103a277377ae7729dcd125dfeb8bf97bd5964ba72b6dc39b"));
 
-        vSeeds.push_back(CDNSSeedData("seed1.bmtpcoin.info", "seed2.bmtpcoin.info""));
+        vSeeds.push_back(CDNSSeedData("seed1.bmtpcoin.info", "seed2.bmtpcoin.info"));
         
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 25);//B
@@ -215,7 +215,7 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        vSeeds.push_back(CDNSSeedData("seed1.bmtpcoin.info", "seed2.bmtpcoin.info""));
+        vSeeds.push_back(CDNSSeedData("seed1.bmtpcoin.info", "seed2.bmtpcoin.info"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 139); // Testnet bmtp addresses start with 'x' or 'y'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);  // Testnet bmtp script addresses start with '8' or '9'
