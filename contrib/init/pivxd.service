@@ -1,19 +1,19 @@
 [Unit]
-Description=PIVX's distributed currency daemon
+Description=BMTP's distributed currency daemon
 After=network.target
 
 [Service]
-User=pivx
-Group=pivx
+User=bmtp
+Group=bmtp
 
 Type=forking
-PIDFile=/var/lib/pivxd/pivxd.pid
+PIDFile=/var/lib/bmtpd/bmtpd.pid
 
-ExecStart=/usr/bin/pivxd -daemon -pid=/var/lib/pivxd/pivxd.pid \
-          -conf=/etc/pivx/pivx.conf -datadir=/var/lib/pivxd
+ExecStart=/usr/bin/bmtpd -daemon -pid=/var/lib/bmtpd/bmtpd.pid \
+          -conf=/etc/bmtp/bmtp.conf -datadir=/var/lib/bmtpd
 
-ExecStop=-/usr/bin/pivx-cli -conf=/etc/pivx/pivx.conf \
-         -datadir=/var/lib/pivxd stop
+ExecStop=-/usr/bin/bmtp-cli -conf=/etc/bmtp/bmtp.conf \
+         -datadir=/var/lib/bmtpd stop
 
 Restart=always
 PrivateTmp=true

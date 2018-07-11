@@ -1,2 +1,2 @@
-usr/local/bin/pivxd usr/bin
-usr/local/bin/pivx-cli usr/bin
+usr/local/bin/bmtpd usr/bin
+usr/local/bin/bmtp-cli usr/bin

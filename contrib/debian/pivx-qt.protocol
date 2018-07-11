@@ -1,6 +1,6 @@
 [Protocol]
-exec=pivx-qt '%u'
-protocol=pivx
+exec=bmtp-qt '%u'
+protocol=bmtp
 input=none
 output=none
 helper=true

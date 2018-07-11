@@ -62,12 +62,12 @@
         <translation>Endereços de recebimento</translation>
     </message>
     <message>
-        <source>These are your PIVX addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Esses são seus endereços PIVX para envio de pagamentos. Sempre verifique a quantia e os endereços de recebimento antes de enviar moedas.</translation>
+        <source>These are your BMTP addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Esses são seus endereços BMTP para envio de pagamentos. Sempre verifique a quantia e os endereços de recebimento antes de enviar moedas.</translation>
     </message>
     <message>
-        <source>These are your PIVX addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Esses são seus endereços PIVX para recebimento de pagamentos. É recomendado usar um novo endereço para cada transação.</translation>
+        <source>These are your BMTP addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Esses são seus endereços BMTP para recebimento de pagamentos. É recomendado usar um novo endereço para cada transação.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -172,16 +172,16 @@
         <translation>Confirmar criptografia de carteira</translation>
     </message>
     <message>
-        <source>PIVX will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your PIVs from being stolen by malware infecting your computer.</source>
-        <translation>PIVX vai fechar agora para finalizar o processo de criptografia. Lembre-se que encriptar sua carteira não pode proteger totalmente suas PIVs de serem roubadas por malwares infectando seu computador.</translation>
+        <source>BMTP will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your BMTPs from being stolen by malware infecting your computer.</source>
+        <translation>BMTP vai fechar agora para finalizar o processo de criptografia. Lembre-se que encriptar sua carteira não pode proteger totalmente suas BMTPs de serem roubadas por malwares infectando seu computador.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Você tem certeza que deseja criptografar sua carteira?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR PIV&lt;/b&gt;!</source>
-        <translation>Aviso: se você criptografar sua carteira e perder sua senha você &lt;b&gt;PERDERÁ TODAS AS SUAS PIV&lt;b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BMTP&lt;/b&gt;!</source>
+        <translation>Aviso: se você criptografar sua carteira e perder sua senha você &lt;b&gt;PERDERÁ TODAS AS SUAS BMTP&lt;b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -235,7 +235,7 @@
         <translation>&amp;Encriptação BIP 38</translation>
     </message>
     <message>
-        <source>Enter a Pivx Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
+        <source>Enter a Bmtp Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
         <translation>Insira um endereço que você deseja criptografar usando a BIP 38. Insira a palavra-chave na caixa do meio. Pressione criptografar para computar a chave privada criptografada.</translation>
     </message>
     <message>
@@ -243,8 +243,8 @@
         <translation>Endereço:</translation>
     </message>
     <message>
-        <source>The PIVX address to sign the message with</source>
-        <translation>O endereço PIVX para assinar a mensagem</translation>
+        <source>The BMTP address to sign the message with</source>
+        <translation>O endereço BMTP para assinar a mensagem</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -275,8 +275,8 @@
         <translation>Copia a assinatura atual do sistema de transferência</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this PIVX address</source>
-        <translation>Assine a mensagem para provar que você possui este endereço PIVX</translation>
+        <source>Sign the message to prove you own this BMTP address</source>
+        <translation>Assine a mensagem para provar que você possui este endereço BMTP</translation>
     </message>
     <message>
         <source>Encrypt &amp;Key</source>
@@ -291,12 +291,12 @@
         <translation>Limpar &amp;Tudo</translation>
     </message>
     <message>
-        <source>The PIVX address the message was signed with</source>
-        <translation>O endereço PIVX que assinou a mensagem</translation>
+        <source>The BMTP address the message was signed with</source>
+        <translation>O endereço BMTP que assinou a mensagem</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified PIVX address</source>
-        <translation>Verifique a mensagem para ter certeza que foi assinada com o endereço PIVX especificado.</translation>
+        <source>Verify the message to ensure it was signed with the specified BMTP address</source>
+        <translation>Verifique a mensagem para ter certeza que foi assinada com o endereço BMTP especificado.</translation>
     </message>
     <message>
         <source>Decrypt &amp;Key</source>
@@ -586,16 +586,16 @@
         <translation>Ferramentas de abas</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>BMTP Core</source>
+        <translation>BMTP Core</translation>
     </message>
     <message>
-        <source>Send coins to a PIVX address</source>
-        <translation>Enviar moedas para um endereço PIVX</translation>
+        <source>Send coins to a BMTP address</source>
+        <translation>Enviar moedas para um endereço BMTP</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and pivx: URIs)</source>
-        <translation>Requisitar pagamentos (gera códigos QR e pivx: URIs)</translation>
+        <source>Request payments (generates QR codes and bmtp: URIs)</source>
+        <translation>Requisitar pagamentos (gera códigos QR e bmtp: URIs)</translation>
     </message>
     <message>
         <source>&amp;Masternodes</source>
@@ -606,24 +606,24 @@
         <translation>Procurar masternodes</translation>
     </message>
     <message>
-        <source>&amp;About PIVX Core</source>
-        <translation>&amp;Sobre o PIVX Core</translation>
+        <source>&amp;About BMTP Core</source>
+        <translation>&amp;Sobre o BMTP Core</translation>
     </message>
     <message>
-        <source>Show information about PIVX Core</source>
-        <translation>Mostra informação sobre o PIVX Core</translation>
+        <source>Show information about BMTP Core</source>
+        <translation>Mostra informação sobre o BMTP Core</translation>
     </message>
     <message>
-        <source>Modify configuration options for PIVX</source>
-        <translation>Modificar opções de configuração para PIVX</translation>
+        <source>Modify configuration options for BMTP</source>
+        <translation>Modificar opções de configuração para BMTP</translation>
     </message>
     <message>
-        <source>Sign messages with your PIVX addresses to prove you own them</source>
-        <translation>Assine mensagens com seus endereços PIVX para provar que você os detém</translation>
+        <source>Sign messages with your BMTP addresses to prove you own them</source>
+        <translation>Assine mensagens com seus endereços BMTP para provar que você os detém</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified PIVX addresses</source>
-        <translation>Verifique as mensagens para ter certeza que estão assinadas com os endereços PIVX especificados</translation>
+        <source>Verify messages to ensure they were signed with specified BMTP addresses</source>
+        <translation>Verifique as mensagens para ter certeza que estão assinadas com os endereços BMTP especificados</translation>
     </message>
     <message>
         <source>&amp;BIP38 tool</source>
@@ -654,8 +654,8 @@
         <translation>Abrir arquivo de configuração de Masternode</translation>
     </message>
     <message>
-        <source>Open a PIVX: URI or payment request</source>
-        <translation>Abrir um PIVX: URI ou requisição de pagamento</translation>
+        <source>Open a BMTP: URI or payment request</source>
+        <translation>Abrir um BMTP: URI ou requisição de pagamento</translation>
     </message>
     <message>
         <source>&amp;Blockchain explorer</source>
@@ -666,12 +666,12 @@
         <translation>Janela de exploração de blocos</translation>
     </message>
     <message>
-        <source>Show the PIVX Core help message to get a list with possible PIVX command-line options</source>
-        <translation>Mostra a ajuda da PIVX Core para receber uma lista com possíveis opções de linha de comando PIVX</translation>
+        <source>Show the BMTP Core help message to get a list with possible BMTP command-line options</source>
+        <translation>Mostra a ajuda da BMTP Core para receber uma lista com possíveis opções de linha de comando BMTP</translation>
     </message>
     <message>
-        <source>PIVX Core client</source>
-        <translation>Cliente Core PIVX</translation>
+        <source>BMTP Core client</source>
+        <translation>Cliente Core BMTP</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -806,8 +806,8 @@ MultiSend: %1</translation>
         <translation>Rótulo</translation>
     </message>
     <message>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (pivx.conf).</source>
-        <translation>Nem todas as transações serão exibidas. Para visualizar todas as transações você precisa definir txindex=1 no arquivo de configuração (pivx.conf). </translation>
+        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (bmtp.conf).</source>
+        <translation>Nem todas as transações serão exibidas. Para visualizar todas as transações você precisa definir txindex=1 no arquivo de configuração (bmtp.conf). </translation>
     </message>
 </context>
 <context>
@@ -1095,8 +1095,8 @@ MultiSend: %1</translation>
         <translation>Editar endereço remetente</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid PIVX address.</source>
-        <translation>O endereço que você selecionou, "%1" , não é um endereço válido de PIVX</translation>
+        <source>The entered address "%1" is not a valid BMTP address.</source>
+        <translation>O endereço que você selecionou, "%1" , não é um endereço válido de BMTP</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -1141,16 +1141,16 @@ MultiSend: %1</translation>
         <translation>versão</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>BMTP Core</source>
+        <translation>BMTP Core</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
         <translation>(%1-bit)</translation>
     </message>
     <message>
-        <source>About PIVX Core</source>
-        <translation>Sobre o PIVX Core</translation>
+        <source>About BMTP Core</source>
+        <translation>Sobre o BMTP Core</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -1184,16 +1184,16 @@ MultiSend: %1</translation>
         <translation>Bem-vindo</translation>
     </message>
     <message>
-        <source>Welcome to PIVX Core.</source>
-        <translation>Bem-vindo ao PIVX Core.</translation>
+        <source>Welcome to BMTP Core.</source>
+        <translation>Bem-vindo ao BMTP Core.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where PIVX Core will store its data.</source>
-        <translation>Como essa é a primeira vez que o programa é utilizado, você pode escolher onde PIVX Core vai armazenar os seus dados.</translation>
+        <source>As this is the first time the program is launched, you can choose where BMTP Core will store its data.</source>
+        <translation>Como essa é a primeira vez que o programa é utilizado, você pode escolher onde BMTP Core vai armazenar os seus dados.</translation>
     </message>
     <message>
-        <source>PIVX Core will download and store a copy of the PIVX block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>PIVX Core vai baixar e armazenar uma cópia da blockchain PIVX. Pelo menos %1GB de informação será armazenado neste diretório e irá aumentar com o tempo. A carteira também será armazenada neste diretório.</translation>
+        <source>BMTP Core will download and store a copy of the BMTP block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>BMTP Core vai baixar e armazenar uma cópia da blockchain BMTP. Pelo menos %1GB de informação será armazenado neste diretório e irá aumentar com o tempo. A carteira também será armazenada neste diretório.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1204,8 +1204,8 @@ MultiSend: %1</translation>
         <translation>Usar um diretório personalizado de dados:</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>BMTP Core</source>
+        <translation>BMTP Core</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -1460,48 +1460,48 @@ Favor verificar o endereço e tente novamente.</translation>
         <translation>Favor selecionar o nível de privacidade.</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 10000 PIV</source>
-        <translation>Use 2 masternodes separados para embaralhar fundos até 10000 PIV</translation>
+        <source>Use 2 separate masternodes to mix funds up to 10000 BMTP</source>
+        <translation>Use 2 masternodes separados para embaralhar fundos até 10000 BMTP</translation>
     </message>
     <message>
-        <source>Use 8 separate masternodes to mix funds up to 10000 PIV</source>
-        <translation>Use 8 masternodes separados para embaralhar fundos até 10000 PIV</translation>
+        <source>Use 8 separate masternodes to mix funds up to 10000 BMTP</source>
+        <translation>Use 8 masternodes separados para embaralhar fundos até 10000 BMTP</translation>
     </message>
     <message>
         <source>Use 16 separate masternodes</source>
         <translation>Use 16 masternodes separados</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 PIV to anonymize 10000 PIV</source>
-        <translation>Está opção é a mais rápida e vai custar em torno de ~0.025 PIV para anonimizar 10000 PIV</translation>
+        <source>This option is the quickest and will cost about ~0.025 BMTP to anonymize 10000 BMTP</source>
+        <translation>Está opção é a mais rápida e vai custar em torno de ~0.025 BMTP para anonimizar 10000 BMTP</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 PIV to anonymize 10000 PIV</source>
-        <translation>Está opção moderamente rápida e vai custar em torno de ~0.05 PIV para anonimizar 10000 PIV</translation>
+        <source>This option is moderately fast and will cost about 0.05 BMTP to anonymize 10000 BMTP</source>
+        <translation>Está opção moderamente rápida e vai custar em torno de ~0.05 BMTP para anonimizar 10000 BMTP</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
         <translation>Esta é a opção mais lenta e mais segura. Usando a anonimização máxima vai custar</translation>
     </message>
     <message>
-        <source>0.1 PIV per 10000 PIV you anonymize.</source>
-        <translation>0.1 PIV por 10000 PIV que deixar anônima.</translation>
+        <source>0.1 BMTP per 10000 BMTP you anonymize.</source>
+        <translation>0.1 BMTP por 10000 BMTP que deixar anônima.</translation>
     </message>
     <message>
         <source>Obfuscation Configuration</source>
         <translation>Configuração de ofuscação</translation>
     </message>
     <message>
-        <source>Obfuscation was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening PIVX's configuration screen.</source>
-        <translation>Ofuscação foi definida com sucesso para o básico (%1 e 2 rodadas) Você pode mudar isto a qualquer tempo ao abrir a configuração de tela PIVX's.</translation>
+        <source>Obfuscation was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening BMTP's configuration screen.</source>
+        <translation>Ofuscação foi definida com sucesso para o básico (%1 e 2 rodadas) Você pode mudar isto a qualquer tempo ao abrir a configuração de tela BMTP's.</translation>
     </message>
     <message>
-        <source>Obfuscation was successfully set to high (%1 and 8 rounds). You can change this at any time by opening PIVX's configuration screen.</source>
-        <translation>Ofuscação foi definida com sucesso para alto (%1 e 8 rodadas). Você pode mudar isto a qualquer tempo ao abrir a configuração de tela PIVX's.</translation>
+        <source>Obfuscation was successfully set to high (%1 and 8 rounds). You can change this at any time by opening BMTP's configuration screen.</source>
+        <translation>Ofuscação foi definida com sucesso para alto (%1 e 8 rodadas). Você pode mudar isto a qualquer tempo ao abrir a configuração de tela BMTP's.</translation>
     </message>
     <message>
-        <source>Obfuscation was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening PIVX's configuration screen.</source>
-        <translation>Ofuscação foi definida com sucesso para máxima (%1 e 16 rodadas). Você pode mudar isto a qualquer tempo ao abrir a configuração de tela PIVX's.</translation>
+        <source>Obfuscation was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening BMTP's configuration screen.</source>
+        <translation>Ofuscação foi definida com sucesso para máxima (%1 e 16 rodadas). Você pode mudar isto a qualquer tempo ao abrir a configuração de tela BMTP's.</translation>
     </message>
 </context>
 <context>
@@ -1554,8 +1554,8 @@ Favor verificar o endereço e tente novamente.</translation>
         <translation>C&amp;arteira</translation>
     </message>
     <message>
-        <source>Automatically open the PIVX client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Abrir automaticamente a porta do cliente PIVX no roteador. Isto somente funciona quando seu roteador suporta UPnP e este esteja habilitado.</translation>
+        <source>Automatically open the BMTP client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Abrir automaticamente a porta do cliente BMTP no roteador. Isto somente funciona quando seu roteador suporta UPnP e este esteja habilitado.</translation>
     </message>
     <message>
         <source>Accept connections from outside</source>
@@ -1574,12 +1574,12 @@ Favor verificar o endereço e tente novamente.</translation>
         <translation>Expert</translation>
     </message>
     <message>
-        <source>Automatically start PIVX after logging in to the system.</source>
-        <translation>Iniciar automaticamente PIVX depois de logar no sistema.</translation>
+        <source>Automatically start BMTP after logging in to the system.</source>
+        <translation>Iniciar automaticamente BMTP depois de logar no sistema.</translation>
     </message>
     <message>
-        <source>&amp;Start PIVX on system login</source>
-        <translation>&amp;Iniciar PIVX ao logar no sistema</translation>
+        <source>&amp;Start BMTP on system login</source>
+        <translation>&amp;Iniciar BMTP ao logar no sistema</translation>
     </message>
     <message>
         <source>This setting determines the amount of individual masternodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
@@ -1590,8 +1590,8 @@ Favor verificar o endereço e tente novamente.</translation>
         <translation>Rodadas de ofuscação para usar</translation>
     </message>
     <message>
-        <source>Amount of PIVX to keep anonymized</source>
-        <translation>Quantidade de PIVX a manter anônima</translation>
+        <source>Amount of BMTP to keep anonymized</source>
+        <translation>Quantidade de BMTP a manter anônima</translation>
     </message>
     <message>
         <source>Enable coin &amp;control features</source>
@@ -1606,18 +1606,18 @@ Favor verificar o endereço e tente novamente.</translation>
         <translation>&amp;Rede</translation>
     </message>
     <message>
-        <source>The user interface language can be set here. This setting will take effect after restarting PIVX.</source>
-        <translation>A linguagem da interface pode ser definida aqui. Está configuração terá efeito após reinício do PIVX.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting BMTP.</source>
+        <translation>A linguagem da interface pode ser definida aqui. Está configuração terá efeito após reinício do BMTP.</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/pivx-project/pivx-project-translations</source>
+https://www.transifex.com/bmtp-project/bmtp-project-translations</source>
         <translation>Linguagem não encontrada ou tradução incompleta? Ajude contribuido com traduções aqui:
-https://www.transifex.com/pivx-project/pivx-project-translations</translation>
+https://www.transifex.com/bmtp-project/bmtp-project-translations</translation>
     </message>
     <message>
-        <source>Connect to the PIVX network through a SOCKS5 proxy.</source>
-        <translation>Conectar à rede PIVX através de um proxy SOCKS5</translation>
+        <source>Connect to the BMTP network through a SOCKS5 proxy.</source>
+        <translation>Conectar à rede BMTP através de um proxy SOCKS5</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
@@ -1755,8 +1755,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Fundos</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the PIVX network after a connection is established, but this process has not completed yet.</source>
-        <translation>A informação mostrada pode estar desatualizada. A sua carteira se sincroniza automaticamente com a rede PIVX após estabelecer uma conexão, mas esse processo ainda não foi concluído.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the BMTP network after a connection is established, but this process has not completed yet.</source>
+        <translation>A informação mostrada pode estar desatualizada. A sua carteira se sincroniza automaticamente com a rede BMTP após estabelecer uma conexão, mas esse processo ainda não foi concluído.</translation>
     </message>
     <message>
         <source>Unconfirmed transactions to watch-only addresses</source>
@@ -1791,8 +1791,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Saldo ofuscado:</translation>
     </message>
     <message>
-        <source>0 PIV / 0 Rounds</source>
-        <translation>0 PIV / 0 Rodadas</translation>
+        <source>0 BMTP / 0 Rounds</source>
+        <translation>0 BMTP / 0 Rodadas</translation>
     </message>
     <message>
         <source>Enabled/Disabled</source>
@@ -1966,8 +1966,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Quantidade</translation>
     </message>
     <message>
-        <source>Enter a PIVX address (e.g. %1)</source>
-        <translation>Insira um endereço PIVX (e.g. %1)</translation>
+        <source>Enter a BMTP address (e.g. %1)</source>
+        <translation>Insira um endereço BMTP (e.g. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -2216,8 +2216,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>saída:</translation>
     </message>
     <message>
-        <source>Welcome to the PIVX RPC console.</source>
-        <translation>Bem-vindo ao console da PIVX RPC</translation>
+        <source>Welcome to the BMTP RPC console.</source>
+        <translation>Bem-vindo ao console da BMTP RPC</translation>
     </message>
     <message>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
@@ -2472,8 +2472,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Tamanho UTXO:</translation>
     </message>
     <message>
-        <source>0 PIV</source>
-        <translation>0 PIV</translation>
+        <source>0 BMTP</source>
+        <translation>0 BMTP</translation>
     </message>
     <message>
         <source>Transaction Fee:</source>
@@ -2516,12 +2516,12 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Tempo de confirmação:</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uPIVs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uPIVs in fee,&lt;br /&gt;while "at least" pays 1000 uPIVs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Se a taxa padrão estiver definida para 1000 uPIVs e a transação for somente de 250 bytes, então "por kilobyte" pagará somente 250 uPIVs em taxa,&lt;br /&gt; pagará pelo menos 1000 uPIVs. Para transações maiores que um kilobyte ambas pagam por kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uBMTPs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uBMTPs in fee,&lt;br /&gt;while "at least" pays 1000 uBMTPs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Se a taxa padrão estiver definida para 1000 uBMTPs e a transação for somente de 250 bytes, então "por kilobyte" pagará somente 250 uBMTPs em taxa,&lt;br /&gt; pagará pelo menos 1000 uBMTPs. Para transações maiores que um kilobyte ambas pagam por kilobyte.</translation>
     </message>
     <message>
-        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for PIVX transactions than the network can process.</source>
-        <translation>Pagar a taxa mínima é aceitável desde que existe menos volume de transações que espaço nos blocos. &lt;br/&gt; Mas fique atento que isso pode acabar em uma transação que nunca será confirmada caso haja mais demanda por transações de PIVX do que a rede pode processar.</translation>
+        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for BMTP transactions than the network can process.</source>
+        <translation>Pagar a taxa mínima é aceitável desde que existe menos volume de transações que espaço nos blocos. &lt;br/&gt; Mas fique atento que isso pode acabar em uma transação que nunca será confirmada caso haja mais demanda por transações de BMTP do que a rede pode processar.</translation>
     </message>
     <message>
         <source>normal</source>
@@ -2608,8 +2608,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>fundos anônimos</translation>
     </message>
     <message>
-        <source>Warning: Invalid PIVX address</source>
-        <translation>Aviso: endereço PIVX inválido</translation>
+        <source>Warning: Invalid BMTP address</source>
+        <translation>Aviso: endereço BMTP inválido</translation>
     </message>
     <message>
         <source>any available funds (not recommended)</source>
@@ -2703,8 +2703,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Pagar &amp;Para:</translation>
     </message>
     <message>
-        <source>The PIVX address to send the payment to</source>
-        <translation>O endereço PIVX para enviar o pagamento</translation>
+        <source>The BMTP address to send the payment to</source>
+        <translation>O endereço BMTP para enviar o pagamento</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2766,8 +2766,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>PIVX Core is shutting down...</source>
-        <translation>PIVX Core está desligando...</translation>
+        <source>BMTP Core is shutting down...</source>
+        <translation>BMTP Core está desligando...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -2785,8 +2785,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>&amp;Assinar mensagem</translation>
     </message>
     <message>
-        <source>The PIVX address to sign the message with</source>
-        <translation>O endereço PIVX para assinar a mensagem</translation>
+        <source>The BMTP address to sign the message with</source>
+        <translation>O endereço BMTP para assinar a mensagem</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2817,16 +2817,16 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Copia a assinatura atual do sistema de transferência</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this PIVX address</source>
-        <translation>Assine a mensagem para provar que você possui este endereço PIVX</translation>
+        <source>Sign the message to prove you own this BMTP address</source>
+        <translation>Assine a mensagem para provar que você possui este endereço BMTP</translation>
     </message>
     <message>
-        <source>The PIVX address the message was signed with</source>
-        <translation>O endereço PIVX que assinou a mensagem</translation>
+        <source>The BMTP address the message was signed with</source>
+        <translation>O endereço BMTP que assinou a mensagem</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified PIVX address</source>
-        <translation>Verifique a mensagem para ter certeza que foi assinada com o endereço PIVX especificado.</translation>
+        <source>Verify the message to ensure it was signed with the specified BMTP address</source>
+        <translation>Verifique a mensagem para ter certeza que foi assinada com o endereço BMTP especificado.</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -2908,8 +2908,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>BMTP Core</source>
+        <translation>BMTP Core</translation>
     </message>
     <message>
         <source>Version %1</source>
@@ -2924,8 +2924,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Os desenvolvedores do Dash Core</translation>
     </message>
     <message>
-        <source>The PIVX Core developers</source>
-        <translation>Os desenvolvedores do PIVX Core</translation>
+        <source>The BMTP Core developers</source>
+        <translation>Os desenvolvedores do BMTP Core</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -3408,8 +3408,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Enviar Moedas</translation>
     </message>
     <message>
-        <source>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 PIV.</source>
-        <translation>SwiftTX ainda não suporta o envio de valores altos assim. As transações atualmente são limitadas a %1 PIV.</translation>
+        <source>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 BMTP.</source>
+        <translation>SwiftTX ainda não suporta o envio de valores altos assim. As transações atualmente são limitadas a %1 BMTP.</translation>
     </message>
 </context>
 <context>
@@ -3452,14 +3452,14 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
     </message>
 </context>
 <context>
-    <name>pivx-core</name>
+    <name>bmtp-core</name>
     <message>
         <source>Delete all wallet transactions and only recover those parts of the blockchain through -rescan on startup</source>
         <translation>Deletar todas as transações da carteira e somente recuperar aquelas partes da blockchain através de -rescan na inicialização</translation>
     </message>
     <message>
-        <source>Disable all PIVX specific functionality (Masternodes, Obfuscation, SwiftTX, Budgeting) (0-1, default: %u)</source>
-        <translation>Desabilitar todas as funcionalidades específicas PIVX (Masternodes, Ofuscação, SwiftTX, Budgeting) (0-1, padrão: %u)</translation>
+        <source>Disable all BMTP specific functionality (Masternodes, Obfuscation, SwiftTX, Budgeting) (0-1, default: %u)</source>
+        <translation>Desabilitar todas as funcionalidades específicas BMTP (Masternodes, Ofuscação, SwiftTX, Budgeting) (0-1, padrão: %u)</translation>
     </message>
     <message>
         <source>Enable use of automated obfuscation for funds stored in this wallet (0-1, default: %u)</source>
@@ -3478,12 +3478,12 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Executar o comando quando uma transação da carteira mudar (%s no cmd será substituído pela TxID)</translation>
     </message>
     <message>
-        <source>Fees (in PIV/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Taxas (em PIV/Kb) menores que isso serão consideradas taxa zero para propagação (padrão: %s)</translation>
+        <source>Fees (in BMTP/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Taxas (em BMTP/Kb) menores que isso serão consideradas taxa zero para propagação (padrão: %s)</translation>
     </message>
     <message>
-        <source>Fees (in PIV/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>Taxas (em PIV/Kb) menores que isso serão consideradas taxa zero para a criação da transação (padrão: %s)</translation>
+        <source>Fees (in BMTP/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>Taxas (em BMTP/Kb) menores que isso serão consideradas taxa zero para a criação da transação (padrão: %s)</translation>
     </message>
     <message>
         <source>In this mode -genproclimit controls how many blocks are generated immediately.</source>
@@ -3506,8 +3506,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>SwiftTX requer inputs com pelo menos 6 confirmações, você precisar aguardar alguns minutos e tentar novamente.</translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 10000 PIV.</source>
-        <translation>Incapaz de localizar fundos para esta transação que não são iguais a 10000 PIV.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 10000 BMTP.</source>
+        <translation>Incapaz de localizar fundos para esta transação que não são iguais a 10000 BMTP.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -3522,8 +3522,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Aviso: -paytxfee está definido como muito alto! Está e a taxa de transação que você irá pagar se enviar uma transação.</translation>
     </message>
     <message>
-        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong PIVX Core will not work properly.</source>
-        <translation>Aviso: Favor verificar se o horário e data de seu computador estão corretos! Se o seu relógio estiver errado o Core PIVX não vai funcionar corretamente.</translation>
+        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong BMTP Core will not work properly.</source>
+        <translation>Aviso: Favor verificar se o horário e data de seu computador estão corretos! Se o seu relógio estiver errado o Core BMTP não vai funcionar corretamente.</translation>
     </message>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
@@ -3538,8 +3538,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Você deve especificar uma masternodeprivkey na configuração. Favor verificar o manual para obter ajuda.</translation>
     </message>
     <message>
-        <source>(51472 could be used only on mainnet)</source>
-        <translation>(51472 could be used only on mainnet)</translation>
+        <source>(42107 could be used only on mainnet)</source>
+        <translation>(42107 could be used only on mainnet)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -3550,8 +3550,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>(padrão: 1)</translation>
     </message>
     <message>
-        <source>(must be 51472 for mainnet)</source>
-        <translation>(deve ser 51472 para mainnet)</translation>
+        <source>(must be 42107 for mainnet)</source>
+        <translation>(deve ser 42107 para mainnet)</translation>
     </message>
     <message>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
@@ -3602,8 +3602,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Todos os direitos reservados (C) 2014-%i aos Desenvolvedores do Dash Core</translation>
     </message>
     <message>
-        <source>Copyright (C) 2015-%i The PIVX Core Developers</source>
-        <translation>Todos os direitos reservados (C) 2015-%i aos Desenvolvedores do PIVX Core</translation>
+        <source>Copyright (C) 2015-%i The BMTP Core Developers</source>
+        <translation>Todos os direitos reservados (C) 2015-%i aos Desenvolvedores do BMTP Core</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
@@ -3654,8 +3654,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Erro no carregamento da wallet.dat: Carteira corrompida</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat: Wallet requires newer version of PIVX Core</source>
-        <translation>Erro ao carregar wallet.dat: A Carteira requer uma nova versão da PIVX Core</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of BMTP Core</source>
+        <translation>Erro ao carregar wallet.dat: A Carteira requer uma nova versão da BMTP Core</translation>
     </message>
     <message>
         <source>Error opening block database</source>
@@ -3694,8 +3694,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Falhou em ler o bloco</translation>
     </message>
     <message>
-        <source>Fee (in PIV/kB) to add to transactions you send (default: %s)</source>
-        <translation>Taxa (em PIV/kB) a adicionar em transações que você enviar (padrão: %s)</translation>
+        <source>Fee (in BMTP/kB) to add to transactions you send (default: %s)</source>
+        <translation>Taxa (em BMTP/kB) a adicionar em transações que você enviar (padrão: %s)</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>
@@ -3802,8 +3802,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Script inválido detectado.</translation>
     </message>
     <message>
-        <source>Keep N PIV anonymized (default: %u)</source>
-        <translation>Manter N PIV anônimo (padrão: %u)</translation>
+        <source>Keep N BMTP anonymized (default: %u)</source>
+        <translation>Manter N BMTP anônimo (padrão: %u)</translation>
     </message>
     <message>
         <source>Last Obfuscation was too recent.</source>
@@ -4142,8 +4142,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Carteira está travada.</translation>
     </message>
     <message>
-        <source>Wallet needed to be rewritten: restart PIVX Core to complete</source>
-        <translation>A carteira precisa ser reescrita: reinicia o PIVX Core para completar</translation>
+        <source>Wallet needed to be rewritten: restart BMTP Core to complete</source>
+        <translation>A carteira precisa ser reescrita: reinicia o BMTP Core para completar</translation>
     </message>
     <message>
         <source>Wallet options:</source>

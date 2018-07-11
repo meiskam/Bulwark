@@ -180,6 +180,6 @@
     </message>
     </context>
 <context>
-    <name>pivx-core</name>
+    <name>bmtp-core</name>
     </context>
 </TS>
