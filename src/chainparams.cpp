@@ -122,7 +122,7 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-        const char* pszTimestamp = "U.S. News & World Report Jan 28 2016 With His Absence, Trump Dominates Another Debate";
+        const char* pszTimestamp = "U.S. News & World Report July 11, 2018 In Thailand, a Race Against the Clock";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -133,13 +133,32 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1454124731;
+        genesis.nTime = 1531363341;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 2402015;
+        genesis.nNonce = 2687371;
+
+//generate genesis
+	hashGenesisBlock = uint256("0x01");
+	if (false && genesis.GetHash() != hashGenesisBlock)
+
+        {
+
+            printf("recalculating params for mainnet.\n");
+            printf("old mainnet genesis nonce: %d\n", genesis.nNonce);
+            printf("old mainnet genesis hash:  %s\n", hashGenesisBlock.ToString().c_str());
+            // deliberately empty for loop finds nonce value.
+            for(genesis.nNonce == 0; genesis.GetHash() > bnProofOfWorkLimit; genesis.nNonce++){ } 
+            printf("new mainnet genesis merkle root: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+	    printf("new mainnet genesis nonce: %d\n", genesis.nNonce);
+            printf("new mainnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
+
+        }
+//	
+
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x0000041e482b9b9691d98eefb48473405c0b8ec31b76df3797c74a78680ef818"));
-        assert(genesis.hashMerkleRoot == uint256("0x1b2ef6e2f28be914103a277377ae7729dcd125dfeb8bf97bd5964ba72b6dc39b"));
+        assert(hashGenesisBlock == uint256("00000650f6d20c8e628fc5d631951c4aff12912bf18b36dceb8044fe57d89604"));
+        assert(genesis.hashMerkleRoot == uint256("0x2b864caf7724ce68cffa473918b483a0f067ce276eb043abe922c374742b5801"));
 
         vSeeds.push_back(CDNSSeedData("seed1.bmtpcoin.info", "seed2.bmtpcoin.info"));
         
@@ -165,7 +184,7 @@ public:
         fHeadersFirstSyncingActive = false;
 
         nPoolMaxTransactions = 3;
-        strSporkKey = "0484698d3ba6ba6e7423fa5cbd6a89e0a9a5348f88d332b44a5cb1a8b7ed2c1eaa335fc8dc4f012cb8241cc0bdafd6ca70c5f5448916e4e6f511bcd746ed57dc50";
+        strSporkKey = "04dd239171ca55a1b01df46a89c7a6b52d847b6b0d379e420fc8cd68c8d8218166ddbdee2e6c493d1ddea117cb5d77421f73f6bc1aee7641e8cf24a185c21da647";
         //strSporkKey = "04B433E6598390C992F4F022F20D3B4CBBE691652EE7C48243B81701CBDB7CC7D7BF0EE09E154E6FCBF2043D65AF4E9E97B89B5DBAF830D83B9B7F469A6C45A717";
         strObfuscationPoolDummyAddress = "D87q2gC9j6nNrnzCsg4aY6bHMLsT9nUhEw";
         nStartMasternodePayments = 1403728576; //Wed, 25 Jun 2014 20:36:16 GMT
@@ -207,11 +226,31 @@ public:
         nMaxMoneyOut = 43199500 * COIN;
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1454124731;
-        genesis.nNonce = 2402015;
+	genesis.nTime = 1531363342;
+        genesis.nNonce = 2446263;
+
+//generate genesis
+	hashGenesisBlock = uint256("0x01");
+	if (false && genesis.GetHash() != hashGenesisBlock)
+
+        {
+
+            printf("recalculating params for mainnet.\n");
+            printf("old testnet genesis nonce: %d\n", genesis.nNonce);
+            printf("old testnnet genesis hash:  %s\n", hashGenesisBlock.ToString().c_str());
+            // deliberately empty for loop finds nonce value.
+            for(genesis.nNonce == 0; genesis.GetHash() > bnProofOfWorkLimit; genesis.nNonce++){ } 
+            printf("new testnet genesis merkle root: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+	    printf("new testnet genesis nonce: %d\n", genesis.nNonce);
+            printf("new testnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
+
+        }
+//
+
+
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x0000041e482b9b9691d98eefb48473405c0b8ec31b76df3797c74a78680ef818"));
+        assert(hashGenesisBlock == uint256("0x0000024580f84f2ec5a67bc3cdb571478f24408bee1544c8023c931ac1651039"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -272,14 +311,33 @@ public:
         nTargetTimespan = 24 * 60 * 60; // Bmtp: 1 day
         nTargetSpacing = 1 * 60;        // Bmtp: 1 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
-        genesis.nTime = 1454124731;
-        genesis.nBits = 0x207fffff;
-        genesis.nNonce = 12345;
+	genesis.nTime = 1531363343;
+        genesis.nBits = 0x1e0ffff0;
+        genesis.nNonce = 2402015;
+
+//generate genesis
+	hashGenesisBlock = uint256("0x01");
+	if (false && genesis.GetHash() != hashGenesisBlock)
+
+        {
+
+            printf("recalculating params for mainnet.\n");
+            printf("old regtestnet genesis nonce: %d\n", genesis.nNonce);
+            printf("old regtestnnet genesis hash:  %s\n", hashGenesisBlock.ToString().c_str());
+            // deliberately empty for loop finds nonce value.
+            for(genesis.nNonce == 0; genesis.GetHash() > bnProofOfWorkLimit; genesis.nNonce++){ } 
+            printf("new regtestnet genesis merkle root: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+	    printf("new regtestnet genesis nonce: %d\n", genesis.nNonce);
+            printf("new regtestnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
+
+        }
+//
+
+
 
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 51476;
-        assert(hashGenesisBlock == uint256("0x4f023a2120d9127b21bbad01724fdb79b519f593f2a85b60d3d79160ec5f29df"));
-
+	assert(hashGenesisBlock == uint256("0x1a9e1f3d74c0b522e8ab0673054eaabd50d580de0ba362afe3c0f6a6af336782"));
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.
 
