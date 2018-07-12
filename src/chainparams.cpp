@@ -136,7 +136,7 @@ public:
         genesis.nVersion = 1;
         genesis.nTime = 1531363341;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 2687371;
+        genesis.nNonce = 6130794;
 
 //generate genesis
 	hashGenesisBlock = uint256("0x01");
@@ -158,8 +158,8 @@ public:
 
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("00000650f6d20c8e628fc5d631951c4aff12912bf18b36dceb8044fe57d89604"));
-        assert(genesis.hashMerkleRoot == uint256("0x2b864caf7724ce68cffa473918b483a0f067ce276eb043abe922c374742b5801"));
+        assert(hashGenesisBlock == uint256("00000d5abf940a3aafc1663de701ca1e744742404a0a1acc1f69a65760e96c8b"));
+        assert(genesis.hashMerkleRoot == uint256("0x5bb5caf692e99866529bacc339f8892a34b4c57272fe834e94577b7505444e86"));
 
         vSeeds.push_back(CDNSSeedData("seed1.bmtpcoin.info", "seed2.bmtpcoin.info"));
         
@@ -228,7 +228,7 @@ public:
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
 	genesis.nTime = 1531363342;
-        genesis.nNonce = 2446263;
+        genesis.nNonce = 3637784;
 
 //generate genesis
 	hashGenesisBlock = uint256("0x01");
@@ -251,7 +251,7 @@ public:
 
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x0000024580f84f2ec5a67bc3cdb571478f24408bee1544c8023c931ac1651039"));
+        assert(hashGenesisBlock == uint256("0x0000094d64f1da906d24a6078aaeda347488c8046c39e7061402332c6a4ce617"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -314,7 +314,7 @@ public:
         bnProofOfWorkLimit = ~uint256(0) >> 1;
 	genesis.nTime = 1531363343;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 2402015;
+        genesis.nNonce = 2402019;
 
 //generate genesis
 	hashGenesisBlock = uint256("0x01");
@@ -338,7 +338,7 @@ public:
 
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 51476;
-	assert(hashGenesisBlock == uint256("0x1a9e1f3d74c0b522e8ab0673054eaabd50d580de0ba362afe3c0f6a6af336782"));
+	assert(hashGenesisBlock == uint256("0x618f23c3af81f6b4ef9caa6e54536f37ba022bd3da92bc22f1c538be9380c525"));
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.
 
