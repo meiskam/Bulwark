@@ -54,28 +54,28 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256("0x00000c6b2241d7e3475bf32fa3b90f5e06667a303bcc06b0d9e677ad5b434d0f"));
+    (0, uint256("00000650f6d20c8e628fc5d631951c4aff12912bf18b36dceb8044fe57d89604"));
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1528527600, // * UNIX timestamp of last checkpoint block
+    1531377741, // * UNIX timestamp of last checkpoint block
     0,    // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     2000        // * estimated number of transactions per day after checkpoint
 };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
-    boost::assign::map_list_of(0, uint256("0x000001ac620cfe7defe359601935a01ba8032e38dd30017eb3cc48dc9bcfbb27"));
+    boost::assign::map_list_of(0, uint256("0x001"));
 static const Checkpoints::CCheckpointData dataTestnet = {
     &mapCheckpointsTestnet,
-    1528527601,
+    1530390001,
     0,
     250};
 
 static Checkpoints::MapCheckpoints mapCheckpointsRegtest =
-    boost::assign::map_list_of(0, uint256("0x748ee1f3df8f7e01cf8e6f1fb1bebabd9083aa80503b7c8ea7d0929b987d6d9a"));
+    boost::assign::map_list_of(0, uint256("0x001"));
 static const Checkpoints::CCheckpointData dataRegtest = {
     &mapCheckpointsRegtest,
-    1528527602,
+    1530390002,
     0,
     100};
 
@@ -107,8 +107,9 @@ public:
         nTargetTimespan = 1 * 60; // BMTP: 1 day
         nTargetSpacing = 1 * 60;  // BMTP: 1 minute
         nLastPOWBlock = 499;
-        nMaturity = 100;
+        nMaturity = 40;
         nMasternodeCountDrift = 20;
+        nMasternodeCollateralLimit = 1000;
         nModifierUpdateBlock = 615800;
         nMaxMoneyOut = 21000000 * COIN;
 
@@ -127,7 +128,7 @@ public:
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[0].nValue = 250 * COIN;
+        txNew.vout[0].nValue = 10 * COIN;
         txNew.vout[0].scriptPubKey = CScript() << ParseHex("049b1942d5c8216e496d48db7527b7d419103f54beab24e9aa8208c63ceb4aa903d0cb4fdca4fa9fb1dc49b3209271294215cff48dce2cebc052a11071593c026d") << OP_CHECKSIG;
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
@@ -174,19 +175,19 @@ public:
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
         fRequireRPCPassword = true;
-        fMiningRequiresPeers = true;
+        fMiningRequiresPeers = false;
         fAllowMinDifficultyBlocks = false;
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
-        fMineBlocksOnDemand = true;
-        fSkipProofOfWorkCheck = false;
+        fMineBlocksOnDemand = false;
+        fSkipProofOfWorkCheck = true;		// default false
         fTestnetToBeDeprecatedFieldRPC = false;
         fHeadersFirstSyncingActive = false;
 
         nPoolMaxTransactions = 3;
         strSporkKey = "04dd239171ca55a1b01df46a89c7a6b52d847b6b0d379e420fc8cd68c8d8218166ddbdee2e6c493d1ddea117cb5d77421f73f6bc1aee7641e8cf24a185c21da647";
-        //strSporkKey = "04B433E6598390C992F4F022F20D3B4CBBE691652EE7C48243B81701CBDB7CC7D7BF0EE09E154E6FCBF2043D65AF4E9E97B89B5DBAF830D83B9B7F469A6C45A717";
         strObfuscationPoolDummyAddress = "BB9AH68hmRYUjWFsQJsbbkRv6trooAugeR";
+ 
         nStartMasternodePayments = 1531506298; //Thu, 13 Jul 2018 18:24:58 GMT
     }
 

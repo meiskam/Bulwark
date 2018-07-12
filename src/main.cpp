@@ -1614,61 +1614,55 @@ double ConvertBitsToDouble(unsigned int nBits)
 int64_t GetBlockValue(int nHeight)
 {
     int64_t nSubsidy = 0;
-	int per=0;
 
     if (Params().NetworkID() == CBaseChainParams::TESTNET) {
         if (nHeight < 200 && nHeight > 0)
-            return 250000 * COIN;
+            return 20 * COIN;
     }
 
     if (nHeight == 0) {
-        nSubsidy = 2100000 * COIN;
-    } else if (nHeight < 11520 && nHeight > 0) {
+        nSubsidy = 400000 * COIN;
+    }
+	else if (nHeight < 1000 && nHeight > 0) {
         nSubsidy = 1 * COIN;
-    } else if (nHeight < 20161 && nHeight >=11520 ) {
+    }
+	else if (nHeight <= 4999 && nHeight >= 1000) {
+        nSubsidy = 3 * COIN;
+    }
+	else if (nHeight <= 9999 && nHeight >= 5000) {
+        nSubsidy = 5 * COIN;
+    }
+	else if (nHeight <= 19999 && nHeight >= 10000) {
         nSubsidy =  10 * COIN;
-    } else if (nHeight < 25920 && nHeight >= 20161) {
+    }
+	else if (nHeight <= 29999 && nHeight >= 20000) {
         nSubsidy = 12 * COIN;
-    } else if (nHeight < 31680 && nHeight >= 25920) {
+    }
+	else if (nHeight <= 49999 && nHeight >= 30000) {
         nSubsidy = 14 * COIN;
-    } else if (nHeight < 37440 && nHeight >= 31680) {
+    }
+	else if (nHeight <= 99999 && nHeight >= 50000) {
         nSubsidy = 16 * COIN;
-    } else if (nHeight < 43200 && nHeight >= 37440) {
-        nSubsidy = 18 * COIN;
-    } else if (nHeight < 48960 && nHeight >= 43200) {
-        nSubsidy = 20 * COIN;
-    } else if (nHeight < 54720  && nHeight >= 48960) {
-        nSubsidy = 50 * COIN;
-    } else if (nHeight < 60480 && nHeight >= 54720) {
-        nSubsidy = 60 * COIN;
-    } else if (nHeight < 66240 && nHeight >= 60480) {
-        nSubsidy = 70 * COIN;
-    } else if (nHeight < 72000 && nHeight >= 66240) {
-        nSubsidy = 80 * COIN;
-    } else if (nHeight < 77760 && nHeight >= 72000) {
-        nSubsidy = 90 * COIN;
-    } else if (nHeight < 83520 && nHeight >= 77760) {
-        nSubsidy = 100 * COIN;
-    } else if (nHeight < 89280 && nHeight >= 83520) {
-        nSubsidy = 250 * COIN;
-    } else if (nHeight < 95040 && nHeight >= 89200) {
-        nSubsidy = 300 * COIN;
-    } else if (nHeight < 100800 && nHeight >= 95040) {
-        nSubsidy = 350 * COIN;
-    } else if (nHeight < 106560 && nHeight >= 100800) {
-        nSubsidy = 400 * COIN;
-    } else if (nHeight < 112320 && nHeight >= 106560) {
-        nSubsidy = 500 * COIN;
-    } else if (nHeight < 118080 && nHeight >= 112320) {
-        nSubsidy = 550 * COIN;
-    } else if (nHeight >= 118080) {
-		nSubsidy = 550 * COIN;
-		nSubsidy -= (nSubsidy/100)*20;
-		per=(int)((nHeight-118080)/86400);
-		for (int i=0; i<per; i++) {
-			nSubsidy -= (nSubsidy/100)*20;
 		}
-    } else {
+	else if (nHeight <= 199999 && nHeight >= 100000) {
+        nSubsidy = 14 * COIN;
+    }
+	else if (nHeight <= 299999 && nHeight >= 200000) {
+        nSubsidy = 12 * COIN;
+    }
+	else if (nHeight <= 499999 && nHeight >= 300000) {
+        nSubsidy = 10 * COIN;
+    }
+  else if (nHeight <= 749999 && nHeight >= 500000) {
+        nSubsidy = 8 * COIN;
+    }
+  else if (nHeight <= 999999 && nHeight >= 750000) {
+        nSubsidy = 6 * COIN;
+    }
+	else if (nHeight >= 1000000) {
+        nSubsidy = 2 * COIN;
+    }
+    else {
         nSubsidy = 0 * COIN;
     }
     return nSubsidy;
@@ -1683,53 +1677,12 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
             return 0;
     }
 
-
-    if (nHeight == 0) {
-            ret = 0;
-    } else if (nHeight < 11520 && nHeight > 0) {
-        ret = 0.5 * COIN;
-    } else if (nHeight < 20161 && nHeight >=11520 ) {
-        ret = 7  * COIN;
-    } else if (nHeight < 25920 && nHeight >= 20161) {
-        ret = 9 * COIN;
-    } else if (nHeight < 31680 && nHeight >= 25920) {
-        ret = 11.2 * COIN;
-    } else if (nHeight < 37440 && nHeight >= 31680) {
-        ret = 13.6 * COIN;
-    } else if (nHeight < 43200 && nHeight >= 37440) {
-        ret = 16.2 * COIN;
-    } else if (nHeight < 48960 && nHeight >= 43200) {
-        ret = 19 * COIN;
-    } else if (nHeight < 54720  && nHeight >= 48960) {
-        ret = 47.5 * COIN;
-    } else if (nHeight < 60480 && nHeight >= 54720) {
-        ret = 57 * COIN;
-    } else if (nHeight < 66240 && nHeight >= 60480) {
-        ret = 66.5 * COIN;
-    } else if (nHeight < 72000 && nHeight >= 66240) {
-        ret = 76 * COIN;
-    } else if (nHeight < 77760 && nHeight >= 72000) {
-        ret = 85.5 * COIN;
-    } else if (nHeight < 83520 && nHeight >= 77760) {
-        ret = 95 * COIN;
-    } else if (nHeight < 89280 && nHeight >= 83520) {
-        ret = 237.5 * COIN;
-    } else if (nHeight < 95040 && nHeight >= 89200) {
-        ret = 285 * COIN;
-    } else if (nHeight < 100800 && nHeight >= 95040) {
-        ret = 332.5 * COIN;
-    } else if (nHeight < 106560 && nHeight >= 100800) {
-        ret = 380 * COIN;
-    } else if (nHeight < 112320 && nHeight >= 106560) {
-        ret = 475 * COIN;
-    } else if (nHeight < 118080 && nHeight >= 112320) {
-        ret = 522.5 * COIN;
-    } else if (nHeight >= 118080) {
-        ret = blockValue * 0.95;
-            } else {
-        ret = 0 * COIN;
+    if (nHeight < 1000) {
+        ret = blockValue * 0.75;
     }
-
+	  else {
+		ret = blockValue * 0.80;
+    }
     return ret;
 }
 
@@ -3887,7 +3840,6 @@ bool static LoadBlockIndexDB()
         chainActive.Tip()->GetBlockHash().ToString(), chainActive.Height(),
         DateTimeStrFormat("%Y-%m-%d %H:%M:%S", chainActive.Tip()->GetBlockTime()),
         Checkpoints::GuessVerificationProgress(chainActive.Tip()));
-
 
     return true;
 }

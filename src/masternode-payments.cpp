@@ -294,7 +294,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
         if (winningNode) {
             payee = GetScriptForDestination(winningNode->pubKeyCollateralAddress.GetID());
         } else {
-            LogPrintf("CreateNewBlock: Failed to detect masternode to pay\n");
+            LogPrint("masternode","CreateNewBlock: Failed to detect masternode to pay\n");
             hasPayment = false;
         }
     }
@@ -327,7 +327,9 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
         ExtractDestination(payee, address1);
         CBitcoinAddress address2(address1);
 
-        LogPrintf("Masternode payment of %s to %s\n", FormatMoney(masternodePayment).c_str(), address2.ToString().c_str());
+        LogPrint("masternode","Masternode payment of %s to %s\n", FormatMoney(masternodePayment).c_str(), address2.ToString().c_str());
+    } else {
+      	txNew.vout[0].nValue = blockValue;
     }
 }
 

@@ -489,6 +489,10 @@ void CBudgetManager::FillBlockPayee(CMutableTransaction& txNew, CAmount nFees, b
             CTxDestination address1;
             ExtractDestination(payee, address1);
             CBitcoinAddress address2(address1);
+            LogPrint("masternode","CBudgetManager::FillBlockPayee - Budget payment to %s for %lld, nHighestCount = %d\n", address2.ToString(), nAmount, nHighestCount);
+        }
+        else {
+            LogPrint("masternode","CBudgetManager::FillBlockPayee - No Budget payment, nHighestCount = %d\n", nHighestCount);
         }
     } else {
         //miners get the full amount on these blocks
@@ -505,7 +509,7 @@ void CBudgetManager::FillBlockPayee(CMutableTransaction& txNew, CAmount nFees, b
             ExtractDestination(payee, address1);
             CBitcoinAddress address2(address1);
 
-            LogPrintf("CBudgetManager::FillBlockPayee - Budget payment to %s for %lld\n", address2.ToString(), nAmount);
+            LogPrint("masternode","CBudgetManager::FillBlockPayee - Budget payment to %s for %lld\n", address2.ToString(), nAmount);
         }
     }
 }
@@ -623,16 +627,24 @@ bool CBudgetManager::IsTransactionValid(const CTransaction& txNew, int nBlockHei
         CFinalizedBudget* pfinalizedBudget = &((*it).second);
 
         if (pfinalizedBudget->GetVoteCount() > nHighestCount - mnodeman.CountEnabled(ActiveProtocol()) / 10) {
+            LogPrintf("CBudgetManager::IsTransactionValid() - GetVoteCount: %d is larger than nHighestCount(%d) - masternodes/10 (%d) \n", pfinalizedBudget->GetVoteCount(), nHighestCount, mnodeman.CountEnabled(ActiveProtocol()) / 10);
             if (nBlockHeight >= pfinalizedBudget->GetBlockStart() && nBlockHeight <= pfinalizedBudget->GetBlockEnd()) {
+                LogPrintf("CBudgetManager::IsTransactionValid() - nBlockHeight(%d) is >= block start(%d) and <= block end(%d)\n", nBlockHeight, pfinalizedBudget->GetBlockStart(), pfinalizedBudget->GetBlockEnd());
                 if (pfinalizedBudget->IsTransactionValid(txNew, nBlockHeight)) {
+                    LogPrintf("CBudgetManager::IsTransactionValid() - finalizedBudget->IsTransactionValid - true");
                     return true;
+                } else {
+                    LogPrintf("CBudgetManager::IsTransactionValid() - finalizedBudget->IsTransactionValid - false");
                 }
+            } else {
+                LogPrintf("CBudgetManager::IsTransactionValid() - nBlockHeight(%d) is NOT >= block start(%d) and <= block end(%d)\n", nBlockHeight, pfinalizedBudget->GetBlockStart(), pfinalizedBudget->GetBlockEnd());
             }
+        } else {
+            LogPrintf("CBudgetManager::IsTransactionValid() - GetVoteCount: %d is NOT larger than nHighestCount(%d) - masternodes/10 (%d) \n", pfinalizedBudget->GetVoteCount(), nHighestCount, mnodeman.CountEnabled(ActiveProtocol()) / 10);
         }
-
         ++it;
     }
-
+    LogPrintf("CBudgetManager::IsTransactionValid() - We looked through all of the known budgets and couldn't find what we were looking for\n" );
     //we looked through all of the known budgets
     return false;
 }
@@ -796,6 +808,8 @@ CAmount CBudgetManager::GetTotalBudget(int nHeight)
     }
 
     //get block value and calculate from that
+    CAmount nSubsidy = GetBlockValue(nHeight);
+/*
     CAmount nSubsidy = 0;
     if (nHeight <= Params().LAST_POW_BLOCK() && nHeight >= 151200) {
         nSubsidy = 50 * COIN;
@@ -822,13 +836,16 @@ CAmount CBudgetManager::GetTotalBudget(int nHeight)
     } else {
         nSubsidy = 0 * COIN;
     }
-
+*/
     // Amount of blocks in a months period of time (using 1 minutes per) = (60*24*30)
+    return ((nSubsidy / 100) * 10) * 1440 * 30;
+/*
     if (nHeight <= 172800) {
         return 648000 * COIN;
     } else {
         return ((nSubsidy / 100) * 10) * 1440 * 30;
     }
+*/
 }
 
 void CBudgetManager::NewBlock()
