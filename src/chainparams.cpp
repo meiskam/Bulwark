@@ -183,7 +183,7 @@ public:
         fSkipProofOfWorkCheck = true;		// default false
         fTestnetToBeDeprecatedFieldRPC = false;
         fHeadersFirstSyncingActive = false;
-
+	fMasternodeDefaultPortOnly = false;
         nPoolMaxTransactions = 3;
         strSporkKey = "04dd239171ca55a1b01df46a89c7a6b52d847b6b0d379e420fc8cd68c8d8218166ddbdee2e6c493d1ddea117cb5d77421f73f6bc1aee7641e8cf24a185c21da647";
         strObfuscationPoolDummyAddress = "BB9AH68hmRYUjWFsQJsbbkRv6trooAugeR";

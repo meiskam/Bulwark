@@ -80,6 +80,8 @@ public:
     /** The masternode count that we will allow the see-saw reward payments to be off by */
     int MasternodeCountDrift() const { return nMasternodeCountDrift; }
     int MasternodeCollateralLimit() const { return nMasternodeCollateralLimit; }
+    /** Prohibition of launching Masternode on a non-standard port */
+    bool MasternodeDefaultPortOnly() const { return fMasternodeDefaultPortOnly; }
     /** Make miner stop after a block is found. In RPC, don't return until nGenProcLimit blocks are generated */
     bool MineBlocksOnDemand() const { return fMineBlocksOnDemand; }
     /** In the future use NetworkIDString() for RPC fields */
@@ -134,6 +136,7 @@ protected:
     bool fSkipProofOfWorkCheck;
     bool fTestnetToBeDeprecatedFieldRPC;
     bool fHeadersFirstSyncingActive;
+    bool fMasternodeDefaultPortOnly;
     int nPoolMaxTransactions;
     std::string strSporkKey;
     std::string strObfuscationPoolDummyAddress;
