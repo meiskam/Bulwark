@@ -123,7 +123,7 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-        const char* pszTimestamp = "U.S. News & World Report July 11, 2018 In Thailand, a Race Against the Clock";
+        const char* pszTimestamp = "U.S. News & World Report July 12, 2018 Ideology Matters in Western Europe";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -134,13 +134,13 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1531363341;
+        genesis.nTime = 1531467000;
         genesis.nBits = 0x1e0ffff0;
         genesis.nNonce = 6130794;
 
 //generate genesis
 	hashGenesisBlock = uint256("0x01");
-	if (false && genesis.GetHash() != hashGenesisBlock)
+	if (true && genesis.GetHash() != hashGenesisBlock)
 
         {
 
@@ -227,12 +227,12 @@ public:
         nMaxMoneyOut = 43199500 * COIN;
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-	genesis.nTime = 1531363342;
+		genesis.nTime = 1531467000;
         genesis.nNonce = 3637784;
 
 //generate genesis
 	hashGenesisBlock = uint256("0x01");
-	if (false && genesis.GetHash() != hashGenesisBlock)
+	if (true && genesis.GetHash() != hashGenesisBlock)
 
         {
 
@@ -312,13 +312,13 @@ public:
         nTargetTimespan = 24 * 60 * 60; // Bmtp: 1 day
         nTargetSpacing = 1 * 60;        // Bmtp: 1 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
-	genesis.nTime = 1531363343;
+		genesis.nTime = 1531467000;
         genesis.nBits = 0x1e0ffff0;
         genesis.nNonce = 2402019;
 
 //generate genesis
 	hashGenesisBlock = uint256("0x01");
-	if (false && genesis.GetHash() != hashGenesisBlock)
+	if (true && genesis.GetHash() != hashGenesisBlock)
 
         {
 

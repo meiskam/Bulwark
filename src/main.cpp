@@ -1621,48 +1621,30 @@ int64_t GetBlockValue(int nHeight)
     }
 
     if (nHeight == 0) {
-        nSubsidy = 400000 * COIN;
+        nSubsidy = 250000 * COIN;
     }
-	else if (nHeight < 1000 && nHeight > 0) {
+	else if (nHeight <= 1000 && nHeight > 0) {
         nSubsidy = 1 * COIN;
     }
-	else if (nHeight <= 4999 && nHeight >= 1000) {
-        nSubsidy = 3 * COIN;
-    }
-	else if (nHeight <= 9999 && nHeight >= 5000) {
+	else if (nHeight <= 10000 && nHeight >= 1001) {
         nSubsidy = 5 * COIN;
     }
-	else if (nHeight <= 19999 && nHeight >= 10000) {
-        nSubsidy =  10 * COIN;
-    }
-	else if (nHeight <= 29999 && nHeight >= 20000) {
-        nSubsidy = 12 * COIN;
-    }
-	else if (nHeight <= 49999 && nHeight >= 30000) {
-        nSubsidy = 14 * COIN;
-    }
-	else if (nHeight <= 99999 && nHeight >= 50000) {
-        nSubsidy = 16 * COIN;
-		}
-	else if (nHeight <= 199999 && nHeight >= 100000) {
-        nSubsidy = 14 * COIN;
-    }
-	else if (nHeight <= 299999 && nHeight >= 200000) {
-        nSubsidy = 12 * COIN;
-    }
-	else if (nHeight <= 499999 && nHeight >= 300000) {
+	else if (nHeight <= 50000 && nHeight >= 10001) {
         nSubsidy = 10 * COIN;
     }
-  else if (nHeight <= 749999 && nHeight >= 500000) {
-        nSubsidy = 8 * COIN;
+	else if (nHeight <= 100000 && nHeight >= 50001) {
+        nSubsidy =  15 * COIN;
     }
-  else if (nHeight <= 999999 && nHeight >= 750000) {
+	else if (nHeight <= 500000 && nHeight >= 100001) {
+        nSubsidy = 12 * COIN;
+    }
+	else if (nHeight <= 1000000 && nHeight >= 500001) {
         nSubsidy = 6 * COIN;
     }
-	else if (nHeight >= 1000000) {
-        nSubsidy = 2 * COIN;
-    }
-    else {
+	else if (nHeight >= 1000001) {
+        nSubsidy = 3 * COIN;
+		}
+	else {
         nSubsidy = 0 * COIN;
     }
     return nSubsidy;
@@ -1670,19 +1652,13 @@ int64_t GetBlockValue(int nHeight)
 
 int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCount)
 {
-    int64_t ret = 0;
+    int64_t ret = 0.7;
 
     if (Params().NetworkID() == CBaseChainParams::TESTNET) {
         if (nHeight < 200)
             return 0;
     }
 
-    if (nHeight < 1000) {
-        ret = blockValue * 0.75;
-    }
-	  else {
-		ret = blockValue * 0.80;
-    }
     return ret;
 }
 
