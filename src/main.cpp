@@ -1652,13 +1652,15 @@ int64_t GetBlockValue(int nHeight)
 
 int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCount)
 {
-    int64_t ret = 0.7;
+    int64_t ret = 0;
+    
 
     if (Params().NetworkID() == CBaseChainParams::TESTNET) {
         if (nHeight < 200)
             return 0;
     }
 
+    ret = blockValue * 0.70;
     return ret;
 }
 
