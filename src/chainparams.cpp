@@ -106,7 +106,7 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60; // BMTP: 1 day
         nTargetSpacing = 1 * 60;  // BMTP: 1 minute
-        nLastPOWBlock = 100;
+        nLastPOWBlock = 499;
         nMaturity = 40;
         nMasternodeCountDrift = 20;
         nMasternodeCollateralLimit = 1000;
