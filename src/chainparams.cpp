@@ -106,7 +106,7 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60; // BMTP: 1 day
         nTargetSpacing = 1 * 60;  // BMTP: 1 minute
-        nLastPOWBlock = 499;
+        nLastPOWBlock = 100;
         nMaturity = 40;
         nMasternodeCountDrift = 20;
         nMasternodeCollateralLimit = 1000;
@@ -165,7 +165,7 @@ public:
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
         fMineBlocksOnDemand = false;
-        fSkipProofOfWorkCheck = true;		// default false
+        fSkipProofOfWorkCheck = false;		
         fTestnetToBeDeprecatedFieldRPC = false;
         fHeadersFirstSyncingActive = false;
 	fMasternodeDefaultPortOnly = false;
