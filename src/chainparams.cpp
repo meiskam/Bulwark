@@ -248,13 +248,13 @@ public:
         nToCheckBlockUpgradeMajority = 100;
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1531272600;
-        genesis.nNonce = 13379;
+        genesis.nTime = 1532305800;
+        genesis.nNonce = 224079;
         genesis.nBits = bnProofOfWorkLimit.GetCompact();
 
         hashGenesisBlock = genesis.GetHash();
         assert(hashGenesisBlock == uint256("0x00000832c8701e7f40ac3da656ffbc96fb8dc40ec86a7d19d96d842240dffd42"));
-        assert(genesis.hashMerkleRoot == uint256("0x77976d6bd593c84063ac3937525bc15e25188d96871b13d4451ffc382999f64f"));
+        assert(genesis.hashMerkleRoot == uint256("0x00000758b48552d850b523e2a3726e4a3693011a98feb40a87d391c92344111a"));
 
         vFixedSeeds.clear();
         vSeeds.clear();

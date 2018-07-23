@@ -112,7 +112,7 @@ void ZBwkControlDialog::updateList()
             if(nConfirmations < Params().Zerocoin_MintRequiredConfirmations())
                 strReason = strprintf("Needs %d more confirmations", Params().Zerocoin_MintRequiredConfirmations() - nConfirmations);
             else
-                strReason = strprintf("Needs 1 more mint added to network");
+                strReason = "Needs 1 more mint added to network";
 
             itemMint->setText(COLUMN_ISSPENDABLE, QString::fromStdString(strReason));
         } else {
