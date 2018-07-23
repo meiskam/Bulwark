@@ -5471,7 +5471,7 @@ for example: alertnotify=echo %%s | mail -s &quot;BMTP Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Copyright (C) 2015-%i The BMTP Core Developers</source>
+        <source>Copyright (C) 2018-%i The BMTP Core Developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

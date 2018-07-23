@@ -3602,8 +3602,8 @@ https://www.transifex.com/bmtp-project/bmtp-project-translations</translation>
         <translation>Todos os direitos reservados (C) 2014-%i aos Desenvolvedores do Dash Core</translation>
     </message>
     <message>
-        <source>Copyright (C) 2015-%i The BMTP Core Developers</source>
-        <translation>Todos os direitos reservados (C) 2015-%i aos Desenvolvedores do BMTP Core</translation>
+        <source>Copyright (C) 2018-%i The BMTP Core Developers</source>
+        <translation>Todos os direitos reservados (C) 2018-%i aos Desenvolvedores do BMTP Core</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>

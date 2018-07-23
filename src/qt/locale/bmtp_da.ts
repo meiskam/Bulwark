@@ -4234,8 +4234,8 @@ For eksempel: alertnotify=Echo %% | mail - s "BMTP ALARM!" e-mail@administrator.
         <translation>Copyright (C) 2014-%i The Dash Core Developers </translation>
     </message>
     <message>
-        <source>Copyright (C) 2015-%i The BMTP Core Developers</source>
-        <translation>Copyright (C) 2015-%i The BMTP Core Developers</translation>
+        <source>Copyright (C) 2018-%i The BMTP Core Developers</source>
+        <translation>Copyright (C) 2018-%i The BMTP Core Developers</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>

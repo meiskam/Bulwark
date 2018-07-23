@@ -3207,8 +3207,8 @@ https://www.transifex.com/bmtp-project/bmtp-project-translations</translation>
         <translation>Copyright (C) 2014-%i Разработчики Dash Core</translation>
     </message>
     <message>
-        <source>Copyright (C) 2015-%i The BMTP Core Developers</source>
-        <translation>Copyright (C) 2015-%i Разработчики BMTP Core</translation>
+        <source>Copyright (C) 2018-%i The BMTP Core Developers</source>
+        <translation>Copyright (C) 2018-%i Разработчики BMTP Core</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
