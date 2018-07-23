@@ -1,5 +1,5 @@
 /* XPM */
-static char *_6271_66b755718047d30384887c6e5cee0e1dad05c2ad977e175b9d13b180ecff2b68[] = {
+static char *bitcoin128[] = {
 /* columns rows colors chars-per-pixel */
 "128 128 236 2 ",
 "   c #1D1B1A",
