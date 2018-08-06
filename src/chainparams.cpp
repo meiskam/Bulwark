@@ -237,7 +237,7 @@ public:
         nTargetSpacing = 1 * 30;  // 30 Seconds
 	    nTargetSpacingSlowLaunch = 1 * 30; // Kludgy but don't want to check for testnet each time in GetNextWorkRequired
 
-        nLastPOWBlock = 100;
+        nLastPOWBlock = 50;
         nLastPOWBlockOld = 1100;
         nMaturity = 15;
         nMaxMoneyOut = 33284220 * COIN; // 2032 Maximum
