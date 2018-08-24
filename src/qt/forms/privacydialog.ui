@@ -52,7 +52,7 @@
           </font>
          </property>
          <property name="toolTip">
-          <string>BWK which were anonymized via Zerocin Protocol</string>
+          <string>BWK which has been anonymized via Zerocoin Protocol</string>
          </property>
          <property name="autoFillBackground">
           <bool>true</bool>
@@ -179,7 +179,7 @@
                <item>
                 <widget class="QLabel" name="labelzBWKAmountValue">
                  <property name="toolTip">
-                  <string>Enter an amount of Bwk to convert to zBwk</string>
+                  <string>Enter an amount of Bwk to convert to zBWK</string>
                  </property>
                  <property name="text">
                   <string>0.000 000 00 BWK</string>
@@ -428,14 +428,14 @@
                <item>
                 <widget class="QtMaterialFlatButton" name="pushButtonZBwkControl" native="true">
                  <property name="text" stdset="0">
-                  <string>zBwk Control</string>
+                  <string>zBWK Control</string>
                  </property>
                 </widget>
                </item>
                <item>
                 <widget class="QLabel" name="labelzBwkSelected">
                  <property name="text">
-                  <string>zBwk Selected:</string>
+                  <string>zBWK Selected:</string>
                  </property>
                 </widget>
                </item>
