@@ -451,7 +451,7 @@
          <item>
           <widget class="QValueComboBox" name="lang">
            <property name="toolTip">
-            <string>The user interface language can be set here. This setting will take effect after restarting PIVX.</string>
+            <string>The user interface language can be set here. This setting will take effect after restarting Bulwark.</string>
            </property>
           </widget>
          </item>

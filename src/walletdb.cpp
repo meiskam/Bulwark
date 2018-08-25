@@ -435,7 +435,7 @@ bool ReadKeyValue(CWallet* pwallet, CDataStream& ssKey, CDataStream& ssValue, CW
             ssValue >> wtx;
             CValidationState state;
             // false because there is no reason to go through the zerocoin checks for our own wallet
-            if (!(CheckTransaction(wtx, false, state) && (wtx.GetHash() == hash) && state.IsValid()))
+            if (!(CheckTransaction(wtx, false, false, state) && (wtx.GetHash() == hash) && state.IsValid()))
                 return false;
 
             // Undo serialize changes in 31600
@@ -483,17 +483,17 @@ bool ReadKeyValue(CWallet* pwallet, CDataStream& ssKey, CDataStream& ssValue, CW
             // Watch-only addresses have no birthday information for now,
             // so set the wallet birthday to the beginning of time.
             pwallet->nTimeFirstKey = 1;
-	} else if (strType == "multisig") {
-		CScript script;
-		ssKey >> script;
-		char fYes;
-		ssValue >> fYes;
-		if (fYes == '1')
-			pwallet->LoadMultiSig(script);
-		
-		// MultiSig addresses have no birthday information for now,
-		// so set the wallet birthday to the beginning of time.
-		pwallet->nTimeFirstKey = 1;
+        } else if (strType == "multisig") {
+            CScript script;
+            ssKey >> script;
+            char fYes;
+            ssValue >> fYes;
+            if (fYes == '1')
+                pwallet->LoadMultiSig(script);
+
+            // MultiSig addresses have no birthday information for now,
+            // so set the wallet birthday to the beginning of time.
+            pwallet->nTimeFirstKey = 1;
         } else if (strType == "key" || strType == "wkey") {
             CPubKey vchPubKey;
             ssKey >> vchPubKey;
@@ -1184,12 +1184,12 @@ std::list<CZerocoinMint> CWalletDB::ListMintedCoins(bool fUnusedOnly, bool fMatu
                 int nMintsAdded = 0;
                 while(pindex->nHeight < chainActive.Height() - 30) { // 30 just to make sure that its at least 2 checkpoints from the top block
                     nMintsAdded += count(pindex->vMintDenominationsInBlock.begin(), pindex->vMintDenominationsInBlock.end(), mint.GetDenomination());
-                    if(nMintsAdded >= 1)
+                    if(nMintsAdded >= Params().Zerocoin_RequiredAccumulation())
                         break;
                     pindex = chainActive[pindex->nHeight + 1];
                 }
 
-                if(nMintsAdded < 1)
+                if(nMintsAdded < Params().Zerocoin_RequiredAccumulation())
                     continue;
             }
         }

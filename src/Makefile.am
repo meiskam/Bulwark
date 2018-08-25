@@ -1,6 +1,14 @@
-DIST_SUBDIRS = secp256k1
+DIST_SUBDIRS = secp256k1 univalue
 AM_LDFLAGS = $(PTHREAD_CFLAGS) $(LIBTOOL_LDFLAGS)
 
+if EMBEDDED_UNIVALUE
+LIBUNIVALUE = univalue/libunivalue.la
+
+$(LIBUNIVALUE): $(wildcard univalue/lib/*) $(wildcard univalue/include/*)
+	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C $(@D) $(@F)
+else
+LIBUNIVALUE = $(UNIVALUE_LIBS)
+endif
 
 #if EMBEDDED_LEVELDB
 LEVELDB_CPPFLAGS += -I$(srcdir)/leveldb/include
@@ -21,6 +29,7 @@ BITCOIN_CONFIG_INCLUDES=-I$(builddir)/config
 BITCOIN_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
 
 BITCOIN_INCLUDES += -I$(srcdir)/secp256k1/include
+BITCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
 
 LIBBITCOIN_SERVER=libbitcoin_server.a
 LIBBITCOIN_WALLET=libbitcoin_wallet.a
@@ -28,7 +37,6 @@ LIBBITCOIN_COMMON=libbitcoin_common.a
 LIBBITCOIN_CLI=libbitcoin_cli.a
 LIBBITCOIN_UTIL=libbitcoin_util.a
 LIBBITCOIN_CRYPTO=crypto/libbitcoin_crypto.a
-LIBBITCOIN_UNIVALUE=univalue/libbitcoin_univalue.a
 LIBBITCOIN_ZEROCOIN=libzerocoin/libbitcoin_zerocoin.a
 LIBBITCOINQT=qt/libbitcoinqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
@@ -42,7 +50,6 @@ EXTRA_LIBRARIES = \
   crypto/libbitcoin_crypto.a \
   libbitcoin_util.a \
   libbitcoin_common.a \
-  univalue/libbitcoin_univalue.a \
   libzerocoin/libbitcoin_zerocoin.a \
   libbitcoin_server.a \
   libbitcoin_cli.a
@@ -77,6 +84,8 @@ endif
 # bulwark core #
 BITCOIN_CORE_H = \
   activemasternode.h \
+  accumulators.h \
+  accumulatormap.h \
   addrman.h \
   alert.h \
   allocators.h \
@@ -169,19 +178,7 @@ BITCOIN_CORE_H = \
   zmq/zmqconfig.h \
   zmq/zmqnotificationinterface.h \
   zmq/zmqpublishnotifier.h \
-  accumulators.h \
   compat/sanity.h
-
-JSON_H = \
-  json/json_spirit.h \
-  json/json_spirit_error_position.h \
-  json/json_spirit_reader.h \
-  json/json_spirit_reader_template.h \
-  json/json_spirit_stream_reader.h \
-  json/json_spirit_utils.h \
-  json/json_spirit_value.h \
-  json/json_spirit_writer.h \
-  json/json_spirit_writer_template.h
 
 obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
@@ -219,7 +216,6 @@ libbitcoin_server_a_SOURCES = \
   txdb.cpp \
   txmempool.cpp \
   validationinterface.cpp \
-  $(JSON_H) \
   $(BITCOIN_CORE_H)
 
 if ENABLE_ZMQ
@@ -331,6 +327,7 @@ univalue_libbitcoin_univalue_a_SOURCES = \
 libbitcoin_common_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_common_a_SOURCES = \
   accumulators.cpp \
+  accumulatormap.cpp \
   allocators.cpp \
   amount.cpp \
   base58.cpp \
@@ -358,7 +355,7 @@ libbitcoin_common_a_SOURCES = \
   script/script_error.cpp \
   spork.cpp \
   sporkdb.cpp \
-$(BITCOIN_CORE_H)
+  $(BITCOIN_CORE_H)
 
 # util: shared between all executables.
 # This library *must* be included to make sure that the glibc
@@ -399,7 +396,7 @@ nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 bulwarkd_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_UNIVALUE) \
+  $(LIBUNIVALUE) \
   $(LIBBITCOIN_ZEROCOIN) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_CRYPTO) \
@@ -429,6 +426,7 @@ bulwarkd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 # bulwark-cli binary #
 bulwark_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
+  $(LIBUNIVALUE) \
   $(LIBBITCOIN_UTIL) \
   $(BOOST_LIBS) \
   $(SSL_LIBS) \
@@ -442,7 +440,7 @@ bulwark_cli_CPPFLAGS = $(BITCOIN_INCLUDES)
 
 # bulwark-tx binary #
 bulwark_tx_LDADD = \
-  $(LIBBITCOIN_UNIVALUE) \
+  $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_ZEROCOIN) \
   $(LIBBITCOIN_UTIL) \
@@ -511,6 +509,7 @@ EXTRA_DIST = leveldb
 clean-local:
 	-$(MAKE) -C leveldb clean
 	-$(MAKE) -C secp256k1 clean
+	-$(MAKE) -C univalue clean
 	rm -f leveldb/*/*.gcno leveldb/helpers/memenv/*.gcno
 	-rm -f config.h
 

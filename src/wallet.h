@@ -86,23 +86,24 @@ enum AvailableCoinsType {
     STAKABLE_COINS = 6                          // UTXO's that are valid for staking
 };
 
-// Possible states for zPIV send
+// Possible states for zBWK send
 enum ZerocoinSpendStatus {
-    ZPIV_SPEND_OKAY = 0,                            // No error
-    ZPIV_SPEND_ERROR = 1,                           // Unspecified class of errors, more details are (hopefully) in the returning text
-    ZPIV_WALLET_LOCKED = 2,                         // Wallet was locked
-    ZPIV_COMMIT_FAILED = 3,                         // Commit failed, reset status
-    ZPIV_ERASE_SPENDS_FAILED = 4,                   // Erasing spends during reset failed
-    ZPIV_ERASE_NEW_MINTS_FAILED = 5,                // Erasing new mints during reset failed
-    ZPIV_TRX_FUNDS_PROBLEMS = 6,                    // Everything related to available funds
-    ZPIV_TRX_CREATE = 7,                            // Everything related to create the transaction
-    ZPIV_TRX_CHANGE = 8,                            // Everything related to transaction change
-    ZPIV_TXMINT_GENERAL = 9,                        // General errors in MintToTxIn
-    ZPIV_INVALID_COIN = 10,                         // Selected mint coin is not valid
-    ZPIV_FAILED_ACCUMULATOR_INITIALIZATION = 11,    // Failed to initialize witness
-    ZPIV_INVALID_WITNESS = 12,                      // Spend coin transaction did not verify
-    ZPIV_BAD_SERIALIZATION = 13,                    // Transaction verification failed
-    ZPIV_SPENT_USED_ZPIV = 14                       // Coin has already been spend
+    ZBWK_SPEND_OKAY = 0,                            // No error
+    ZBWK_SPEND_ERROR = 1,                           // Unspecified class of errors, more details are (hopefully) in the returning text
+    ZBWK_WALLET_LOCKED = 2,                         // Wallet was locked
+    ZBWK_COMMIT_FAILED = 3,                         // Commit failed, reset status
+    ZBWK_ERASE_SPENDS_FAILED = 4,                   // Erasing spends during reset failed
+    ZBWK_ERASE_NEW_MINTS_FAILED = 5,                // Erasing new mints during reset failed
+    ZBWK_TRX_FUNDS_PROBLEMS = 6,                    // Everything related to available funds
+    ZBWK_TRX_CREATE = 7,                            // Everything related to create the transaction
+    ZBWK_TRX_CHANGE = 8,                            // Everything related to transaction change
+    ZBWK_TXMINT_GENERAL = 9,                        // General errors in MintToTxIn
+    ZBWK_INVALID_COIN = 10,                         // Selected mint coin is not valid
+    ZBWK_FAILED_ACCUMULATOR_INITIALIZATION = 11,    // Failed to initialize witness
+    ZBWK_INVALID_WITNESS = 12,                      // Spend coin transaction did not verify
+    ZBWK_BAD_SERIALIZATION = 13,                    // Transaction verification failed
+    ZBWK_SPENT_USED_ZBWK = 14,                      // Coin has already been spend
+    ZBWK_TX_TOO_LARGE = 15                          // The transaction is larger than the max tx size
 };
 
 struct CompactTallyItem {
@@ -153,7 +154,7 @@ public:
     StringMap destdata;
 };
 
-/** 
+/**
  * A CWallet is an extension of a keystore, which also maintains a set of transactions and balances,
  * and provides the ability to create new transactions.
  */
@@ -208,6 +209,7 @@ public:
     std::string ResetMintZerocoin(bool fExtendedSearch);
     std::string ResetSpentZerocoin();
     void ReconsiderZerocoins(std::list<CZerocoinMint>& listMintsRestored);
+    void ZBWKBackupWallet();
 
     /** Zerocin entry changed.
     * @note called with lock cs_wallet held.
@@ -225,6 +227,7 @@ public:
     bool fFileBacked;
     bool fWalletUnlockAnonymizeOnly;
     std::string strWalletFile;
+    bool fBackupMints;
 
     std::set<int64_t> setKeyPool;
     std::map<CKeyID, CKeyMetadata> mapKeyMetadata;
@@ -282,6 +285,7 @@ public:
         nLastResend = 0;
         nTimeFirstKey = 0;
         fWalletUnlockAnonymizeOnly = false;
+        fBackupMints = false;
 
         // Stake Settings
         nHashDrift = 45;
@@ -303,9 +307,19 @@ public:
         nAutoCombineThreshold = 0;
     }
 
+    int getZeromintPercentage()
+    {
+        return nZeromintPercentage;
+    }
+
     bool isZeromintEnabled()
     {
         return fEnableZeromint;
+    }
+
+    void setZBWKAutoBackups(bool fEnabled)
+    {
+        fBackupMints = fEnabled;
     }
     
     bool isMultiSendEnabled()
@@ -412,7 +426,7 @@ public:
 
     void GetKeyBirthTimes(std::map<CKeyID, int64_t>& mapKeyBirth) const;
 
-    /** 
+    /**
      * Increment the next transaction order id
      * @return next transaction order id
      */
@@ -437,7 +451,10 @@ public:
     void ReacceptWalletTransactions();
     void ResendWalletTransactions();
     CAmount GetBalance() const;
-    CAmount GetZerocoinBalance() const;
+    CAmount GetZerocoinBalance(bool fMatureOnly) const;
+    CAmount GetUnconfirmedZerocoinBalance() const;
+    CAmount GetImmatureZerocoinBalance() const;
+    CAmount GetLockedCoins() const;
     CAmount GetUnlockedCoins() const;
     std::map<libzerocoin::CoinDenomination, CAmount> GetMyZerocoinDistribution() const;
     CAmount GetUnconfirmedBalance() const;
@@ -610,13 +627,13 @@ public:
     //! Get wallet transactions that conflict with given transaction (spend same outputs)
     std::set<uint256> GetConflicts(const uint256& txid) const;
 
-    /** 
+    /**
      * Address book entry changed.
      * @note called with lock cs_wallet held.
      */
     boost::signals2::signal<void(CWallet* wallet, const CTxDestination& address, const std::string& label, bool isMine, const std::string& purpose, ChangeType status)> NotifyAddressBookChanged;
 
-    /** 
+    /**
      * Wallet transaction added, removed or updated.
      * @note called with lock cs_wallet held.
      */
@@ -754,7 +771,7 @@ public:
     bool IsTransactionLockTimedOut() const;
 };
 
-/** 
+/**
  * A transaction with a bunch of additional info that only the owner cares about.
  * It includes any unrecorded transactions needed to link it back to the block chain.
  */
@@ -1117,6 +1134,41 @@ public:
         return nCredit;
     }
 
+        // Return sum of unlocked coins
+    CAmount GetLockedCredit() const
+    {
+        if (pwallet == 0)
+            return 0;
+
+        // Must wait until coinbase is safely deep enough in the chain before valuing it
+        if (IsCoinBase() && GetBlocksToMaturity() > 0)
+            return 0;
+
+        CAmount nCredit = 0;
+        uint256 hashTx = GetHash();
+        for (unsigned int i = 0; i < vout.size(); i++) {
+            const CTxOut& txout = vout[i];
+
+            // Skip spent coins
+            if (pwallet->IsSpent(hashTx, i)) continue;
+
+            // Add locked coins
+            if (pwallet->IsLockedCoin(hashTx, i)) {
+                nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
+            }
+
+            // Add masternode collaterals which are handled likc locked coins
+            if (fMasterNode && vout[i].nValue == 10000 * COIN) {
+                nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
+            }
+
+            if (!MoneyRange(nCredit))
+                throw std::runtime_error("CWalletTx::GetLockedCredit() : value out of range");
+        }
+
+        return nCredit;
+    }
+
     CAmount GetDenominatedCredit(bool unconfirmed, bool fUseCache = true) const
     {
         if (pwallet == 0)
@@ -1327,7 +1379,7 @@ public:
 };
 
 
-/** 
+/**
  * Account information.
  * Stored in wallet with key "acc"+string account name.
  */
@@ -1358,7 +1410,7 @@ public:
 };
 
 
-/** 
+/**
  * Internal transfers.
  * Database key is acentry<account><counter>.
  */

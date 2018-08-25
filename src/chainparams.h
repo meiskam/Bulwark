@@ -59,7 +59,6 @@ public:
     /** Used if GenerateBitcoins is called with a negative number of threads */
     int DefaultMinerThreads() const { return nMinerThreads; }
     const CBlock& GenesisBlock() const { return genesis; }
-    bool RequireRPCPassword() const { return fRequireRPCPassword; }
     /** Make miner wait to have peers to avoid wasting work */
     bool MiningRequiresPeers() const { return fMiningRequiresPeers; }
     /** Headers first syncing is disabled */
@@ -81,7 +80,6 @@ public:
     /** Slow Start, Ramp up linearly to block **/
     int RAMP_TO_BLOCK() const { return nRampToBlock; }
     int COINBASE_MATURITY() const { return nMaturity; }
-    int ModifierUpgradeBlock() const { return nModifierUpdateBlock; }
     CAmount MaxMoneyOut() const { return nMaxMoneyOut; }
 
     /** The masternode count that we will allow the see-saw reward payments to be off by */
@@ -97,9 +95,7 @@ public:
     const std::vector<CAddress>& FixedSeeds() const { return vFixedSeeds; }
     virtual const Checkpoints::CCheckpointData& Checkpoints() const = 0;
     int PoolMaxTransactions() const { return nPoolMaxTransactions; }
-    std::string SporkKeyOld() const { return strSporkKeyOld; }
     std::string SporkKey() const { return strSporkKey; }
-    int64_t StopDualSporkKeys() const { return nStopDualSporkKeys; }
     std::string ObfuscationPoolDummyAddress() const { return strObfuscationPoolDummyAddress; }
     int64_t StartMasternodePayments() const { return nStartMasternodePayments; }
     int64_t Budget_Fee_Confirmations() const { return nBudget_Fee_Confirmations; }
@@ -111,8 +107,20 @@ public:
     int Zerocoin_MaxSpendsPerTransaction() const { return nMaxZerocoinSpendsPerTransaction; }
     CAmount Zerocoin_MintFee() const { return nMinZerocoinMintFee; }
     int Zerocoin_MintRequiredConfirmations() const { return nMintRequiredConfirmations; }
+    int Zerocoin_RequiredAccumulation() const { return nRequiredAccumulation; }
     int Zerocoin_DefaultSpendSecurity() const { return nDefaultSecurityLevel; }
     int Zerocoin_HeaderVersion() const { return nZerocoinHeaderVersion; }
+
+    /** Height or Time Based Activations **/
+    int ModifierUpgradeBlock() const { return nModifierUpdateBlock; }
+    int LAST_POW_BLOCK() const { return nLastPOWBlock; }
+    int Zerocoin_StartHeight() const { return nZerocoinStartHeight; }
+    int Zerocoin_Block_EnforceSerialRange() const { return nBlockEnforceSerialRange; }
+    int Zerocoin_Block_RecalculateAccumulators() const { return nBlockRecalculateAccumulators; }
+    int Zerocoin_Block_FirstFraudulent() const { return nBlockFirstFraudulent; }
+    int Zerocoin_Block_LastGoodCheckpoint() const { return nBlockLastGoodCheckpoint; }
+    int Zerocoin_StartTime() const { return nZerocoinStartTime; }
+    int Block_Enforce_Invalid() const { return nBlockEnforceInvalidUTXO; }
 
 protected:
     CChainParams() {}
@@ -144,7 +152,6 @@ protected:
     std::string strNetworkID;
     CBlock genesis;
     std::vector<CAddress> vFixedSeeds;
-    bool fRequireRPCPassword;
     bool fMiningRequiresPeers;
     bool fAllowMinDifficultyBlocks;
     bool fDefaultConsistencyChecks;
@@ -155,17 +162,24 @@ protected:
     bool fHeadersFirstSyncingActive;
     int nPoolMaxTransactions;
     std::string strSporkKey;
-    std::string strSporkKeyOld;
     std::string strObfuscationPoolDummyAddress;
-    int64_t nStopDualSporkKeys;
     int64_t nStartMasternodePayments;
     std::string zerocoinModulus;
     int nMaxZerocoinSpendsPerTransaction;
     CAmount nMinZerocoinMintFee;
     int nMintRequiredConfirmations;
+    int nRequiredAccumulation;
     int nDefaultSecurityLevel;
     int nZerocoinHeaderVersion;
     int64_t nBudget_Fee_Confirmations;
+    int nZerocoinStartHeight;
+    int nZerocoinStartTime;
+
+    int nBlockEnforceSerialRange;
+    int nBlockRecalculateAccumulators;
+    int nBlockFirstFraudulent;
+    int nBlockLastGoodCheckpoint;
+    int nBlockEnforceInvalidUTXO;
 };
 
 /**

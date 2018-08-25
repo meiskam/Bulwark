@@ -138,6 +138,7 @@ int64_t GetSporkValue(int nSporkID)
         if (nSporkID == SPORK_18_NEW_PROTOCOL_ENFORCEMENT_4) r = SPORK_18_NEW_PROTOCOL_ENFORCEMENT_4_DEFAULT;
         if (nSporkID == SPORK_19_POW_ROLLBACK) r = SPORK_19_POW_ROLLBACK_DEFAULT;
         if (nSporkID == SPORK_20_ENABLE_ZEROCOIN) r = SPORK_20_ENABLE_ZEROCOIN_DEFAULT;
+        if (nSporkID == SPORK_21_ZEROCOIN_MAINTENANCE_MODE) r = SPORK_21_ZEROCOIN_MAINTENANCE_MODE_DEFAULT;
 
         if (r == -1) LogPrintf("GetSpork::Unknown Spork %d\n", nSporkID);
     }
@@ -198,15 +199,13 @@ void ReprocessBlocks(int nBlocks)
     }
 }
 
-
 bool CSporkManager::CheckSignature(CSporkMessage& spork)
 {
     //note: need to investigate why this is failing
     std::string strMessage = boost::lexical_cast<std::string>(spork.nSporkID) + boost::lexical_cast<std::string>(spork.nValue) + boost::lexical_cast<std::string>(spork.nTimeSigned);
-    CPubKey pubkey(ParseHex(Params().SporkKey()));
-
+    CPubKey pubkeynew(ParseHex(Params().SporkKey()));
     std::string errorMessage = "";
-    if (!obfuScationSigner.VerifyMessage(pubkey, spork.vchSig, strMessage, errorMessage)) {
+    if (obfuScationSigner.VerifyMessage(pubkeynew, spork.vchSig, strMessage, errorMessage)) {
         return true;
     }
 
@@ -298,6 +297,7 @@ int CSporkManager::GetSporkIDByName(std::string strName)
     if (strName == "SPORK_18_NEW_PROTOCOL_ENFORCEMENT_4") return SPORK_18_NEW_PROTOCOL_ENFORCEMENT_4;
     if (strName == "SPORK_19_POW_ROLLBACK") return SPORK_19_POW_ROLLBACK;
     if (strName == "SPORK_20_ENABLE_ZEROCOIN") return SPORK_20_ENABLE_ZEROCOIN;
+    if (strName == "SPORK_21_ZEROCOIN_MAINTENANCE_MODE") return SPORK_21_ZEROCOIN_MAINTENANCE_MODE;
 
     return -1;
 }
@@ -321,6 +321,7 @@ std::string CSporkManager::GetSporkNameByID(int id)
     if (id == SPORK_18_NEW_PROTOCOL_ENFORCEMENT_4) return "SPORK_18_NEW_PROTOCOL_ENFORCEMENT_4";
     if (id == SPORK_19_POW_ROLLBACK) return "SPORK_19_POW_ROLLBACK";
     if (id == SPORK_20_ENABLE_ZEROCOIN) return "SPORK_20_ENABLE_ZEROCOIN";
+    if (id == SPORK_21_ZEROCOIN_MAINTENANCE_MODE) return "SPORK_21_ZEROCOIN_MAINTENANCE_MODE";
 
     return "Unknown";
 }

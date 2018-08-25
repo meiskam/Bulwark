@@ -1,8 +1,8 @@
 // Copyright (c) 2017 The PIVX developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef PIVX_ZEROCOIN_H
-#define PIVX_ZEROCOIN_H
+#ifndef BWK_ZEROCOIN_H
+#define BWK_ZEROCOIN_H
 
 #include <amount.h>
 #include <limits.h>
@@ -177,14 +177,16 @@ class CZerocoinSpendReceipt
 private:
     std::string strStatusMessage;
     int nStatus;
+    int nNeededSpends;
     std::vector<CZerocoinSpend> vSpends;
 
 public:
     void AddSpend(const CZerocoinSpend& spend);
     std::vector<CZerocoinSpend> GetSpends();
-    void SetStatus(std::string strStatus, int nStatus);
+    void SetStatus(std::string strStatus, int nStatus, int nNeededSpends = 0);
     std::string GetStatusMessage();
     int GetStatus();
+    int GetNeededSpends();
 };
 
-#endif //PIVX_ZEROCOIN_H
+#endif //BWK_ZEROCOIN_H

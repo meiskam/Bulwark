@@ -136,7 +136,34 @@ public:
         nEnforceBlockUpgradeMajority = 750;
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
+        nMinerThreads = 0;
+        nTargetTimespan = 1 * 60; // PIVX: 1 day
+        nTargetSpacing = 1 * 60;  // PIVX: 1 minute
+        nMaturity = 100;
+        nMasternodeCountDrift = 20;
+        nMaxMoneyOut = 21000000 * COIN;
 
+        /** Height or Time Based Activations **/
+        nLastPOWBlock = 259200;
+        nModifierUpdateBlock = 615800;
+        nZerocoinStartHeight = 863787;
+        nZerocoinStartTime = 1508214600; // October 17, 2017 4:30:00 AM
+        nBlockEnforceSerialRange = 895400; //Enforce serial range starting this block
+        nBlockRecalculateAccumulators = 908000; //Trigger a recalculation of accumulators
+        nBlockFirstFraudulent = 891737; //First block that bad serials emerged
+        nBlockLastGoodCheckpoint = 891730; //Last valid accumulator checkpoint
+        nBlockEnforceInvalidUTXO = 902850; //Start enforcing the invalid UTXO's
+
+        /**
+         * Build the genesis block. Note that the output of the genesis coinbase cannot
+         * be spent as it did not originally exist in the database.
+         *
+         * CBlock(hash=00000ffd590b14, ver=1, hashPrevBlock=00000000000000, hashMerkleRoot=e0028e, nTime=1390095618, nBits=1e0ffff0, nNonce=28917698, vtx=1)
+         *   CTransaction(hash=e0028e, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+         *     CTxIn(COutPoint(000000, -1), coinbase 04ffff001d01044c5957697265642030392f4a616e2f3230313420546865204772616e64204578706572696d656e7420476f6573204c6976653a204f76657273746f636b2e636f6d204973204e6f7720416363657074696e6720426974636f696e73)
+         *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
+         *   vMerkleTree: e0028e
+         */
         const char* pszTimestamp = "November 30 2017 - Niger Approves Armed U.S. Drone Flights, Expanding Pentagon’s Role in Africa";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
@@ -203,6 +230,7 @@ public:
         nMaxZerocoinSpendsPerTransaction = 7; // Assume about 20kb each
         nMinZerocoinMintFee = 1 * CENT; //high fee required for zerocoin mints
         nMintRequiredConfirmations = 20; //the maximum amount of confirmations until accumulated in 19
+        nRequiredAccumulation = 1;
         nDefaultSecurityLevel = 100; //full security level for accumulators
         nZerocoinHeaderVersion = 4; //Block headers must be this version once zerocoin is active
         nBudget_Fee_Confirmations = 6; // Number of confirmations for the finalization fee
@@ -246,6 +274,21 @@ public:
         nEnforceBlockUpgradeMajority = 51;
         nRejectBlockOutdatedMajority = 75;
         nToCheckBlockUpgradeMajority = 100;
+        nMinerThreads = 0;
+        nTargetTimespan = 1 * 60; // PIVX: 1 day
+        nTargetSpacing = 1 * 60;  // PIVX: 1 minute
+        nLastPOWBlock = 200;
+        nMaturity = 15;
+        nMasternodeCountDrift = 4;
+        nModifierUpdateBlock = 51197; //approx Mon, 17 Apr 2017 04:00:00 GMT
+        nMaxMoneyOut = 43199500 * COIN;
+        nZerocoinStartHeight = 201576;
+        nZerocoinStartTime = 1501776000;
+        nBlockEnforceSerialRange = 1; //Enforce serial range starting this block
+        nBlockRecalculateAccumulators = 9908000; //Trigger a recalculation of accumulators
+        nBlockFirstFraudulent = 9891737; //First block that bad serials emerged
+        nBlockLastGoodCheckpoint = 9891730; //Last valid accumulator checkpoint
+        nBlockEnforceInvalidUTXO = 9902850; //Start enforcing the invalid UTXO's
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
         genesis.nTime = 1533510450;
@@ -285,6 +328,8 @@ public:
         strSporkKey = "04af2f9be75132357063236a59f9bf71ccb9ef8373c33146714ff4f6b1a3a2b97933c633f805c7b598ba023088bf13474e735b694d4959432bb58053910341bf66";
         strObfuscationPoolDummyAddress = "TUQ57Fbh1crybrDhV6X9SDH95H4oSq4v6p";
         nStartMasternodePayments = 1420837558; //Fri, 09 Jan 2015 21:05:58 GMT
+        nBudget_Fee_Confirmations = 3; // Number of confirmations for the finalization fee. We have to make this very short
+                                       // here because we only have a 8 block finalization window on testnet
     }
     const Checkpoints::CCheckpointData& Checkpoints() const
     {
@@ -351,7 +396,6 @@ public:
         vFixedSeeds.clear(); //! Unit test mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Unit test mode doesn't have any DNS seeds.
 
-        fRequireRPCPassword = false;
         fMiningRequiresPeers = false;
         fDefaultConsistencyChecks = true;
         fAllowMinDifficultyBlocks = false;

@@ -15,6 +15,7 @@ env:
   global:
   - MAKEJOBS=-j5
   - RUN_TESTS=false
+  - CHECK_LOGPRINT=0
   - BOOST_TEST_RANDOM=1$TRAVIS_BUILD_ID
   - CCACHE_SIZE=400M
   - CCACHE_TEMPDIR=/tmp/.ccache-temp
@@ -25,7 +26,7 @@ env:
   - WINEDEBUG=fixme-all
   matrix:
   - HOST=arm-linux-gnueabihf PPA="ppa:bitcoin/bitcoin" PACKAGES="g++-arm-linux-gnueabihf libdb4.8-dev libdb4.8++-dev"
-    CHECK_DOC=1 GOAL="install" BITCOIN_CONFIG="--enable-glibc-back-compat --enable-reduce-exports"
+    CHECK_DOC=1 CHECK_LOGPRINT=1 GOAL="install" BITCOIN_CONFIG="--enable-glibc-back-compat --enable-reduce-exports"
   - HOST=i686-pc-linux-gnu PPA="ppa:bitcoin/bitcoin" PACKAGES="g++-multilib bc python3-zmq libdb4.8-dev libdb4.8++-dev"
     RUN_TESTS=false GOAL="install" BITCOIN_CONFIG="--enable-zmq --enable-glibc-back-compat
     --enable-reduce-exports LDFLAGS=-static-libstdc++" PYZMQ=true
@@ -54,6 +55,7 @@ install:
 before_script:
 - unset CC; unset CXX
 - unset DISPLAY
+- if [ "$CHECK_LOGPRINT" = 1 ]; then contrib/devtools/logprint-scanner.py; fi
 - mkdir -p depends/SDKs depends/sdk-sources
 - if [ -n "$OSX_SDK" -a ! -f depends/sdk-sources/MacOSX${OSX_SDK}.sdk.tar.xz ]; then
   curl --location --fail $SDK_URL/MacOSX${OSX_SDK}.sdk.tar.xz -o depends/sdk-sources/MacOSX${OSX_SDK}.sdk.tar.xz;

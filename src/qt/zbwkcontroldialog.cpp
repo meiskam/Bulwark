@@ -67,6 +67,7 @@ void ZBwkControlDialog::updateList()
     this->listMints = list;
 
     //populate rows with mint info
+    int nBestHeight = chainActive.Height();
     for(const CZerocoinMint mint : listMints) {
         // assign this mint to the correct denomination in the tree view
         libzerocoin::CoinDenomination denom = mint.GetDenomination();
@@ -81,23 +82,30 @@ void ZBwkControlDialog::updateList()
         itemMint->setText(COLUMN_DENOMINATION, QString::number(mint.GetDenomination()));
         itemMint->setText(COLUMN_PUBCOIN, QString::fromStdString(strPubCoin));
 
-        int nConfirmations = (mint.GetHeight() ? chainActive.Height() - mint.GetHeight() : 0);
+        int nConfirmations = (mint.GetHeight() ? nBestHeight - mint.GetHeight() : 0);
+        if (nConfirmations < 0) {
+            // Sanity check
+            nConfirmations = 0;
+        }
+
         itemMint->setText(COLUMN_CONFIRMATIONS, QString::number(nConfirmations));
 
         // check to make sure there are at least 3 other mints added to the accumulators after this
         int nMintsAdded = 0;
-        if(mint.GetHeight() != 0 && mint.GetHeight() < chainActive.Height() - 2) {
+        if(mint.GetHeight() != 0 && mint.GetHeight() < nBestHeight - 2) {
             CBlockIndex *pindex = chainActive[mint.GetHeight() + 1];
-            while(pindex->nHeight < chainActive.Height() - 30) { // 30 just to make sure that its at least 2 checkpoints from the top block
+
+            int nHeight2CheckpointsDeep = nBestHeight - (nBestHeight % 10) - 20;
+            while (pindex->nHeight < nHeight2CheckpointsDeep) { // 20 just to make sure that its at least 2 checkpoints from the top block
                 nMintsAdded += count(pindex->vMintDenominationsInBlock.begin(), pindex->vMintDenominationsInBlock.end(), mint.GetDenomination());
-                if(nMintsAdded >= 1)
+                if(nMintsAdded >= Params().Zerocoin_RequiredAccumulation())
                     break;
                 pindex = chainActive[pindex->nHeight + 1];
             }
         }
 
         // disable selecting this mint if it is not spendable - also display a reason why
-        bool fSpendable = nMintsAdded >= 1 && nConfirmations >= Params().Zerocoin_MintRequiredConfirmations();
+        bool fSpendable = nMintsAdded >= Params().Zerocoin_RequiredAccumulation() && nConfirmations >= Params().Zerocoin_MintRequiredConfirmations();
         if(!fSpendable) {
             itemMint->setDisabled(true);
             itemMint->setCheckState(COLUMN_CHECKBOX, Qt::Unchecked);
@@ -112,7 +120,7 @@ void ZBwkControlDialog::updateList()
             if(nConfirmations < Params().Zerocoin_MintRequiredConfirmations())
                 strReason = strprintf("Needs %d more confirmations", Params().Zerocoin_MintRequiredConfirmations() - nConfirmations);
             else
-                strReason = "Needs 1 more mint added to network";
+                strReason = strprintf("Needs %d more mints added to network", Params().Zerocoin_RequiredAccumulation() - nMintsAdded);
 
             itemMint->setText(COLUMN_ISSPENDABLE, QString::fromStdString(strReason));
         } else {
@@ -127,23 +135,24 @@ void ZBwkControlDialog::updateList()
 // Update the list when a checkbox is clicked
 void ZBwkControlDialog::updateSelection(QTreeWidgetItem* item, int column)
 {
-    if (column != COLUMN_CHECKBOX)
-        return;
+    // only want updates from non top level items that are available to spend
+    if (item->parent() && column == COLUMN_CHECKBOX && !item->isDisabled()){
 
-    // see if this mint is already selected in the selection list
-    std::string strPubcoin = item->text(COLUMN_PUBCOIN).toStdString();
-    auto iter = std::find(listSelectedMints.begin(), listSelectedMints.end(), strPubcoin);
-    bool fSelected = iter != listSelectedMints.end();
+        // see if this mint is already selected in the selection list
+        std::string strPubcoin = item->text(COLUMN_PUBCOIN).toStdString();
+        auto iter = std::find(listSelectedMints.begin(), listSelectedMints.end(), strPubcoin);
+        bool fSelected = iter != listSelectedMints.end();
 
-    // set the checkbox to the proper state and add or remove the mint from the selection list
-    if (item->checkState(COLUMN_CHECKBOX) == Qt::Checked) {
-        if (fSelected) return;
-        listSelectedMints.emplace_back(strPubcoin);
-    } else {
-        if (!fSelected) return;
-        listSelectedMints.erase(iter);
+        // set the checkbox to the proper state and add or remove the mint from the selection list
+        if (item->checkState(COLUMN_CHECKBOX) == Qt::Checked) {
+            if (fSelected) return;
+            listSelectedMints.emplace_back(strPubcoin);
+        } else {
+            if (!fSelected) return;
+            listSelectedMints.erase(iter);
+        }
+        updateLabels();
     }
-    updateLabels();
 }
 
 // Update the Quantity and Amount display
