@@ -2093,9 +2093,11 @@ UniValue printMultiSend()
     ret.push_back("MultiSend Addresses to Send To:");
 
     UniValue vMS(UniValue::VOBJ);
-    for (unsigned int i = 0; i < pwalletMain->vMultiSend.size(); i++) {
-        vMS.push_back(Pair("Address " + boost::lexical_cast<std::string>(i), pwalletMain->vMultiSend[i].first));
-        vMS.push_back(Pair("Percent", pwalletMain->vMultiSend[i].second));
+    for (unsigned int j = 0; j < pwalletMain->vMultiSend.size(); j++) {
+        for (unsigned int i = 0; i < pwalletMain->vMultiSend[j].second.size(); i++) {
+            vMS.push_back(Pair("Address " + boost::lexical_cast<std::string>(i), pwalletMain->vMultiSend[1].second[i].first));
+            vMS.push_back(Pair("Percent", pwalletMain->vMultiSend[i].second[i].second));
+        }
     }
 
     ret.push_back(vMS);
@@ -2258,7 +2260,7 @@ UniValue multisend(const UniValue& params, bool fHelp)
             "The MultiSend transaction is sent when the staked coins mature (100 confirmations)\n"
             "****************************************************************\n"
             "TO CREATE OR ADD TO THE MULTISEND VECTOR:\n"
-			"multisend <Address to send from> <Bulwark Address> <percent>\n"
+            "multisend <Address to send from> <Bulwark Address> <percent>\n"
             "This will add a new address to the MultiSend vector\n"
             "Percent is a whole number 1 to 100.\n"
             "****************************************************************\n"
@@ -2275,9 +2277,9 @@ UniValue multisend(const UniValue& params, bool fHelp)
 
     //if the user is entering a new MultiSend item
     string strAddress = params[0].get_str();
-	string strSendAddress = params[1].get_str();
+    string strSendAddress = params[1].get_str();
     CBitcoinAddress address(strAddress);
-	CBitcoinAddress sendAddress(strSendAddress);
+    CBitcoinAddress sendAddress(strSendAddress);
     if (!(address.IsValid() || sendAddress.IsValid()))
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid BWK address");
     if (boost::lexical_cast<int>(params[2].get_str()) < 0)
@@ -2297,7 +2299,7 @@ UniValue multisend(const UniValue& params, bool fHelp)
         //MultiSend can only send 100% of your stake
         if (nPercent + sumMultiSend() > 100)
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Failed to add to MultiSend vector, the sum of your MultiSend is greater than 100%");
-		/*
+        /*
         for (unsigned int i = 0; i < pwalletMain->vMultiSend.size(); i++) {
             if (pwalletMain->vMultiSend[i].first == strAddress)
                 throw JSONRPCError(RPC_INVALID_PARAMETER, "Failed to add to MultiSend vector, cannot use the same address twice");
@@ -2314,7 +2316,7 @@ UniValue multisend(const UniValue& params, bool fHelp)
             if (!walletdb.WriteMultiSend(pwalletMain->vMultiSend))
                 throw JSONRPCError(RPC_DATABASE_ERROR, "walletdb WriteMultiSend failed!");
         }
-		*/
+        */
     }
     return printMultiSend();
 }

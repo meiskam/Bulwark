@@ -131,7 +131,7 @@
    <extends>QWidget</extends>
    <header>qtmaterialflatbutton.h</header>
   </customwidget>
- <customwidgets>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

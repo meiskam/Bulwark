@@ -1562,8 +1562,8 @@ bool AppInit2(boost::thread_group& threadGroup)
         }
         fVerifyingBlocks = false;
 
-        bool fEnableZBwkBackups = GetBoolArg("-backupzbwk", true);
-        pwalletMain->setZBwkAutoBackups(fEnableZBwkBackups);
+        bool fEnableZBWKBackups = GetBoolArg("-backupzbwk", true);
+        pwalletMain->setZBWKAutoBackups(fEnableZBWKBackups);
     }  // (!fDisableWallet)
 #else  // ENABLE_WALLET
     LogPrintf("No wallet compiled in!\n");

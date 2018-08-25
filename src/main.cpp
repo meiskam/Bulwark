@@ -1608,7 +1608,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
     if (GetAdjustedTime() > GetSporkValue(SPORK_21_ZEROCOIN_MAINTENANCE_MODE) && tx.ContainsZerocoins())
         return state.DoS(10, error("AcceptToMemoryPool : Zerocoin transactions are temporarily disabled for maintenance"), REJECT_INVALID, "bad-tx");
 
-    if (!CheckTransaction(tx, GetAdjustedTime() > GetSporkValue(SPORK_20_ENABLE_ZEROCOIN), state))
+    if (!CheckTransaction(tx, GetAdjustedTime() > GetSporkValue(SPORK_20_ENABLE_ZEROCOIN), true, state))
         return state.DoS(100, error("AcceptToMemoryPool: : CheckTransaction failed"), REJECT_INVALID, "bad-tx");
 
     // Coinbase is only valid in a block, not as a loose transaction
@@ -1840,7 +1840,7 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState& state, const CTransact
     if (pfMissingInputs)
         *pfMissingInputs = false;
 
-    if (!CheckTransaction(tx, GetAdjustedTime() > GetSporkValue(SPORK_20_ENABLE_ZEROCOIN), state))
+    if (!CheckTransaction(tx, GetAdjustedTime() > GetSporkValue(SPORK_20_ENABLE_ZEROCOIN), true, state))
         return error("AcceptableInputs: : CheckTransaction failed");
 
     // Coinbase is only valid in a block, not as a loose transaction
@@ -4608,8 +4608,9 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
 
     // Check transactions
     bool fZerocoinActive = block.nTime > GetSporkValue(SPORK_20_ENABLE_ZEROCOIN);
-    BOOST_FOREACH (const CTransaction& tx, block.vtx)
-        if (!CheckTransaction(tx, fZerocoinActive, state))
+    vector<CBigNum> vBlockSerials;
+    for (const CTransaction& tx : block.vtx) {
+        if (!CheckTransaction(tx, fZerocoinActive, chainActive.Height() + 1 >= Params().Zerocoin_Block_EnforceSerialRange(), state))
             return error("CheckBlock() : CheckTransaction failed");
 
         // double check that there are no double spent zBWK spends in this block

@@ -568,7 +568,7 @@ UniValue getblocktemplate(const UniValue& params, bool fHelp)
         transactions.push_back(entry);
     }
 	
-	Array coinbasetxn;
+	UniValue coinbasetxn(UniValue::VARR);
     map<uint256, int64_t> setTxIndex1;
     int j = 0;
     BOOST_FOREACH (CTransaction& tx, pblock->vtx) {//Incase if multi coinbase
@@ -579,13 +579,13 @@ UniValue getblocktemplate(const UniValue& params, bool fHelp)
 			/* if (tx.IsCoinBase())
             continue; */
 
-			Object entry;
+			UniValue entry(UniValue::VOBJ);
 
 			entry.push_back(Pair("data", EncodeHexTx(tx)));
 
 			entry.push_back(Pair("hash", txHash.GetHex()));
 
-			Array deps;
+			UniValue deps(UniValue::VARR);
 			BOOST_FOREACH (const CTxIn& in, tx.vin) {
 				if (setTxIndex.count(in.prevout.hash))
                 deps.push_back(setTxIndex[in.prevout.hash]);

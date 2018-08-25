@@ -75,7 +75,6 @@ public:
     int64_t TargetSpacing() const { return nTargetSpacing; }
     int64_t TargetSpacingSlowLaunch() const { return nTargetSpacingSlowLaunch; }
     int64_t Interval() const { return nTargetTimespan / nTargetSpacing; }
-    int LAST_POW_BLOCK() const { return nLastPOWBlock; }
     int LAST_POW_BLOCK_OLD() const { return nLastPOWBlockOld; }
     /** Slow Start, Ramp up linearly to block **/
     int RAMP_TO_BLOCK() const { return nRampToBlock; }
