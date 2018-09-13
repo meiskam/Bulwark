@@ -166,7 +166,43 @@ public:
 	    hashGenesisBlock = genesis.GetHash();
         assert(hashGenesisBlock == uint256("0x0000068e7ab8e264f6759d2d81b29e8b917c10b04db47a9a0bb3cba3fba5d574"));
 	    assert(genesis.hashMerkleRoot == uint256("0x77976d6bd593c84063ac3937525bc15e25188d96871b13d4451ffc382999f64f"));
+//----------
+        const char* pszTimestamp2 = "Sept 13 2018 - Hurricane Florence Is a Formidable Test for FEMA and Trump";
+        CMutableTransaction txNew;
+        txNew.vin.resize(1);
+        txNew.vout.resize(4);
+        txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp2, (const unsigned char*)pszTimestamp2 + strlen(pszTimestamp2));
+        txNew.vout[0].nValue = 500000 * COIN;
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("04243e8da79e117dba99d89a2da6ed761af43175227d19caaffea72398514962af9701478a69410b8158e190ae36d50a1f7325eba3df9559ad345db0cb72bfe2e2") << OP_CHECKSIG;
+        txNew.vout[0].nValue = 5000 * COIN;
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("04243e8da79e117dba99d89a2da6ed761af43175227d19caaffea72398514962af9701478a69410b8158e190ae36d50a1f7325eba3df9559ad345db0cb72bfe2e2") << OP_CHECKSIG;
+        forkGenesis.vtx.push_back(txNew);
+        forkGenesis.hashPrevBlock = uint256("0xca70695fb360fbc0f01500418c1499c1a761b8321ef80ef5c33003f6ffa6aeec")); // height = 261299
+        forkGenesis.hashMerkleRoot = forkGenesis.BuildMerkleTree();
+        forkGenesis.nVersion = 1;
+        forkGenesis.nTime = 1536883140;
+        forkGenesis.nBits = bnProofOfWorkLimit.GetCompact();
+        forkGenesis.nNonce = 0;
 
+
+hashForkGenesisBlock = uint256("0x01")
+if (true && forkGenesis.GetHash() != hashForkGenesisBlock)
+        {
+            Logprintf("recalculating params for mainnet.\n");
+            Logprintf("old mainnet genesis nonce: %s\n", forkGenesis.nNonce.ToString().c_str());
+            Logprintf("old mainnet genesis hash:  %s\n", hashForkGenesisBlock.ToString().c_str());
+            // deliberately empty for loop finds nonce value.
+            for(forkGenesis.nNonce == 0; forkGenesis.GetHash() > bnProofOfWorkLimit; forkGenesis.nNonce++){ } 
+            Logprintf("new mainnet genesis merkle root: %s\n", forkGenesis.hashMerkleRoot.ToString().c_str());
+            Logprintf("new mainnet genesis nonce: %s\n", forkGenesis.nNonce.ToString().c_str());
+            Logprintf("new mainnet genesis hash: %s\n", forkGenesis.GetHash().ToString().c_str());
+        }
+
+
+	    hashForkGenesisBlock = forkGenesis.GetHash();
+        //assert(hashForkGenesisBlock == uint256("0x0000068e7ab8e264f6759d2d81b29e8b917c10b04db47a9a0bb3cba3fba5d574"));
+	    //assert(forkGenesis.hashMerkleRoot == uint256("0x77976d6bd593c84063ac3937525bc15e25188d96871b13d4451ffc382999f64f"));
+//------------
         vSeeds.push_back(CDNSSeedData("bwkseed.mempool.pw", "bwkseed.mempool.pw"));      // Single node address
         vSeeds.push_back(CDNSSeedData("bwkseed1.bulwarkcrypto.com", "bwkseed1.bulwarkcrypto.com"));      // Single node address
         vSeeds.push_back(CDNSSeedData("bwkseed2.bulwarkcrypto.com", "bwkseed2.bulwarkcrypto.com")); 	 // Single node address

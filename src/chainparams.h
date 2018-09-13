@@ -46,6 +46,7 @@ public:
     };
 
     const uint256& HashGenesisBlock() const { return hashGenesisBlock; }
+    const uint256& HashForkGenesisBlock() const { return hashForkGenesisBlock; }
     const MessageStartChars& MessageStart() const { return pchMessageStart; }
     const std::vector<unsigned char>& AlertKey() const { return vAlertPubKey; }
     int GetDefaultPort() const { return nDefaultPort; }
@@ -59,6 +60,7 @@ public:
     /** Used if GenerateBitcoins is called with a negative number of threads */
     int DefaultMinerThreads() const { return nMinerThreads; }
     const CBlock& GenesisBlock() const { return genesis; }
+    const CBlock& ForkGenesisBlock() const { return forkGenesis; }
     /** Make miner wait to have peers to avoid wasting work */
     bool MiningRequiresPeers() const { return fMiningRequiresPeers; }
     /** Headers first syncing is disabled */
@@ -119,6 +121,7 @@ protected:
     CChainParams() {}
 
     uint256 hashGenesisBlock;
+    uint256 hashForkGenesisBlock;
     MessageStartChars pchMessageStart;
     //! Raw pub key bytes for the broadcast alert signing key.
     std::vector<unsigned char> vAlertPubKey;
@@ -145,6 +148,7 @@ protected:
     CBaseChainParams::Network networkID;
     std::string strNetworkID;
     CBlock genesis;
+    CBlock forkGenesis;
     std::vector<CAddress> vFixedSeeds;
     bool fMiningRequiresPeers;
     bool fAllowMinDifficultyBlocks;
