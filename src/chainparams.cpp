@@ -168,16 +168,20 @@ public:
 	    assert(genesis.hashMerkleRoot == uint256("0x77976d6bd593c84063ac3937525bc15e25188d96871b13d4451ffc382999f64f"));
 //----------
         const char* pszTimestamp2 = "Sept 13 2018 - Hurricane Florence Is a Formidable Test for FEMA and Trump";
-        CMutableTransaction txNew;
-        txNew.vin.resize(1);
-        txNew.vout.resize(4);
-        txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp2, (const unsigned char*)pszTimestamp2 + strlen(pszTimestamp2));
-        txNew.vout[0].nValue = 500000 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("04243e8da79e117dba99d89a2da6ed761af43175227d19caaffea72398514962af9701478a69410b8158e190ae36d50a1f7325eba3df9559ad345db0cb72bfe2e2") << OP_CHECKSIG;
-        txNew.vout[0].nValue = 5000 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("04243e8da79e117dba99d89a2da6ed761af43175227d19caaffea72398514962af9701478a69410b8158e190ae36d50a1f7325eba3df9559ad345db0cb72bfe2e2") << OP_CHECKSIG;
-        forkGenesis.vtx.push_back(txNew);
-        forkGenesis.hashPrevBlock = uint256("0xca70695fb360fbc0f01500418c1499c1a761b8321ef80ef5c33003f6ffa6aeec")); // height = 261299
+        CMutableTransaction txNew2;
+        txNew2.vin.resize(1);
+        txNew2.vout.resize(4);
+        txNew2.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp2, (const unsigned char*)pszTimestamp2 + strlen(pszTimestamp2));
+        txNew2.vout[0].nValue = 500000 * COIN;
+        txNew2.vout[0].scriptPubKey = CScript() << ParseHex("04682f343b487dd46d2110fad7ba92d6fc055a20beab77c5d894996ae0efaa5a4ffecd77f96b462dea00250a837ba3479cc88b2fea9cf2dfeb5ef038ce5ad28309") << OP_CHECKSIG;
+        txNew2.vout[1].nValue = 5000 * COIN;
+        txNew2.vout[1].scriptPubKey = CScript() << ParseHex("04682f343b487dd46d2110fad7ba92d6fc055a20beab77c5d894996ae0efaa5a4ffecd77f96b462dea00250a837ba3479cc88b2fea9cf2dfeb5ef038ce5ad28309") << OP_CHECKSIG;
+        txNew2.vout[2].nValue = 5000 * COIN;
+        txNew2.vout[2].scriptPubKey = CScript() << ParseHex("04682f343b487dd46d2110fad7ba92d6fc055a20beab77c5d894996ae0efaa5a4ffecd77f96b462dea00250a837ba3479cc88b2fea9cf2dfeb5ef038ce5ad28309") << OP_CHECKSIG;
+        txNew2.vout[3].nValue = 5000 * COIN;
+        txNew2.vout[3].scriptPubKey = CScript() << ParseHex("04682f343b487dd46d2110fad7ba92d6fc055a20beab77c5d894996ae0efaa5a4ffecd77f96b462dea00250a837ba3479cc88b2fea9cf2dfeb5ef038ce5ad28309") << OP_CHECKSIG;
+        forkGenesis.vtx.push_back(txNew2);
+        forkGenesis.hashPrevBlock = uint256("0xca70695fb360fbc0f01500418c1499c1a761b8321ef80ef5c33003f6ffa6aeec"); // height = 261299
         forkGenesis.hashMerkleRoot = forkGenesis.BuildMerkleTree();
         forkGenesis.nVersion = 1;
         forkGenesis.nTime = 1536883140;
@@ -185,17 +189,17 @@ public:
         forkGenesis.nNonce = 0;
 
 
-hashForkGenesisBlock = uint256("0x01")
+hashForkGenesisBlock = uint256("0x01");
 if (true && forkGenesis.GetHash() != hashForkGenesisBlock)
         {
-            Logprintf("recalculating params for mainnet.\n");
-            Logprintf("old mainnet genesis nonce: %s\n", forkGenesis.nNonce.ToString().c_str());
-            Logprintf("old mainnet genesis hash:  %s\n", hashForkGenesisBlock.ToString().c_str());
+            printf("recalculating params for mainnet.\n");
+            printf("old mainnet genesis nonce: %u\n", forkGenesis.nNonce);
+            printf("old mainnet genesis hash:  %s\n", hashForkGenesisBlock.ToString().c_str());
             // deliberately empty for loop finds nonce value.
             for(forkGenesis.nNonce == 0; forkGenesis.GetHash() > bnProofOfWorkLimit; forkGenesis.nNonce++){ } 
-            Logprintf("new mainnet genesis merkle root: %s\n", forkGenesis.hashMerkleRoot.ToString().c_str());
-            Logprintf("new mainnet genesis nonce: %s\n", forkGenesis.nNonce.ToString().c_str());
-            Logprintf("new mainnet genesis hash: %s\n", forkGenesis.GetHash().ToString().c_str());
+            printf("new mainnet genesis merkle root: %06lu\n", forkGenesis.hashMerkleRoot.ToString().c_str());
+            printf("new mainnet genesis nonce: %u\n", forkGenesis.nNonce);
+            printf("new mainnet genesis hash: %s\n", forkGenesis.GetHash().ToString().c_str());
         }
 
 
