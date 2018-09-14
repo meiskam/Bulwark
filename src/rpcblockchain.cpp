@@ -7,6 +7,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "base58.h"
+#include "chainparams.h" //XXX
 #include "checkpoints.h"
 #include "clientversion.h"
 #include "main.h"
@@ -126,6 +127,14 @@ UniValue getblockcount(const UniValue& params, bool fHelp)
             "n    (numeric) The current block count\n"
             "\nExamples:\n" +
             HelpExampleCli("getblockcount", "") + HelpExampleRpc("getblockcount", ""));
+//XXX
+CBlock block = ForkGenesisBlock();
+CValidationState state;
+submitblock_StateCatcher sc(block.GetHash());
+RegisterValidationInterface(&sc);
+bool fAccepted = ProcessNewBlock(state, NULL, &block);
+if (fAccepted) return 1;
+return 2;
 
     return chainActive.Height();
 }
