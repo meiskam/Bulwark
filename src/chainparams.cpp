@@ -191,7 +191,7 @@ public:
 
 
 hashForkGenesisBlock = uint256("0x000000d44d2e5325c4cc8f629677f1087fce33eb29633b3d12c32e2dd41c3d78");
-if (true && forkGenesis.GetHash() != hashForkGenesisBlock)
+if (false && forkGenesis.GetHash() != hashForkGenesisBlock)
         {
             printf("recalculating params for mainnet.\n");
             printf("old mainnet genesis nonce: %u\n", forkGenesis.nNonce);
@@ -203,6 +203,9 @@ if (true && forkGenesis.GetHash() != hashForkGenesisBlock)
             printf("new mainnet genesis hash: %s\n", forkGenesis.GetHash().ToString().c_str());
         }
 
+//new mainnet genesis merkle root: 76d3b59f1ec8be00fdceacc09af5ba82bb283520c7c6a87eb3b00b8ea946a4a8
+//new mainnet genesis nonce: 853759
+//new mainnet genesis hash: 000000d44d2e5325c4cc8f629677f1087fce33eb29633b3d12c32e2dd41c3d78
 
 	    hashForkGenesisBlock = forkGenesis.GetHash();
         //assert(hashForkGenesisBlock == uint256("0x0000068e7ab8e264f6759d2d81b29e8b917c10b04db47a9a0bb3cba3fba5d574"));
