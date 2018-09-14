@@ -128,10 +128,10 @@ UniValue getblockcount(const UniValue& params, bool fHelp)
             "\nExamples:\n" +
             HelpExampleCli("getblockcount", "") + HelpExampleRpc("getblockcount", ""));
 //XXX
-CBlock block = ForkGenesisBlock();
+CBlock block = CChainParams.ForkGenesisBlock();
 CValidationState state;
-submitblock_StateCatcher sc(block.GetHash());
-RegisterValidationInterface(&sc);
+//submitblock_StateCatcher sc(block.GetHash());
+//RegisterValidationInterface(&sc);
 bool fAccepted = ProcessNewBlock(state, NULL, &block);
 if (fAccepted) return 1;
 return 2;
