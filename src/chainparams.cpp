@@ -66,7 +66,8 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
         (59200, uint256("000000000000a4d9ec8b2fa71028b1def77606b015622949a997d92503bbcc37"))
         (59400, uint256("000000000000880f972b364e7dc7c67093109e862b23ffecf2d3f2f87c24d0cf"))
         (95600, uint256("0000000000084e401f85d9f393e2d61428352f20bbb51ccfe2483e49423b89ce"))
-        (173559, uint256("0000000000002b887e1d437a7a41dc628f96f45c1cc63f13e9fb518ca1ae3883"));
+        (173559, uint256("0000000000002b887e1d437a7a41dc628f96f45c1cc63f13e9fb518ca1ae3883"))
+        (261300, uint256("000000d44d2e5325c4cc8f629677f1087fce33eb29633b3d12c32e2dd41c3d78"));
  
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
@@ -186,10 +187,10 @@ public:
         forkGenesis.nVersion = 1;
         forkGenesis.nTime = 1536883140;
         forkGenesis.nBits = bnProofOfWorkLimit.GetCompact();
-        forkGenesis.nNonce = 0;
+        forkGenesis.nNonce = 853759;
 
 
-hashForkGenesisBlock = uint256("0x01");
+hashForkGenesisBlock = uint256("0x000000d44d2e5325c4cc8f629677f1087fce33eb29633b3d12c32e2dd41c3d78");
 if (true && forkGenesis.GetHash() != hashForkGenesisBlock)
         {
             printf("recalculating params for mainnet.\n");
