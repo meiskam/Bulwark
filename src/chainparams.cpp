@@ -197,7 +197,7 @@ if (true && forkGenesis.GetHash() != hashForkGenesisBlock)
             printf("old mainnet genesis hash:  %s\n", hashForkGenesisBlock.ToString().c_str());
             // deliberately empty for loop finds nonce value.
             for(forkGenesis.nNonce == 0; forkGenesis.GetHash() > bnProofOfWorkLimit; forkGenesis.nNonce++){ } 
-            printf("new mainnet genesis merkle root: %06lu\n", forkGenesis.hashMerkleRoot.ToString().c_str());
+            printf("new mainnet genesis merkle root: %s\n", forkGenesis.hashMerkleRoot.ToString().c_str());
             printf("new mainnet genesis nonce: %u\n", forkGenesis.nNonce);
             printf("new mainnet genesis hash: %s\n", forkGenesis.GetHash().ToString().c_str());
         }
